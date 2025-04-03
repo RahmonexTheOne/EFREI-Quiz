@@ -1,0 +1,71 @@
+﻿Type,Title,Choice,Choice,Choice,Choice,Correct
+MCQ,Qu'est-ce qu'OpenLDAP?,Un système de gestion de base de données relationnelle,Un protocole de réseau pour partager des informations,Un logiciel de serveur d'annuaire libre,Un système de gestion de fichiers distribués,3
+MCQ,Quel format de données est principalement utilisé pour représenter les données dans LDAP?,JSON,XML,YAML,LDIF,4
+MCQ,Quel attribut est généralement utilisé comme clé primaire pour un enregistrement dans un annuaire LDAP?,cn (Common Name),ou (Organizational Unit),dc (Domain Component),uid (User ID),"1,4"
+MCQ,Quelle opération LDAP est utilisée pour rechercher et lire des données dans un annuaire?,ADD,BIND,SEARCH,MODIFY,3
+MCQ,Comment s'appelle le processus d'authentification d'un client auprès d'un serveur LDAP?,Connect,Bind,StartTLS,Authenticate,2
+MCQ,Quel outil en ligne de commande peut être utilisé pour interroger un serveur LDAP?,ldapsearch,ldappasswd,ldapadd,,"1,2,3"
+MCQ,Quelle commande peut être utilisée pour ajouter un nouvel enregistrement LDAP à partir d'un fichier LDIF?,ldapmodify,ldapadd,ldapsearch,ldappasswd,2
+MCQ,Quel mécanisme OpenLDAP utilise-t-il pour sécuriser la communication entre le client et le serveur?,SSH,SSL/TLS,Kerberos,SAML,2
+MCQ,Quel attribut dans une entrée utilisateur stocke généralement le mot de passe crypté?,cn,userPassword,mail,sn,2
+MCQ,Dans quel scénario utiliseriez-vous la commande ldapmodify plutôt que ldapadd?,Pour ajouter une nouvelle entrée,Pour modifier une entrée existante,Pour rechercher dans l'annuaire,Pour supprimer une entrée,2
+MCQ,Quel est le rôle de l'attribut objectClass dans une entrée LDAP?,Définir les permissions de l'entrée,Spécifier la localisation de l'entrée dans l'arbre LDAP,Déterminer les attributs que l'entrée peut contenir,Crypter les informations de l'entrée,3
+MCQ,Quelle opération LDAP est utilisée pour supprimer une entrée?,DELETE,REMOVE,DROP,DEL,1
+MCQ,Comment s'appelle le fichier de configuration utilisé par OpenLDAP pour stocker sa configuration de manière dynamique?,slapd.d,slapd.conf,ldap.conf,cn=config,4
+MCQ,Quel outil est utilisé pour changer le mot de passe d'un utilisateur dans OpenLDAP?,ldapmodpass,ldappassmod,ldappasswd,ldapchpasswd,3
+MCQ,Quelle option de ldapsearch spécifie le DN à utiliser pour la connexion?,-D,-W,-b,-s,1
+MCQ,Quel est le format de stockage recommandé pour les mots de passe dans OpenLDAP?,En clair,MD5,SSHA,SHA,3
+MCQ,Quel attribut est utilisé pour définir une unité organisationnelle dans LDAP?,ou,cn,dc,uid,1
+MCQ,Quel outil de ligne de commande peut être utilisé pour exporter l'ensemble de l'annuaire LDAP dans un fichier LDIF?,ldapexport,slapcat,ldifde,ldapdump,2
+MCQ,Quelle est la principale différence entre ldapadd et ldapmodify lors de l'ajout d'une entrée?,"ldapadd crée de nouvelles entrées, tandis que ldapmodify peut également modifier ou supprimer des entrées existantes.",Aucune différence; ldapadd est un alias pour ldapmodify.,"ldapmodify est utilisé pour les entrées sécurisées, tandis que ldapadd n'est pas.","ldapadd utilise LDIF, tandis que ldapmodify utilise un format propriétaire.",1
+MCQ,Quelle commande est utilisée pour tester les règles d'accès dans OpenLDAP?,slaptest,ldaptest,accesscheck,slapd-check,2
+MCQ,Quelle option avec la commande ldapsearch permet de spécifier un fichier de sortie pour les résultats de la recherche?,-o,>,-f,-l,2
+MCQ,Comment spécifier un mot de passe dans un fichier LDIF pour l'attribut userPassword?,En utilisant le mot de passe en clair,En encodant le mot de passe en Base64,En utilisant un hash SSHA,,"1,2,3"
+MCQ,Comment activer le chiffrement SSL sur OpenLDAP?,En configurant les directives SSLCertificateFile et SSLCertificateKeyFile dans slapd.conf,En utilisant l'option -Z avec les commandes LDAP,En configurant un reverse proxy avec SSL devant OpenLDAP,A et B sont correctes,4
+MCQ,Quelle est la commande pour rechercher tous les enregistrements sous un DN spécifique?,"ldapsearch -x -b ""dn spécifique""","ldaplist -b ""dn spécifique""","ldapquery -d ""dn spécifique""","ldapseek -base ""dn spécifique""",1
+MCQ,Comment exporter spécifiquement la configuration d'OpenLDAP (cn=config) dans un fichier LDIF?,"ldapsearch -Y EXTERNAL -H ldapi:/// -b ""cn=config"" > config.ldif",slapcat -n 0 > config.ldif,"slapcat -b ""cn=config"" > config.ldif",A et C sont correctes,4
+MCQ,"Pour augmenter la sécurité, comment forcer OpenLDAP à n'accepter que des connexions sécurisées?",En configurant security ssf=128 dans slapd.conf,En désactivant le port 389 et en activant uniquement le port 636 (LDAPS),En utilisant un pare-feu pour bloquer toutes les connexions non SSL/TLS,A et B sont correctes,"1,2"
+MCQ,Quelle commande peut être utilisée pour supprimer une entrée spécifique de l'annuaire LDAP?,"ldapdelete -D ""cn=admin,dc=example,dc=com"" -w password -r ""dn à supprimer""","ldappurge -D ""cn=admin,dc=example,dc=com"" -w password ""dn à supprimer""","ldaprm -D ""cn=admin,dc=example,dc=com"" -w password ""dn à supprimer""","ldapremove -D ""cn=admin,dc=example,dc=com"" -w password ""dn à supprimer""",1
+MCQ,Quel outil de ligne de commande peut être utilisé pour modifier les entrées LDAP en utilisant un éditeur de texte?,ldapvi,ldapeditor,ldapedit,viLDAP,1
+MCQ,Quel attribut est utilisé par défaut comme identifiant unique pour une entrée dans OpenLDAP?,cn,uid,dn,sn,2
+MCQ,Quelle option de la commande ldapsearch permet d'inclure les entrées ayant un attribut spécifique défini à une valeur particulière?,-w,-z,-Z,Aucune des réponses ci-dessus,4
+MCQ,Quel est le rôle du suffixe dans une configuration OpenLDAP?,Déterminer l'identifiant unique de l'administrateur LDAP,Spécifier la racine de l'arbre des données LDAP,Définir les options de cryptage pour la connexion,Configurer les paramètres de réplication,2
+MCQ,Comment spécifier un utilisateur et un mot de passe pour se connecter à OpenLDAP avec ldapsearch?,Utiliser les options -D pour l'utilisateur et -w pour le mot de passe,Configurer les variables d'environnement LDAP_USER et LDAP_PASSWORD,Passer l'utilisateur et le mot de passe directement dans l'URL,Utiliser les options -u pour l'utilisateur et -p pour le mot de passe,1
+MCQ,Dans quelle situation utiliseriez-vous slapcat plutôt que ldapsearch?,Pour effectuer une recherche filtrée dans l'annuaire,Pour exporter l'ensemble de la base de données LDAP dans un fichier LDIF,Pour ajouter de nouvelles entrées à l'annuaire LDAP,Pour rechercher une entrée spécifique par son DN,2
+MCQ,Quel protocole utilise OpenLDAP pour sécuriser les communications entre le client et le serveur?,HTTPS,SSL,LDAPs,SSH,3
+MCQ,Quel mécanisme OpenLDAP n'utilise pas pour l'authentification?,SASL,Kerberos,Digest-MD5,OAuth,4
+MCQ,Quelle est la première étape pour sécuriser une installation OpenLDAP?,Configurer des ACLs,Activer SSL/TLS,Changer le mot de passe administrateur,Mettre à jour OpenLDAP vers la dernière version,4
+MCQ,Quelle commande est utilisée pour appliquer un certificat SSL/TLS à OpenLDAP?,ldapmodify,ldapcert,ldapssl,ldaptls,1
+MCQ,"Pour renforcer la sécurité, quel type de cryptage des mots de passe est recommandé dans OpenLDAP?",SHA-1,MD5,SSHA,Plaintext,3
+MCQ,Les ACL (Access Control Lists) dans OpenLDAP sont définies dans:,slapd.conf,ldap.conf,acl.conf,openldap.conf,1
+MCQ,Quelle option de sécurité LDAP limite le nombre de tentatives de connexion?,Retry-lockout,Password-lockout,Ppolicy,Access-restrict,3
+MCQ,Quelle option de sécurité LDAP limite le nombre de tentatives de connexion?,Retry-lockout,Password-lockout,Ppolicy,Access-restrict,3
+MCQ,Pourquoi est-il important de désactiver les comptes inutilisés dans OpenLDAP?,Pour améliorer les performances,Pour économiser de l'espace disque,Pour réduire le risque de compromission de sécurité,Pour simplifier la gestion des utilisateurs,3
+MCQ,Quel outil n'est pas utilisé pour surveiller OpenLDAP?,Nagios,Zabbix,OpenVPN,ELK Stack,3
+MCQ,Comment OpenLDAP assure-t-il l'intégrité des données?,En utilisant des transactions ACID,Par le cryptage des données au repos,En appliquant des checksums à chaque entrée,Aucune des réponses ci-dessus,4
+MCQ,Quelle est la meilleure pratique pour gérer les mots de passe dans OpenLDAP?,Stocker les mots de passe en clair pour faciliter la récupération,Utiliser un algorithme de hachage fort et ne jamais stocker les mots de passe en clair,Laisser le choix aux utilisateurs,Encoder les mots de passe,2
+MCQ,Quelle commande peut être utilisée pour vérifier la configuration SSL/TLS d'OpenLDAP?,openssl s_client -connect host:port,slapd -T test,ldapsearch -ZZ,tlscheck -ldap,1
+MCQ,Quelle stratégie n'est pas recommandée pour sécuriser les sauvegardes d'OpenLDAP?,Chiffrer les sauvegardes,Stocker les sauvegardes sur un serveur connecté au réseau,Tester régulièrement les procédures de restauration,Limiter l'accès physique et réseau aux sauvegardes,2
+MCQ,Quel est le principal avantage de l'authentification SASL dans OpenLDAP?,Elle permet l'utilisation de mécanismes d'authentification externes,Elle réduit la latence de l'authentification,Elle élimine le besoin de SSL/TLS,Elle supporte uniquement l'authentification par mot de passe,1
+MCQ,Quelle meilleure pratique n'est pas associée à la gestion des ACL dans OpenLDAP?,Utiliser le principe du moindre privilège,Appliquer des ACLs identiques à tous les utilisateurs,Tester les ACLs dans un environnement de développement avant la production,Documenter toutes les ACLs et leurs changements,2
+MCQ,Quel est l'impact de la désactivation de l'anonyme bind dans OpenLDAP?,Augmente la sécurité en empêchant les accès non authentifiés,Diminue la sécurité en limitant les méthodes d'authentification,Aucun impact sur la sécurité,Réduit la performance du serveur,1
+MCQ,Quelle est l'importance de chiffrer les sauvegardes d'OpenLDAP?,Pour accélérer le processus de restauration,Pour prévenir la perte de données,Pour protéger contre l'accès non autorisé aux données sauvegardées,"Aucune, le chiffrement des sauvegardes n'est pas nécessaire",3
+MCQ,Quelle est la meilleure approche pour sécuriser les communications entre les réplicas OpenLDAP?,Utiliser une connexion VPN,Transférer les données en clair pour une meilleure performance,Utiliser SSL/TLS pour toutes les réplications,Se fier à la sécurité du réseau interne,3
+MCQ,Quelle option avec ldapsearch spécifie le filtre de recherche?,-f,-b,-s,Aucune des réponses ci-dessus,4
+MCQ,"Pour spécifier un fichier LDIF avec ldapmodify, quelle option utilisez-vous?",-f,-l,-d,-F,1
+MCQ,Quelle option de ldapsearch spécifie la base DN pour la recherche?,-b,-D,-s,-f,1
+MCQ,Quelle option avec ldapdelete spécifie la suppression récursive?,-r,-R,-s,Cette fonctionnalité n'existe pas,4
+MCQ,"Quelle option avec ldapsearch permet de réaliser une recherche en spécifiant le niveau de la recherche (base, one, sub)?",-s,-b,-l,-f,1
+MCQ,Quelle commande est utilisée pour renommer ou déplacer une entrée dans un annuaire LDAP?,ldapmove,ldapmoddn,ldaprename,modrdn,2
+MCQ,Quelle option avec ldapmoddn ou ldaprename permet de spécifier le nouveau parent de l'entrée?,-s,-n,-newsuperior,-p,3
+MCQ,Quelle commande permet de changer le mot de passe d'un utilisateur dans un annuaire LDAP?,ldappasswd,ldapchpasswd,ldapmodpasswd,passwdldap,1
+MCQ,Quelle option de ldappasswd spécifie le nouveau mot de passe?,-S,-a,-s,-n,3
+MCQ,Quelle option avec ldapsearch permet d'effectuer une recherche en ignoant la vérification du certificat SSL/TLS?,-Z,-z,-x,-ZZ,4
+MCQ,"Pour utiliser ldapsearch sans authentification, quelle option utilisez-vous?",-x,-n,-a,-N,1
+MCQ,Quelle option avec ldapadd indique l'utilisation de l'authentification simple?,-x,-S,-W,-D,1
+MCQ,Quelle option est utilisée avec la commande ldapsearch pour spécifier le DN (Distinguished Name) de départ de la recherche ?,-b,-s,-f,-o,1
+MCQ,Quelle option est utilisée avec la commande ldapsearch pour spécifier le filtre de recherche ?,-f,-s,-l,-z,1
+MCQ,Quelle option est utilisée avec la commande ldapsearch pour afficher uniquement les DNs (Distinguished Names) des résultats ?,-D,-L,-n,-d,3
+MCQ,Quelle option est utilisée avec la commande ldapmodify pour spécifier les modifications à apporter dans un fichier LDIF ?,-f,-m,-a,-c,1
+MCQ,Quelle commande est utilisée pour vérifier la configuration du serveur OpenLDAP ?,ldapcheck,ldapinfo,ldapconfig,ldapwhoami,2
+MCQ,Quelle option est utilisée avec la commande ldapwhoami pour afficher le DN de l'utilisateur courant ?,-U,-D,-Q,-Y,3
