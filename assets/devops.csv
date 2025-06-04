@@ -303,3 +303,68 @@ MCQ,"Un submodule dans Git sert à :",Créer un commit,Fusionner deux dépôts,I
 MCQ,"Comment revenir à une version précédente avec un tag ?",git go tag,git revert,git checkout v1.0,git history tag,3
 MCQ,"Quelle est la différence entre git pull et git fetch ?",Aucune,git fetch met à jour sans merge,git pull ne récupère pas les branches,git fetch crée un commit,2
 MCQ,"Que permet git rebase ?",Ajouter des commits,Télécharger des fichiers,Réécrire l’historique des commits,Ignorer des fichiers,3
+MCQ,"Quel est le rôle de GitHub dans un pipeline CI/CD ?","Héberger les fichiers ZIP","Générer des fichiers JAR","Héberger le code source et déclencher les builds","Superviser les serveurs Jenkins",3
+MCQ,"Pourquoi utilise-t-on Jenkins avec Ansible ?","Pour coder en Python","Pour créer des machines virtuelles","Pour automatiser le déploiement d'applications","Pour envoyer des emails",3
+MCQ,"Quel est l’objectif principal d’un webhook dans GitHub ?","Créer une interface graphique","Déclencher une action automatique (comme un build Jenkins)","Sauvegarder des fichiers","Créer un utilisateur",2
+MCQ,"Quel port est généralement utilisé pour accéder à Jenkins ?","22","80","8080","3306",3
+MCQ,"Quel est le rôle de Tomcat dans un pipeline CI/CD ?","Compiler le code","Lancer Jenkins","Déployer et exécuter des applications web Java","Gérer la base de données",3
+MCQ,"Que permet l’intégration de GitHub dans Jenkins ?","De supprimer le code","D'envoyer des e-mails de masse","De cloner les dépôts automatiquement","De redémarrer Jenkins",3
+MCQ,"Quel fichier est souvent utilisé pour décrire un playbook Ansible ?","setup.txt","config.ini","playbook.yml","script.sh",3
+MCQ,"Quel est l'avantage de l'automatisation via Jenkins ?","Moins de commits","Moins de contrôle qualité","Livraisons continues fiables","Plus de code manuellement",3
+MCQ,"Jenkins peut être déclenché par :","Une alerte système","Un test utilisateur","Un commit GitHub via webhook","Un appel téléphonique",3
+MCQ,"Quel outil est utilisé pour provisionner et configurer les serveurs dans ce pipeline ?","Git","Docker","Ansible","Apache",3
+MCQ,"Un pipeline Jenkins peut inclure :","Uniquement des étapes manuelles","Uniquement des tests","Build, test, et déploiement","Uniquement l'installation de Jenkins",3
+MCQ,"Quel est l'avantage principal de Jenkins ?","Gestion des utilisateurs","Surveillance réseau","Automatisation des tâches DevOps","Création de pages HTML",3
+MCQ,"Que permet le plugin Git dans Jenkins ?","Intégrer Google Drive","Gérer les branches Git","Modifier le code automatiquement","Installer Java",2
+MCQ,"Quel langage est utilisé pour écrire les playbooks Ansible ?","JSON","YAML","XML","Python",2
+MCQ,"Quel serveur web est utilisé pour héberger les WAR Jenkins ?","Nginx","Apache","Tomcat","IIS",3
+MCQ,"Quel événement déclenche un pipeline CI dans Jenkins ?","Un nouveau commit pushé","Un appel GET","Un reboot du serveur","Un changement de mot de passe",1
+MCQ,"Quel outil CI/CD utilise-t-on dans ce document ?","Travis CI","CircleCI","Jenkins","GitLab CI",3
+MCQ,"Pourquoi utiliser Ansible dans un pipeline Jenkins ?","Pour compiler du code","Pour surveiller les performances","Pour automatiser les tâches système","Pour créer un site web",3
+MCQ,"Comment Jenkins récupère-t-il le code source ?","Via un webhook depuis GitHub","Via e-mail","Manuellement via l'interface","Depuis Dropbox",1
+MCQ,"Quel est le rôle d'un fichier pom.xml (Maven) dans Jenkins ?","Configurer le pipeline Jenkins","Déployer l'application","Gérer les dépendances Java et la compilation","Envoyer des logs",3
+MCQ,"Un playbook Ansible contient :","Du HTML","Des scripts Bash","Des instructions d'automatisation en YAML","Des fichiers JAR",3
+MCQ,"Quel format de fichier est utilisé pour le déploiement Java dans Tomcat ?",".zip",".tar",".war",".html",3
+MCQ,"Le plugin Git dans Jenkins sert à :","Analyser des logs","Créer des utilisateurs","Cloner et suivre les dépôts Git","Gérer le système",3
+MCQ,"Que signifie CI/CD ?","Custom Interface / Code Deployment","Continuous Integration / Continuous Deployment","Centralized Integration / Centralized Data","Container Infrastructure / Code Debugging",2
+MCQ,"Pourquoi utilise-t-on Jenkins dans un pipeline DevOps ?","Pour héberger des sites web","Pour stocker des images","Pour automatiser intégration et déploiement","Pour tester les API REST",3
+MCQ,"Quel est l'objectif principal de Jenkins ?",Tester manuellement,Déployer manuellement,Automatiser l’intégration et le déploiement,Remplacer les développeurs,3
+MCQ,"Qu'est-ce que l'intégration continue (CI) ?",Un test manuel du code,Une livraison mensuelle,Une pratique visant à tester automatiquement chaque révision de code,Une sauvegarde automatique,3
+MCQ,"Quel est le rôle du fichier scriptprojet1.sh ?",Créer un utilisateur Jenkins,Lancer Jenkins,Effectuer un déploiement manuel,Installer Git,3
+MCQ,"Quelle étape n'est pas incluse dans un déploiement manuel classique ?",Build Java,Push du code,Utilisation de Kubernetes,Téléchargement du code sur le serveur,3
+MCQ,"Que génère le build d’un projet Java ?",Un fichier .py,Un fichier .zip,Un fichier webapp.war,Un fichier config.ini,3
+MCQ,"Quel outil est utilisé pour compiler les projets Java ?",Git,Maven,Docker,Ansible,2
+MCQ,"Quelle est la commande pour installer Maven sous Ubuntu ?",sudo yum install maven,sudo apt install maven,apt-get install docker,pacman -S maven,2
+MCQ,"Quel est le chemin classique de déploiement pour le fichier WAR dans Tomcat ?",/home/user/warfiles,/var/lib/tomcat,/opt/tomcat/latest/webapps,/usr/local/bin,3
+MCQ,"Quelle est la commande pour ouvrir le port 8080 avec UFW ?",sudo ufw allow http,sudo ufw enable all,sudo ufw allow 8080/tcp,sudo iptables allow 8080,3
+MCQ,"Pourquoi le port 8080 peut être inaccessible malgré le déploiement ?",Java non installé,Tomcat absent,Le firewall AWS bloque le trafic entrant,URL mal formée,3
+MCQ,"Quelle est la première étape lors de la création d'une VM sur AWS pour déploiement manuel ?",Créer une base de données,Créer une paire de clés SSH,Installer Ansible,Créer un bucket S3,2
+MCQ,"Pourquoi définit-on JAVA_HOME dans le fichier java.sh ?",Pour activer Python,Pour localiser Maven,Pour compiler en C++,Pour indiquer le chemin vers Java,4
+MCQ,"Quelle commande permet de vérifier que Maven est bien installé ?",mvn --check,mvn –version,check maven version,version maven,2
+MCQ,"Quelle est la commande pour rendre un fichier exécutable ?",chmod +x,chmod 000,chown root,cp -x,1
+MCQ,"Que fait la commande systemctl enable tomcat ?",Désactive Tomcat,Lance Tomcat automatiquement au boot,Désinstalle Tomcat,Vérifie l’état de Tomcat,2
+MCQ,"Quel est le rôle principal de Jenkins ?",Automatiser le test uniquement,Gérer les dépôts Git,Automatiser toutes les étapes du développement logiciel,Gérer les bases de données,3
+MCQ,"Jenkins est développé en quel langage ?",Python,C++,Java,Go,3
+MCQ,"Qu’est-ce que l’intégration continue (CI) ?",Un outil de déploiement,Une stratégie de sécurité,Une pratique de test automatisé de chaque modification de code,Un langage de programmation,3
+MCQ,"Que se passe-t-il si un test échoue dans Jenkins ?",Le build continue,Le développeur est notifié et le déploiement est stoppé,Le code est supprimé,La base de données est restaurée,2
+MCQ,"Qu’est-ce que le déploiement continu (CD) ?",Une version allégée de CI,Une procédure manuelle de tests,Une automatisation complète du déploiement après validation des tests,Une méthode de sauvegarde,3
+MCQ,"Quelle est la différence entre livraison continue et déploiement continu ?",Aucune différence,Livraison continue intègre tout sauf le passage en prod,Le déploiement continu ne teste pas,La livraison continue ne fait pas de build,2
+MCQ,"Quel est l'objectif final de Jenkins ?",Créer des bases de données,Automatiser les builds et déploiements,Analyser du texte,Compiler du code en C,2
+MCQ,"Sur quel port fonctionne Jenkins par défaut ?",80,22,443,8080,4
+MCQ,"Comment accéder à Jenkins après installation ?",Via un VPN,Via http://@ip-public:8080,Via un terminal SSH,Via FTP,2
+MCQ,"Où trouver le mot de passe initial de Jenkins ?",Dans /etc/passwd,Via email,Dans /var/lib/jenkins/secrets/initialAdminPassword,Sur GitHub,3
+MCQ,"Pourquoi installe-t-on OpenJDK avec Jenkins ?",Pour compiler en C,Pour utiliser NodeJS,Parce que Jenkins est écrit en Java,Pour avoir accès à Git,3
+MCQ,"Quelle commande permet d’installer Jenkins sur CentOS ?",apt install jenkins,yum install jenkins,dnf upgrade jenkins,brew install jenkins,2
+MCQ,"Quel outil est requis pour compiler un projet Maven dans Jenkins ?",npm,make,maven,docker,3
+MCQ,"Quel plugin Jenkins faut-il installer pour Maven ?",Python Integration,Maven Integration,Maven Deployer,Node Plugin,2
+MCQ,"Comment Jenkins détecte-t-il un nouveau code ?",En scannant manuellement,Par un cron job,En vérifiant le dépôt Git régulièrement,Sur appel du développeur,3
+MCQ,"Quel type de projet choisir pour créer un job Jenkins ?",Free-style project,Script uniquement,Pipeline shell,Job en Python,1
+MCQ,"Où Jenkins stocke-t-il les projets par défaut ?",/usr/share/jenkins,/etc/jenkins,/var/lib/jenkins/workspace,/opt/jenkins,3
+MCQ,"Que fait la commande mvn clean install ?",Supprime les fichiers,Compile et teste le projet,Clone le dépôt,Installe Jenkins,2
+MCQ,"Quel est le rôle du fichier pom.xml ?",Configurer les paramètres Git,Décrire la configuration du projet Maven,Gérer les utilisateurs,Créer un Dockerfile,2
+MCQ,"Quel répertoire contient les sources du projet Maven ?",src/code/src,src/main/java,src/core,src/java,2
+MCQ,"Quelle commande Jenkins déclenche la compilation Maven ?",mvn compile package,mvn run,mvn make,mvn start,1
+MCQ,"Que fait Jenkins après avoir détecté un changement dans Git ?",Supprime le code,Exécute un test manuellement,Crée un nouveau build automatiquement,Demande à l’utilisateur,3
+MCQ,"Quel est l’intérêt d’utiliser une clé SSH dans Jenkins ?",Changer de port Jenkins,Éviter les mots de passe à chaque push,Pour se connecter à PostgreSQL,Générer un fichier WAR,2
+MCQ,"Quels types de dépendances le POM peut-il contenir ?","Uniquement internes","Seulement les plugins","Métadonnées, dépendances, plugins, etc.","Clés SSH",3
+MCQ,"Quels types de plugins Jenkins peut-il intégrer ?","Uniquement Git","Git et Maven uniquement","De nombreux outils comme Git, Maven, EC2, etc.","Aucun plugin requis",3
