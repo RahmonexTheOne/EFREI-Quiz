@@ -91,7 +91,7 @@ Where:
 
 ## License
 
-*(Add your license details here if you wish.)*
+*GPL-3.0*
 
 ## Contributing
 
