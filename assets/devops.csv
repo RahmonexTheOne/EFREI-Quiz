@@ -228,7 +228,7 @@ MCQ,"Quelle commande permet de tester la connectivité SSH aux hôtes ?",ansible
 MCQ,"Quelle directive permet de définir un groupe d’hôtes dans un inventaire ?",[groupname],group:hosts,{group},group_name,1
 MCQ,"Quel outil est souvent utilisé avec Ansible pour la gestion de secrets ?",AWS Vault,Ansible Vault,HashiCorp Vault,Secrets Manager,2
 MCQ,"Quelle commande permet d’encrypter un fichier avec Ansible Vault ?",ansible-vault lock,ansible-vault encrypt,ansible encrypt,encrypt-file,2
-MCQ,"Un rôle Ansible contient :",Un seul fichier main.yml,Des dossiers bien structurés (tasks, handlers, etc.),Uniquement des variables,Des clés SSH,2
+MCQ,"Un rôle Ansible contient :","Un seul fichier main.yml","Des dossiers bien structurés (tasks, handlers, etc.)","Uniquement des variables","Des clés SSH",2
 MCQ,"Le module yum est utilisé pour :",Les systèmes Debian,Les systèmes Windows,Les systèmes basés sur Red Hat,Linux Mint,3
 MCQ,"Quelle directive permet d’inclure une autre tâche dans une playbook ?",include_tasks,run_tasks,import_tasks,add_tasks,3
 MCQ,"Quelle option du module copy permet de définir la source du fichier ?",src,file,path,destination,1
@@ -239,6 +239,7 @@ TF,"Les handlers sont exécutés immédiatement après leur appel.",Vrai,Faux,,,
 TF,"La commande ansible-vault decrypt permet de décrypter un fichier chiffré.",Vrai,Faux,,,1
 TF,"Un playbook peut contenir plusieurs plays.",Vrai,Faux,,,1
 TF,"Ansible est capable de gérer des inventaires dynamiques.",Vrai,Faux,,,1
+MCQ,"Ansible peut-il exécuter des commandes en parallèle sur plusieurs hôtes ?","Non","Oui, mais avec un plugin","Oui nativement","Oui uniquement avec Kubernetes",3
 TF,"Les modules sont obligatoires dans un playbook Ansible.",Vrai,Faux,,,1
 TF,"On peut utiliser des rôles pour structurer un projet Ansible.",Vrai,Faux,,,1
 TF,"La variable 'become' est utilisée pour changer d’utilisateur.",Vrai,Faux,,,1
@@ -247,7 +248,6 @@ MCQ,"Comment appelle-t-on une configuration qui ne change rien si elle est déj�
 MCQ,"Quel module permet de gérer les utilisateurs Linux avec Ansible ?",user,group,account,login,1
 MCQ,"Quel fichier stocke les variables dans un rôle ?",vars.yml,variables.txt,defaults.cfg,env.ini,1
 MCQ,"Quel module peut être utilisé pour exécuter une commande shell ?",command,shell,run,exec,2
-MCQ,"Ansible peut-il exécuter des commandes en parallèle sur plusieurs hôtes ?",Non,Oui, mais avec un plugin,Oui nativement,Oui uniquement avec Kubernetes,3
 MCQ,"Les modules Ansible sont écrits en :",Python uniquement,Plusieurs langages,Java,Go,2
 MCQ,"Quelle directive permet d’inclure des variables dans un playbook ?",vars_files,variables,import_vars,include_vars,1
 MCQ,"Le mot-clé 'when' permet de :",Planifier une tâche,Définir une condition,Créer une variable,Lancer un rôle,2
