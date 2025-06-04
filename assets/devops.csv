@@ -1,0 +1,25 @@
+Type,Title,Choice,Choice,Choice,Choice,Correct
+MCQ,Quel est l'objectif principal de la philosophie DevOps ?,Accélérer le développement uniquement,Améliorer la collaboration entre les équipes de développement et d'opérations,Réduire le nombre de développeurs,Augmenter les réunions quotidiennes,2
+MCQ,Quel est un avantage clé de l'approche DevOps ?,Augmentation des cycles de livraison,Augmentation des erreurs humaines,Réduction du time-to-market,Silos organisationnels renforcés,3
+MCQ,Qu'est-ce qui caractérise une approche DevOps réussie ?,Processus manuels fréquents,Communication limitée,Automatisation et collaboration,Isolation des équipes,3
+MCQ,Quel principe consiste à tester sur un environnement proche de la production ?,Shift Left,Production Mirage,Test Blackbox,Feedback Loop,1
+MCQ,Quel outil est utilisé pour l'automatisation des déploiements et configurations ?,Docker,Terraform,Ansible,Kubernetes,3
+MCQ,Qu'est-ce que l'Infrastructure as Code (IaC) ?,Une documentation sur l'infrastructure,Des scripts de supervision,L'automatisation de la configuration réseau,Définition de l'infrastructure par du code versionné,4
+MCQ,Quel outil CI/CD est spécifiquement conçu pour Kubernetes ?,Jenkins,GitLab CI,Tekton,Spinnaker,3
+MCQ,Quel est le rôle de Kubernetes dans le DevOps moderne ?,Créer des VM,Exécuter les tests unitaires,Orchestrer des conteneurs,Déployer des scripts Python,3
+MCQ,Quel est le principal avantage du monitoring continu ?,Diminuer les tests,Obtenir des retours en temps réel,Augmenter le temps de build,Réduire l’automatisation,2
+MCQ,Quelle est une caractéristique de la livraison continue ?,Déploiement manuel obligatoire,Pas de tests automatisés,Logiciel toujours prêt à être déployé,Utilisation exclusive de GitHub,3
+MCQ,Quel est l’un des piliers du DevOps favorisant l'amélioration continue ?,Automatisation,Documentation,Isolation des équipes,Formalisation manuelle,1
+MCQ,Quelle est une conséquence directe de l'adoption de DevOps sur le feedback client ?,Moins de retours,Feedbacks centralisés uniquement,Feedbacks plus rapides et intégrés,Aucune influence,3
+MCQ,Quel outil est conçu pour synchroniser les applications Kubernetes avec Git (GitOps) ?,Jenkins,Spinnaker,Argo CD,Tekton,3
+MCQ,Quelle technologie de containerisation encapsule les dépendances et le code d'une application ?,VMware,Docker,Kubernetes,Terraform,2
+MCQ,Quel service AWS est utilisé pour le stockage d'objets ?,IAM,RDS,S3,EC2,3
+MCQ,Quel est le rôle principal de Terraform dans une infrastructure cloud ?,Monitoring,Provisionnement d'infrastructure,Sécurisation réseau,Test unitaire,2
+MCQ,Pourquoi la culture DevOps valorise-t-elle l'expérimentation ?,Pour faire plus d'erreurs,Pour ralentir le développement,Pour apprendre et s'améliorer continuellement,Pour plaire aux managers,3
+MCQ,Qu’est-ce que GitFlow ?,Un outil de déploiement,Une méthode de gestion de conteneurs,Une stratégie de branching,Une commande Linux,3
+MCQ,Quel est le principal avantage de l’IaC ?,Configuration manuelle des machines,Surveillance en temps réel,Création d’environnements reproductibles,Ajout d’images Docker,3
+MCQ,Quel est un bénéfice de l’automatisation dans DevOps ?,Plus d'interventions humaines,Plus de bugs,Réduction des erreurs humaines,Code moins lisible,3
+TF,L'approche DevOps favorise le travail en silos entre les équipes.,Vrai,Faux,,,2
+TF,"Les conteneurs utilisent le noyau du système hôte, ce qui les rend plus légers que les machines virtuelles.",Vrai,Faux,,,1
+MCQ,"Dans DevOps, le concept de ______ permet de définir l’infrastructure à l’aide de code.",Infrastructure as Code,Infrastructure as Data,Infrastructure Centralisée,Infrastructure Legacy,1
+MCQ,Le processus d'intégration continue inclut des tests ______ pour valider le code.,automatisés,manuels,unitaires,visuels,1
