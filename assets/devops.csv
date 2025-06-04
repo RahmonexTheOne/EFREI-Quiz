@@ -23,3 +23,283 @@ TF,L'approche DevOps favorise le travail en silos entre les équipes.,Vrai,Faux,
 TF,"Les conteneurs utilisent le noyau du système hôte, ce qui les rend plus légers que les machines virtuelles.",Vrai,Faux,,,1
 MCQ,"Dans DevOps, le concept de ______ permet de définir l’infrastructure à l’aide de code.",Infrastructure as Code,Infrastructure as Data,Infrastructure Centralisée,Infrastructure Legacy,1
 MCQ,Le processus d'intégration continue inclut des tests ______ pour valider le code.,automatisés,manuels,unitaires,visuels,1
+MCQ,Quel est un avantage clé du cloud computing ?,Évolutivité,Coût plus élevé,Temps de déploiement plus long,Maintenance manuelle,1
+MCQ,Lequel de ces modèles n’est PAS un modèle de déploiement cloud ?,Cloud public,Cloud privé,Cloud collectif,Cloud hybride,3
+MCQ,Quel service AWS permet de stocker des objets ?,Amazon S3,Amazon EC2,Amazon RDS,Amazon VPC,1
+MCQ,Qu’est-ce que la haute disponibilité dans le cloud ?,Un service disponible uniquement le jour,Un service toujours disponible avec redondance,Un service lent mais stable,Un service avec une seule instance,2
+MCQ,Quelle caractéristique est typique du modèle IaaS ?,Le client gère les VM et les OS,Le client code une fonction,Le client gère les racks physiques,Le fournisseur gère toute la pile,1
+MCQ,Quel modèle de service cloud vous permet de vous concentrer uniquement sur votre code ?,IaaS,PaaS,SaaS,FaaS,2
+MCQ,Quel est l’avantage du paiement à l’utilisation dans AWS ?,Payer même quand on n’utilise pas,Flexibilité des coûts,Payer d’avance pour 3 ans,Coût fixe,2
+MCQ,Comment AWS garantit-il la tolérance aux pannes ?,En supprimant les erreurs,En utilisant une région unique,En répliquant les ressources entre zones de disponibilité,En évitant les sauvegardes,3
+MCQ,Les régions AWS sont composées de quoi ?,De zones de disponibilité,De buckets S3,De bases de données,De scripts Python,1
+MCQ,Quelle affirmation est vraie sur le cloud computing ?,Il est rigide,Il nécessite beaucoup d'investissement initial,Il permet une élasticité des ressources,Il remplace les développeurs,3
+TF,L'utilisation du cloud permet d'accélérer l'innovation.,Vrai,Faux,,,1
+TF,Les ressources dans le cloud sont disponibles en illimité.,Vrai,Faux,,,1
+TF,Une zone de disponibilité est identique à une région.,Vrai,Faux,,,2
+TF,Le cloud computing rend l’approvisionnement plus lent.,Vrai,Faux,,,2
+TF,AWS est un fournisseur de cloud public.,Vrai,Faux,,,1
+MCQ,Lequel de ces services est un exemple de compute dans AWS ?,Amazon EC2,Amazon S3,Amazon RDS,Amazon CloudFront,1
+MCQ,Qu’est-ce que l’élasticité dans le contexte AWS ?,Changer d’instance toutes les heures,Ajouter ou supprimer automatiquement des ressources,Changer de région,Dupliquer les bases de données,2
+MCQ,Quel service permet de déployer des applications sans gérer les serveurs ?,AWS Lambda,Amazon EC2,Amazon EBS,Amazon CloudWatch,1
+MCQ,Quel avantage AWS permet une gestion centralisée des identités ?,Amazon IAM,Amazon S3,Amazon RDS,Amazon Route 53,1
+MCQ,Quel modèle AWS offre des logiciels via un navigateur ?,SaaS,PaaS,IaaS,DRaaS,1
+MCQ,Que permet le service AWS CloudFormation ?,Créer des infrastructures via du code,Créer des buckets,Créer des VM avec un clic,Surveiller les logs,1
+MCQ,Combien de zones de disponibilité au minimum possède une région AWS typique ?,1,2,3,4,3
+MCQ,Le cloud computing est généralement basé sur quel principe ?,Infrastructure physique dédiée,Partage des ressources,Isolation complète,Utilisation unique,2
+MCQ,Quel est le rôle principal de l’Amazon VPC ?,Créer des bases de données,Stocker des objets,Configurer des réseaux privés virtuels,Gérer les utilisateurs,3
+MCQ,AWS propose-t-il un service de base de données managé ?,Oui,Non,Seulement en Chine,Seulement pour les startups,1
+MCQ,Quel service AWS surveille les performances et les alertes ?,Amazon CloudWatch,Amazon EC2,Amazon IAM,Amazon SQS,1
+TF,L’élasticité permet de réduire les coûts lorsqu’il y a peu de trafic.,Vrai,Faux,,,1
+TF,Une région AWS ne peut avoir qu'une seule zone de disponibilité.,Vrai,Faux,,,2
+TF,CloudFront est utilisé pour la distribution de contenu.,Vrai,Faux,,,1
+TF,Le modèle SaaS nécessite de gérer les serveurs.,Vrai,Faux,,,2
+TF,Les utilisateurs d’IaaS ont accès au matériel physique.,Vrai,Faux,,,2
+MCQ,Quel est le rôle d’Amazon RDS ?,Gérer des bases de données relationnelles,Gérer les identités,Gérer des réseaux,Gérer des files de messages,1
+MCQ,Quel concept AWS permet d’automatiser les déploiements ?,CloudFormation,CloudShell,CloudTrail,CloudBackup,1
+MCQ,Qu’est-ce qu’un workload dans AWS ?,Un type d’instance,Une charge de travail ou application spécifique,Un réseau privé,Un volume de stockage,2
+MCQ,Quel service AWS offre une plateforme de containerisation managée ?,Amazon ECS,Amazon S3,Amazon RDS,Amazon Lambda,1
+MCQ,Qu’est-ce qu’un avantage majeur du cloud hybride ?,Isolation complète,Migration impossible,Flexibilité entre local et cloud,Coût fixe,3
+MCQ,Quelle est la fonction principale de Route 53 ?,Base de données DNS,Gestion de machines,Gestion d'identités,Surveillance réseau,1
+MCQ,Amazon CloudTrail est utilisé pour quoi ?,Surveiller les logs d’activité,Gérer les bases,Gérer les clés,Gérer les VPC,1
+TF,L’utilisation du cloud AWS est limitée dans le temps.,Vrai,Faux,,,2
+TF,Le cloud permet d'expérimenter rapidement de nouvelles idées.,Vrai,Faux,,,1
+TF,Les données stockées dans Amazon S3 sont accessibles en ligne.,Vrai,Faux,,,1
+MCQ,Quel service AWS est conçu pour le stockage d'objets ?,Amazon EBS,Amazon RDS,Amazon S3,Amazon Redshift,3
+MCQ,Quel type de stockage Amazon S3 est le moins coûteux pour les données rarement accédées ?,S3 Standard,S3 Intelligent-Tiering,S3 Glacier,S3 One Zone-IA,3
+MCQ,Quel service AWS est recommandé pour le stockage de blocs pour des bases de données ou des systèmes d'exploitation ?,Amazon S3,Amazon EFS,Amazon EBS,Amazon DynamoDB,3
+MCQ,Quel service est conçu pour les bases de données relationnelles managées ?,Amazon Aurora,Amazon S3,Amazon DynamoDB,Amazon Neptune,1
+MCQ,Amazon DynamoDB est un service de base de données ...,Relationnelle,Objet,Graphes,NoSQL,4
+MCQ,Quel service permet de créer un système de fichiers partagé entre plusieurs instances EC2 ?,Amazon S3,Amazon FSx,Amazon EFS,Amazon Glacier,3
+MCQ,Quel service AWS est principalement utilisé pour la migration de bases de données ?,AWS Migration Hub,AWS Snowball,AWS DMS,AWS Backup,3
+MCQ,Quel service AWS est conçu pour les sauvegardes centralisées ?,Amazon CloudWatch,AWS Backup,AWS DMS,Amazon S3,2
+MCQ,Quelle option est un avantage clé du stockage cloud par rapport aux disques durs traditionnels ?,Plus lent,Plus risqué,Moins flexible,Évolutivité illimitée,4
+MCQ,Quel service AWS est recommandé pour stocker des données archivées à long terme ?,Amazon S3 Standard,Amazon S3 Glacier Deep Archive,Amazon EFS,Amazon RDS,2
+MCQ,Quelle est une caractéristique principale d'Amazon S3 ?,Stockage de blocs,Stockage de fichiers,Stockage d'objets,Stockage relationnel,3
+MCQ,Quel service AWS permet de migrer des données vers AWS par livraison physique ?,AWS Snowball,AWS DMS,AWS Backup,AWS DataSync,1
+MCQ,Quel est le principal cas d’usage d’Amazon FSx ?,Stockage de blocs,Stockage de fichiers Windows et Lustre,Stockage d’objets,Cache de contenu,2
+MCQ,Quel service AWS est orienté vers la synchronisation rapide de fichiers vers AWS ?,AWS Transfer Family,AWS DataSync,AWS Migration Hub,AWS Storage Gateway,2
+MCQ,Quelle base de données AWS est optimisée pour les données relationnelles complexes et les jointures ?,Amazon S3,Amazon Aurora,Amazon DynamoDB,Amazon Neptune,2
+MCQ,"Amazon RDS peut être utilisé avec quelles bases ?",MySQL uniquement,PostgreSQL uniquement,SQL Server uniquement,"Plusieurs moteurs (MySQL, PostgreSQL, Oracle, etc.)",4
+MCQ,Quel est le principal objectif d’AWS Backup ?,Créer des buckets,Superviser la sécurité,Réaliser des sauvegardes gérées centralement,Gérer les connexions,3
+MCQ,Quel service AWS facilite l’archivage automatisé vers S3 Glacier ?,Amazon EBS,S3 Intelligent-Tiering,Amazon RDS,AWS Config,2
+MCQ,Quel service AWS est basé sur le modèle de stockage de graphes ?,Amazon Neptune,Amazon Aurora,Amazon DynamoDB,Amazon EFS,1
+MCQ,AWS Snowball est le mieux adapté pour ...,Transférer de petits fichiers,Transfert de grands volumes de données via le réseau,Transfert physique de données à grande échelle,Archiver les logs,3
+TF,Amazon S3 offre un stockage en blocs.,Vrai,Faux,,,2
+TF,Amazon DynamoDB est un service relationnel.,Vrai,Faux,,,2
+TF,AWS DMS permet la migration de bases de données vers AWS.,Vrai,Faux,,,1
+TF,Amazon FSx peut être utilisé pour des charges de travail Windows.,Vrai,Faux,,,1
+TF,Amazon EBS est un stockage de fichiers partagé.,Vrai,Faux,,,2
+TF,Amazon S3 Glacier est conçu pour l'accès fréquent.,Vrai,Faux,,,2
+TF,AWS Backup peut sauvegarder Amazon EFS.,Vrai,Faux,,,1
+TF,Amazon RDS prend en charge uniquement MySQL.,Vrai,Faux,,,2
+TF,AWS DataSync est utilisé pour migrer des données via disque dur physique.,Vrai,Faux,,,2
+TF,Amazon Neptune est une base orientée graphe.,Vrai,Faux,,,1
+MCQ,"Quel service AWS permet de créer un réseau privé isolé dans le cloud ?",Amazon EC2,Amazon RDS,Amazon VPC,AWS Lambda,3
+MCQ,"Qu’est-ce qu’une zone de disponibilité dans AWS ?",Une application de haute priorité,Une fonction de sécurité,Un centre de données isolé dans une région,Un script d’automatisation,3
+MCQ,"Qu’est-ce que le peering VPC permet ?",Connecter une instance EC2 à S3,Associer un VPC à un autre pour le trafic privé,Créer un réseau public,Relier IAM à CloudTrail,2
+MCQ,"Quelle est la méthode recommandée pour sécuriser un VPC ?",Utiliser uniquement un mot de passe,Utiliser les groupes de sécurité et ACLs réseau,Désactiver SSH,Créer des buckets S3 privés,2
+MCQ,"Quel composant permet le routage dans un VPC ?",Route 53,NAT Gateway,Table de routage,CloudFront,3
+MCQ,"Le service NAT Gateway sert à :",Accélérer le trafic TCP,Autoriser les instances privées à accéder à Internet,Créer des VPN,Configurer IAM,2
+MCQ,"Combien de tables de routage peut-on associer à un sous-réseau ?",1,3,Autant que nécessaire,Illimité,1
+MCQ,"Comment nomme-t-on un VPC avec une connectivité internet directe ?",VPC public,VPC privé,VPC hybride,VPC temporaire,1
+MCQ,"Quel service AWS facilite l’établissement de connexions VPN sécurisées ?",AWS IAM,AWS Direct Connect,Amazon VPC,AWS VPN,4
+MCQ,"Qu’est-ce qu’un Internet Gateway ?",Une adresse IP statique,Un service de messagerie,Un composant pour le routage internet dans un VPC,Un service de load balancing,3
+MCQ,"Une interface réseau élastique (ENI) est :",Un type de bucket S3,Un pare-feu logiciel,Une carte réseau virtuelle,Un protocole de stockage,3
+MCQ,"Quel service permet une connexion réseau dédiée entre votre centre de données et AWS ?",VPN IPSec,Amazon VPC,AWS Direct Connect,Transit Gateway,3
+MCQ,"Qu’est-ce qu’un VPC endpoint ?",Une IP publique d’un VPC,Un service qui permet l’accès privé aux services AWS,Un nom DNS personnalisé,Une clé de chiffrement,2
+MCQ,"Quelle combinaison est correcte concernant la sécurité réseau AWS ?",VPC – Sécurité – IAM,EC2 – ACL – VPC,NACL – IAM – CloudTrail,VPC – NACL – Groupe de sécurité,4
+MCQ,"Qu’est-ce qu’un NACL ?",Une ressource d’identification,Un gestionnaire de permissions,Une liste de contrôle d'accès réseau,Une stratégie de facturation,3
+MCQ,"Les groupes de sécurité AWS sont :",Des firewalls stateless,Des firewalls stateful,Des scripts de monitoring,Des clés API,2
+MCQ,"Combien de groupes de sécurité peut-on associer à une instance EC2 ?",1,2,5,Plusieurs,4
+MCQ,"Une ACL réseau est évaluée dans quel ordre ?",Aléatoire,Par priorité utilisateur,Numéro de règle croissant,Ordre alphabétique,3
+MCQ,"Le peering VPC peut être effectué :",Seulement entre VPC dans la même région,Entre régions différentes,Uniquement dans la même zone de disponibilité,Tous les cas sont faux,2
+MCQ,"Les adresses IP élastiques sont :",Attribuées dynamiquement à chaque instance,Partagées entre tous les comptes,IP statiques que vous pouvez réassocier,Uniquement utilisées avec RDS,3
+TF,"Un VPC peut contenir plusieurs sous-réseaux.",Vrai,Faux,,,1
+TF,"Les tables de routage sont partagées entre régions.",Vrai,Faux,,,2
+TF,"Les NACL sont des firewalls stateful.",Vrai,Faux,,,2
+TF,"Un VPC ne peut pas être connecté à Internet.",Vrai,Faux,,,2
+TF,"Une interface réseau élastique peut être attachée à une instance EC2.",Vrai,Faux,,,1
+TF,"Le VPC peering permet de transférer des données entre VPC via Internet.",Vrai,Faux,,,2
+TF,"Les groupes de sécurité bloquent le trafic sortant par défaut.",Vrai,Faux,,,2
+TF,"AWS Direct Connect est plus stable que les VPN classiques.",Vrai,Faux,,,1
+TF,"On peut utiliser un seul Internet Gateway par VPC.",Vrai,Faux,,,1
+TF,"Les règles des groupes de sécurité s’appliquent à l’échelle de l’instance, pas du sous-réseau.",Vrai,Faux,,,1
+MCQ,"Quels services AWS peuvent être utilisés pour la surveillance des ressources ?",EC2 et RDS,CloudTrail et CloudWatch,Route 53 et ELB,DynamoDB et S3,2
+MCQ,"CloudWatch permet de :",Superviser les logs,Déployer du code,Créer des buckets,Créer des zones DNS,1
+MCQ,"Qu'est-ce qu'un événement dans Amazon CloudWatch Events ?",Un changement d'état d'une ressource AWS,Une alerte système,Un problème de facturation,Un message SNS,1
+MCQ,"Quel service permet d'automatiser la réponse à certains événements dans AWS ?",Lambda,SNS,EC2,Route 53,1
+MCQ,"Quel service permet de visualiser les journaux d'application dans AWS ?",CloudWatch Logs,CloudTrail,Trusted Advisor,S3,1
+MCQ,"Quel type de métriques CloudWatch fournit-il ?",Métriques personnalisées uniquement,Métriques système uniquement,Métriques système et personnalisées,Métriques de facturation uniquement,3
+MCQ,"CloudTrail sert à :",Analyser les journaux réseau,Auditer les appels API,Déployer automatiquement les ressources,Surveiller la latence réseau,2
+MCQ,"Quel service AWS fournit des recommandations pour l’optimisation des coûts et de la sécurité ?",CloudWatch,CloudTrail,Trusted Advisor,S3,3
+MCQ,"Quel est l’objectif de AWS Config ?",Configurer des alertes,Surveiller les coûts,Auditer la conformité et les changements,Créer des machines virtuelles,3
+MCQ,"AWS Systems Manager permet :",La gestion centralisée des ressources,L'édition de fichiers dans S3,Le déploiement automatique de containers,L'audit réseau,1
+MCQ,"Quel service est utilisé pour exécuter des commandes sur des instances EC2 à distance ?",Lambda,Systems Manager Run Command,CloudWatch Logs,CodeDeploy,2
+MCQ,"Quel outil AWS permet d'automatiser l'infrastructure à l'aide de modèles ?",Terraform,CloudFormation,Boto3,Elastic Beanstalk,2
+MCQ,"AWS CloudFormation utilise :",Des scripts shell,Des modèles JSON/YAML,Du code Python,Des fichiers CSV,2
+MCQ,"Quel service simplifie le déploiement d’applications web sur AWS ?",CloudFormation,Elastic Beanstalk,CodePipeline,CloudTrail,2
+MCQ,"Elastic Beanstalk prend en charge :",Uniquement Java,Java et .NET,"Plusieurs plateformes comme Java, .NET, PHP, etc.",Uniquement Node.js,3
+MCQ,"Quel est le rôle d’AWS OpsWorks ?",Surveillance des coûts,Orchestration avec Chef/Puppet,Gestion du stockage,Création de snapshots,2
+MCQ,"Quel service propose l’intégration avec des outils comme Jenkins pour CI/CD ?",CodeCommit,CodeDeploy,CodePipeline,CodeStar,3
+MCQ,"Quelle est l’utilité de AWS CodeDeploy ?",Surveiller les performances,Déployer automatiquement le code,Gérer les logs,Gérer les clés de chiffrement,2
+MCQ,"AWS CodeCommit est un :",Système de messagerie,Gestionnaire d'identité,Service Git hébergé,Service de monitoring,3
+MCQ,"Quel service offre un pipeline complet d'intégration continue et de livraison continue ?",CodeStar,S3,CloudTrail,QuickSight,1
+TF,"CloudWatch permet de créer des alarmes personnalisées.",Vrai,Faux,,,1
+TF,"AWS Config ne permet pas de visualiser l’historique de configuration.",Vrai,Faux,,,2
+TF,"CloudFormation nécessite des scripts Bash pour déployer les ressources.",Vrai,Faux,,,2
+TF,"Elastic Beanstalk gère automatiquement le dimensionnement, le déploiement et la surveillance.",Vrai,Faux,,,1
+TF,"OpsWorks fonctionne uniquement avec Docker.",Vrai,Faux,,,2
+TF,"AWS CodeCommit permet de stocker du code source dans des dépôts Git privés.",Vrai,Faux,,,1
+TF,"AWS Systems Manager permet d'exécuter des scripts PowerShell sur EC2 Windows.",Vrai,Faux,,,1
+TF,"Trusted Advisor ne fournit pas de recommandations de sécurité.",Vrai,Faux,,,2
+TF,"CloudTrail permet de suivre toutes les actions utilisateur via l’API AWS.",Vrai,Faux,,,1
+TF,"CodePipeline peut être déclenché par un push dans un dépôt Git.",Vrai,Faux,,,1
+MCQ,Quel est l'objectif principal de l'Infrastructure as Code (IaC) ?,Réduire les coûts matériels,Augmenter les effectifs,Automatiser le déploiement de l'infrastructure,Remplacer les développeurs,3
+MCQ,Quel langage est utilisé par Terraform pour définir l'infrastructure ?,JSON,YAML,HCL,XML,3
+MCQ,Quel est le rôle du fichier 'main.tf' ?,Stocker les variables,Définir les ressources principales,Contenir les outputs,Gérer l'état,2
+MCQ,Quel fichier est souvent exclu du contrôle de version ?,main.tf,variables.tf,terraform.tfvars,outputs.tf,3
+MCQ,Quelle commande permet de visualiser les changements sans les appliquer ?,terraform init,terraform apply,terraform destroy,terraform plan,4
+MCQ,Quel est le rôle du fichier 'outputs.tf' ?,Stocker les logs,Définir les modules,Exposer les valeurs de sortie,Lister les ressources,3
+MCQ,Quelle commande initialise un projet Terraform ?,terraform apply,terraform init,terraform validate,terraform fmt,2
+MCQ,Terraform est considéré comme quel type d'outil ?,Outil d'automatisation de tests,Outil de CI/CD,Outil d’orchestration,Outil d’IaC,4
+MCQ,Quel est l’état géré par Terraform pour suivre les ressources ?,terraform.rc,state.tf,terraform.state,terraform.save,3
+MCQ,Quel service cloud peut être utilisé pour stocker l'état distant ?,S3,EC2,RDS,Route53,1
+MCQ,Pourquoi versionner le backend Terraform ?,Pour des raisons de sécurité,Pour garantir la traçabilité et la collaboration,Pour réduire les coûts,Pour respecter le RGPD,2
+MCQ,Quel est l’intérêt des modules dans Terraform ?,Gérer les permissions,Optimiser les performances,Factoriser et réutiliser la configuration,Créer des interfaces graphiques,3
+MCQ,Qu’est-ce qu’un provider dans Terraform ?,Un type de variable,Un moteur de calcul,Une API tierce,Un plugin permettant de gérer un service,4
+MCQ,Quel fichier contient souvent les variables globales ?,terraform.tfstate,variables.tf,main.tf,provider.tf,2
+MCQ,Quel est le rôle de terraform destroy ?,Créer l’infrastructure,Supprimer toutes les ressources gérées,Sauvegarder l’état,Initialiser le projet,2
+MCQ,Quel fichier contient des informations sensibles comme les clés ?,provider.tf,terraform.tfvars,outputs.tf,main.tf,2
+MCQ,Quelle commande est utilisée pour valider la syntaxe d’un fichier Terraform ?,terraform check,terraform verify,terraform validate,terraform syntax,3
+MCQ,Quelle commande applique réellement les changements ?,terraform run,terraform push,terraform apply,terraform sync,3
+MCQ,Quelle commande formate le code Terraform ?,terraform fix,terraform lint,terraform fmt,terraform style,3
+MCQ,Quel est le format de l'état sauvegardé de Terraform ?,XML,JSON,YAML,CVS,2
+MCQ,Quel type de ressource permet de créer une machine virtuelle ?,aws_instance,aws_bucket,aws_vpc,aws_db,1
+MCQ,Quel fichier permet de spécifier des valeurs concrètes pour les variables ?,main.tf,variables.tf,terraform.tfvars,provider.tf,3
+MCQ,À quoi sert `terraform output` ?,Afficher les variables internes,Afficher les valeurs de sortie définies dans outputs.tf,Afficher les erreurs,Afficher l’état,2
+MCQ,Quels fichiers sont recommandés à exclure via `.gitignore` ?,*.tf,*.json,terraform.tfstate,main.tf,3
+MCQ,Quel mot-clé définit une ressource ?,resource,variable,module,provider,1
+MCQ,Quel mot-clé est utilisé pour appeler un module ?,module,include,use,import,1
+MCQ,Quel outil peut être intégré pour sécuriser les workflows Terraform ?,GitHub,Slack,TFLint,Terraform Cloud,4
+MCQ,Que se passe-t-il si deux utilisateurs modifient la même ressource Terraform ?,L’un écrase l’autre,Un état corrompu est généré,Le verrouillage d’état empêche cela,Le fichier est verrouillé par Git,3
+MCQ,Quel est le rôle du fichier `provider.tf` ?,Créer des buckets S3,Configurer le cloud cible,Stocker les variables,Créer les logs,2
+MCQ,Le mot-clé `depends_on` sert à ?,Ajouter des commentaires,Définir des dépendances explicites,Créer un module,Importer une ressource,2
+MCQ,Terraform prend-il en charge le versioning des modules ?,Non,Oui via Git,Oui via Registry,Oui via des tags ou versions,4
+MCQ,Quels sont les avantages de l'IaC ?,Rapidité,Fiabilité,Reproductibilité,Les trois,4
+MCQ,Quelle est la différence entre `terraform plan` et `terraform apply` ?,Aucune,Plan montre les changements sans les appliquer,Apply est une vérification syntaxique,Plan supprime les ressources,2
+MCQ,Terraform est principalement utilisé pour ?,Gérer les pipelines CI/CD,Superviser les logs,Gérer les infrastructures,Gérer les utilisateurs,3
+MCQ,Que permet l’approche déclarative de Terraform ?,Décrire les étapes manuelles,Décrire l’état final souhaité,Générer automatiquement le code,Exécuter des scripts shell,2
+MCQ,Quelle extension de fichier est propre à Terraform ?,.tf,.iac,.terr,.infra,1
+MCQ,Pourquoi utiliser des workspaces dans Terraform ?,Pour gérer différents fournisseurs,Pour isoler différents environnements,Pour améliorer les performances,Pour partager le code,2
+MCQ,Un backend distant comme S3 est utile pour ?,Sauvegarder les fichiers logs,Gérer l’infrastructure à distance,Partager l’état entre utilisateurs,Stocker les outputs,3
+MCQ,Que permet la commande `terraform taint` ?,Ignorer une ressource,Forcer la recréation d’une ressource,Annuler une suppression,Créer un plan alternatif,2
+MCQ,Terraform Cloud propose ?,Un IDE en ligne,Une gestion centralisée des états,Un service de messagerie,Un outil de monitoring,2
+MCQ,Que permet le fichier `.terraform.lock.hcl` ?,Sauvegarder des logs,Verrouiller les versions de provider,Définir les outputs,Partager des variables,2
+MCQ,Quelle méthode permet d’éviter les dérives d’infrastructure ?,terraform drift,terraform guard,terraform plan,terraform apply,3
+MCQ,Quel provider est utilisé pour gérer GCP ?,gcp_provider,google,cloud,googlecloud,2
+MCQ,Pourquoi définir des outputs ?,Pour afficher les valeurs utiles après déploiement,Pour valider les entrées utilisateur,Pour stocker les logs,Pour faire des backups,1
+MCQ,Quel fichier permet la configuration globale des providers ?,provider.tf,main.tf,variables.tf,global.tf,1
+MCQ,"Terraform peut-il gérer plusieurs providers dans un même projet ?","Non, uniquement un","Oui, mais uniquement AWS","Oui, via des modules","Oui, absolument",4
+MCQ,"Terraform peut-il détecter un changement fait manuellement dans l’infrastructure ?","Non, uniquement les erreurs d'exécution","Oui, via terraform plan","Non, à moins de relancer apply","Oui, via l’état stocké",2
+MCQ,"L’approche IaC permet-elle de versionner l’infrastructure ?","Oui, via Git","Non, uniquement dans AWS","Oui, via Docker","Non, ce n’est pas possible",1
+MCQ,"Un module peut-il appeler un autre module ?","Non","Oui, mais seulement en local","Oui, en utilisant des chemins relatifs","Oui, à condition d'utiliser des variables",3
+MCQ,"Quel est l'objectif principal d'Ansible ?",Automatiser les tâches répétitives,Gérer les utilisateurs finaux,Créer des machines virtuelles,Gérer les bases de données,1
+MCQ,"Quel langage utilise Ansible pour ses playbooks ?",Python,JSON,YAML,XML,3
+MCQ,"Quel fichier contient la liste des hôtes à gérer avec Ansible ?",hosts.ini,inventory.txt,ansible.cfg,inventory.yml,1
+MCQ,"Quelle commande permet d'exécuter un playbook Ansible ?",ansible-run,ansible-execute,ansible-playbook,run-playbook,3
+MCQ,"Comment appelle-t-on une unité d'action dans un playbook ?",Task,Job,Module,Role,1
+MCQ,"Quel est le rôle du fichier ansible.cfg ?",Configurer les modules,Configurer l’environnement d’exécution d’Ansible,Gérer les logs,Stocker les clés SSH,2
+MCQ,"Quel est le format par défaut pour les playbooks Ansible ?",JSON,YAML,INI,XML,2
+MCQ,"Ansible est basé sur :",Une architecture agent/serveur,Une architecture sans agent,Une architecture hybride,Une architecture en cloud,2
+MCQ,"Quel module Ansible est utilisé pour copier des fichiers ?",copy,file,transfer,sync,1
+MCQ,"Quel module permet d'installer des paquets avec apt ?",apt-get,install,apt,yum,3
+MCQ,"Quel mot-clé permet d'exécuter une tâche avec des privilèges élevés ?",sudo,root,admin,become,4
+MCQ,"Un inventaire dynamique est :",Un fichier statique mis à jour manuellement,Un script qui génère une liste d'hôtes automatiquement,Un fichier JSON uniquement,Une base de données distante,2
+MCQ,"Quel est l'avantage principal d'Ansible ?",Complexité,Installation d'agent,Simultanéité,Rapidité et simplicité,4
+MCQ,"Quel composant permet de réutiliser des tâches dans Ansible ?",Tasks,Handlers,Roles,Plays,3
+MCQ,"Comment Ansible se connecte-t-il aux hôtes ?",Via HTTP,Via FTP,Via SSH,Via RPC,3
+MCQ,"Quel module Ansible permet de redémarrer un service ?",systemctl,service,restart,daemon,2
+MCQ,"Qu'est-ce qu'un handler ?",Un type de tâche exécutée en boucle,Une variable,Une tâche déclenchée par une notification,Un rôle,3
+MCQ,"Quel mot-clé définit une variable dans un playbook ?",set,var,define,vars,4
+MCQ,"Que signifie idempotence en Ansible ?",Exécution unique d’une tâche,Capacité à redémarrer une tâche,Capacité à exécuter plusieurs tâches en parallèle,Répétabilité sans effet secondaire,4
+MCQ,"Quelle extension de fichier est utilisée pour un playbook Ansible ?",.json,.yml,.ini,.xml,2
+MCQ,"Peut-on inclure plusieurs fichiers dans un playbook ?",Non,Oui avec include_tasks,Oui avec modules,Uniquement via roles,2
+MCQ,"Quelle commande permet de tester la connectivité SSH aux hôtes ?",ansible all -m ping,ansible-ping,ssh-test,ansible-connect,1
+MCQ,"Quelle directive permet de définir un groupe d’hôtes dans un inventaire ?",[groupname],group:hosts,{group},group_name,1
+MCQ,"Quel outil est souvent utilisé avec Ansible pour la gestion de secrets ?",AWS Vault,Ansible Vault,HashiCorp Vault,Secrets Manager,2
+MCQ,"Quelle commande permet d’encrypter un fichier avec Ansible Vault ?",ansible-vault lock,ansible-vault encrypt,ansible encrypt,encrypt-file,2
+MCQ,"Un rôle Ansible contient :",Un seul fichier main.yml,Des dossiers bien structurés (tasks, handlers, etc.),Uniquement des variables,Des clés SSH,2
+MCQ,"Le module yum est utilisé pour :",Les systèmes Debian,Les systèmes Windows,Les systèmes basés sur Red Hat,Linux Mint,3
+MCQ,"Quelle directive permet d’inclure une autre tâche dans une playbook ?",include_tasks,run_tasks,import_tasks,add_tasks,3
+MCQ,"Quelle option du module copy permet de définir la source du fichier ?",src,file,path,destination,1
+TF,"Ansible utilise une architecture sans agent.",Vrai,Faux,,,1
+TF,"Les playbooks Ansible sont écrits en YAML.",Vrai,Faux,,,1
+TF,"Ansible ne peut pas gérer les hôtes Windows.",Vrai,Faux,,,2
+TF,"Les handlers sont exécutés immédiatement après leur appel.",Vrai,Faux,,,2
+TF,"La commande ansible-vault decrypt permet de décrypter un fichier chiffré.",Vrai,Faux,,,1
+TF,"Un playbook peut contenir plusieurs plays.",Vrai,Faux,,,1
+TF,"Ansible est capable de gérer des inventaires dynamiques.",Vrai,Faux,,,1
+TF,"Les modules sont obligatoires dans un playbook Ansible.",Vrai,Faux,,,1
+TF,"On peut utiliser des rôles pour structurer un projet Ansible.",Vrai,Faux,,,1
+TF,"La variable 'become' est utilisée pour changer d’utilisateur.",Vrai,Faux,,,1
+MCQ,"Quelle est la commande pour créer un nouveau rôle Ansible ?",ansible-create-role,ansible-galaxy init,create-role,role init,2
+MCQ,"Comment appelle-t-on une configuration qui ne change rien si elle est déjà appliquée ?",Immuable,Idempotente,Persistante,Statique,2
+MCQ,"Quel module permet de gérer les utilisateurs Linux avec Ansible ?",user,group,account,login,1
+MCQ,"Quel fichier stocke les variables dans un rôle ?",vars.yml,variables.txt,defaults.cfg,env.ini,1
+MCQ,"Quel module peut être utilisé pour exécuter une commande shell ?",command,shell,run,exec,2
+MCQ,"Ansible peut-il exécuter des commandes en parallèle sur plusieurs hôtes ?",Non,Oui, mais avec un plugin,Oui nativement,Oui uniquement avec Kubernetes,3
+MCQ,"Les modules Ansible sont écrits en :",Python uniquement,Plusieurs langages,Java,Go,2
+MCQ,"Quelle directive permet d’inclure des variables dans un playbook ?",vars_files,variables,import_vars,include_vars,1
+MCQ,"Le mot-clé 'when' permet de :",Planifier une tâche,Définir une condition,Créer une variable,Lancer un rôle,2
+MCQ,"Quel est l'avantage de l’utilisation de rôles dans Ansible ?",Complexité accrue,Code plus organisé et réutilisable,Réduction des performances,Utilisation exclusive de la ligne de commande,2
+MCQ,"Ansible peut-il être utilisé avec Windows ?","Non","Oui, mais uniquement avec PowerShell","Oui, avec certaines limitations","Oui, sans restriction",3
+MCQ,"Peut-on utiliser Ansible pour déployer des applications ?","Non, uniquement pour la configuration","Oui, uniquement sur Linux","Oui, sur différents OS","Non, uniquement pour la supervision",3
+MCQ,"Quel est le rôle principal de Git ?",Sauvegarder des fichiers,Compiler du code,Gérer les versions de code,Partager des images,3
+MCQ,"Git est un système de contrôle de version :",Centralisé,Distribué,Cloud-native,Obsolète,2
+MCQ,"Quelle commande initialise un dépôt Git ?",git start,git init,git create,git repo,2
+MCQ,"Quelle commande permet d'ajouter un fichier à l'index ?",git add,git stage,git commit,git include,1
+MCQ,"Que fait la commande git commit ?",Supprime un fichier,Ajoute un fichier,Valide les modifications,Clone un dépôt,3
+MCQ,"Quel fichier permet d’ignorer certains fichiers ?",.ignore,.gitconfig,.gitignore,.skip,3
+MCQ,"Que permet git status ?",Vérifier les mises à jour,Gérer les branches,Vérifier l'état du dépôt,Créer un nouveau dépôt,3
+MCQ,"Quel est l'avantage principal de Git ?",Sauvegarde automatique,Collaboration,Versionnage,Création de sites web,3
+MCQ,"La commande git log permet de :",Afficher les logs systèmes,Afficher l’historique des commits,Créer une branche,Ajouter des fichiers,2
+MCQ,"Que fait git add . ?",Ajoute tous les fichiers du dossier courant à l’index,Ajoute le dépôt distant,Crée une branche,Affiche les fichiers,1
+MCQ,"Quel outil est une interface graphique pour Git ?",Jira,Slack,GitHub Desktop,Zoom,3
+MCQ,"Git est plus rapide que SVN car :",Il est sur le cloud,Il est centralisé,Les opérations sont locales,Il utilise Java,3
+MCQ,"Que contient le dossier .git ?",Les fichiers compilés,Les logs systèmes,Les fichiers du dépôt Git,Le code source,3
+MCQ,"Quelle commande annule un changement non indexé ?",git cancel,git delete,git restore,git clean,3
+MCQ,"Quelle commande permet de revenir à un commit précédent ?",git go,git reset,git back,git revert,2
+MCQ,"Quel est le rôle de git pull ?",Sauvegarder des fichiers,Télécharger les modifications du dépôt distant,Initialiser un dépôt,Créer un commit,2
+MCQ,"Quel est le rôle de git push ?",Envoyer des commits au dépôt distant,Créer une branche,Afficher l’historique,Télécharger des fichiers,1
+MCQ,"Comment créer une nouvelle branche ?",git new branch,git branch nom_branche,git make branch,git commit -b,2
+MCQ,"Quelle commande permet de basculer sur une branche ?",git switch,git go,git checkout,git jump,3
+MCQ,"GitHub et GitLab permettent :",La gestion de projet,Le partage de fichiers,Le versionnage collaboratif,L’envoi de mails,3
+MCQ,"Qu'est-ce qu'un merge ?",Un conflit de commit,Une commande de suppression,Une fusion de branches,Une commande de mise à jour,3
+MCQ,"Quelle est la commande pour visualiser les différences ?",git log,git show,git diff,git branch,3
+MCQ,"Git permet de travailler :",Uniquement en ligne,Uniquement avec un serveur central,De manière distribuée,Sans historique,3
+MCQ,"Un commit est :",Un fichier,Un changement validé,Une branche,Un dépôt,2
+MCQ,"Comment afficher un historique simplifié des commits ?",git log --simple,git history,git log --oneline,git summary,3
+MCQ,"Comment nomme-t-on le fichier pour configurer Git ?",.gitsettings,.gitconfig,.configgit,git.conf,2
+MCQ,"Que signifie git clone ?",Fusionner un dépôt,Copier un dépôt distant en local,Supprimer un dépôt,Ouvrir un dépôt,2
+MCQ,"Que fait git branch -d ?",Affiche les branches,Supprime une branche locale,Crée une branche distante,Définit la branche principale,2
+MCQ,"Quel est le nom de la branche par défaut ?",develop,main,master,release,3
+MCQ,"Comment ignorer tous les fichiers .log dans .gitignore ?",*.log,log.*,log/,ignore.log,1
+MCQ,"git checkout -b permet :",Créer une branche sans s'y déplacer,Créer et basculer vers une branche,Copier un dépôt,Fusionner des branches,2
+MCQ,"Un conflit Git survient :",Lors d'un pull,Quand un fichier est supprimé,Quand des modifications concurrentes existent,Quand Git plante,3
+MCQ,"GitLab CI/CD permet :",Créer des VM,Automatiser les déploiements,Réinitialiser Git,Surveiller le réseau,2
+MCQ,"Quel est l'intérêt des branches ?",Organiser les fichiers,Isoler les fonctionnalités,Ignorer des fichiers,Partager des images,2
+MCQ,"Quel est le format de base d’un commit Git ?",JSON,XML,Hash SHA-1,UUID,3
+MCQ,"Que fait git remote add ?",Ajoute un dépôt distant,Crée un nouveau commit,Ajoute un fichier,Change de branche,1
+MCQ,"git config --global permet :",Modifier un commit,Configurer des paramètres utilisateur globaux,Fusionner des branches,Créer un fichier de config,2
+MCQ,".gitignore est utilisé pour :",Ajouter des fichiers,Gérer des branches,Ignorer certains fichiers,Afficher l’historique,3
+MCQ,"GitHub est :",Un service de messagerie,Un serveur FTP,Une plateforme de gestion de versions,Un compilateur,3
+MCQ,"Quel est le rôle d’un tag Git ?",Créer une branche,Restaurer un fichier,Marquer un point spécifique dans l’historique,Effacer un commit,3
+MCQ,"La commande git fetch :",Efface les branches,Télécharge les mises à jour sans les fusionner,Crée un dépôt distant,Clone un dépôt,2
+MCQ,"Quel est l’intérêt du fichier README.md ?",Exécuter du code,Documenter le projet,Stocker des logs,Ignorer des fichiers,2
+MCQ,"Quelle commande affiche les branches disponibles ?",git show,git log,git branch,git diff,3
+MCQ,"Comment créer un tag ?",git tag nom,git create tag,git checkpoint,git label,1
+MCQ,"Pourquoi utiliser git reset --hard ?",Pour cloner un dépôt,Pour revenir à un état stable,Pour créer une branche,Pour supprimer un fichier,2
+MCQ,"Un submodule dans Git sert à :",Créer un commit,Fusionner deux dépôts,Inclure un autre dépôt dans un projet,Gérer les tags,3
+MCQ,"Comment revenir à une version précédente avec un tag ?",git go tag,git revert,git checkout v1.0,git history tag,3
+MCQ,"Quelle est la différence entre git pull et git fetch ?",Aucune,git fetch met à jour sans merge,git pull ne récupère pas les branches,git fetch crée un commit,2
+MCQ,"Que permet git rebase ?",Ajouter des commits,Télécharger des fichiers,Réécrire l’historique des commits,Ignorer des fichiers,3
