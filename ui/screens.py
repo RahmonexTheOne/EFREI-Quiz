@@ -380,29 +380,33 @@ def display_mcq_question(app, q_data, override_choices=None):
     # ────────────────────────────────────────────────────────────────────────────
     # 9) Draw the rounded‐corner sub‐box for the question text:
     # ────────────────────────────────────────────────────────────────────────────
+    canvas_w = inner_w - 40   # match the width used by each choice box
+
     q_canvas = tk.Canvas(
         content_frame,
-        width=inner_w - 100,
+        width=canvas_w,
         height=question_region_h,
         bg=app.colors[app.theme]['card'],
         highlightthickness=0
     )
-    q_canvas.pack(pady=(0, 10))
+    # give a bit more top/bottom and left/right padding
+    q_canvas.pack(pady=(10, 15), padx=20)
+
     app.draw_rounded_rectangle(
         q_canvas,
         0, 0,
-        inner_w - 100, question_region_h,
+        canvas_w, question_region_h,
         radius=20,
         fill=app.colors[app.theme]['question_bg'],
         outline=""
     )
     q_canvas.create_text(
-        (inner_w - 100) // 2,
+        canvas_w // 2,
         question_region_h // 2,
         text=q_data['Title'],
         font=("Montserrat", 14, "bold"),
         fill=app.colors[app.theme]['fg'],
-        width=inner_w - 120,
+        width=canvas_w - 20,   # give 10px side padding inside the box
         justify="center"
     )
 
@@ -712,57 +716,234 @@ def update_progress_bar(self):
         )
 
 def show_result(app):
+    # 1) Wipe out everything except progress bar / menu icon:
     app.clear_window()
-    app.master.configure(bg=app.colors[app.theme]['bg'])
 
+    # 2) Full‐screen background:
+    screen_w = app.master.winfo_screenwidth()
+    screen_h = app.master.winfo_screenheight()
+
+    bg_image = Image.open("assets/background_menu.png").resize((screen_w, screen_h))
+    app.bg_result_tk = ImageTk.PhotoImage(bg_image)
+
+    bg_canvas = tk.Canvas(app.master, width=screen_w, height=screen_h, highlightthickness=0)
+    bg_canvas.create_image(0, 0, image=app.bg_result_tk, anchor="nw")
+    bg_canvas.pack(fill="both", expand=True)
+
+    # 3) Draw the menu icon in the top‐right:
+    menu_id = bg_canvas.create_image(
+        screen_w - 10 - 16,
+        10 + 16,
+        image=app.menu_icon,
+        anchor="center"
+    )
+    bg_canvas.tag_bind(menu_id, "<Button-1>", lambda e: app.show_menu())
+
+    # 4) Compute and draw a centered “result card” with drop‐shadow:
+    card_w, card_h = 500, 520
+    cx, cy = screen_w // 2, screen_h // 2
+    x1 = cx - card_w // 2
+    y1 = cy - card_h // 2
+    x2 = cx + card_w // 2
+    y2 = cy + card_h // 2
+    radius = 30
+
+    # 4a) Drop‐shadow (offset by 6 px)
+    app.draw_rounded_rectangle(
+        bg_canvas,
+        x1 + 6, y1 + 6,
+        x2 + 6, y2 + 6,
+        radius=radius,
+        fill="#111111",
+        outline=""
+    )
+
+    # 4b) The card itself
+    app.draw_rounded_rectangle(
+        bg_canvas,
+        x1, y1, x2, y2,
+        radius=radius,
+        fill=app.colors[app.theme]["card"],
+        outline=app.colors[app.theme]["shadow"]
+    )
+
+    # 5) Place an inner Frame so its square edges stay hidden behind the rounding
+    inset = 8
+    inner_x1 = x1 + inset
+    inner_y1 = y1 + inset
+    inner_w = card_w - inset * 2
+    inner_h = card_h - inset * 2
+
+    content_frame = tk.Frame(app.master, bg=app.colors[app.theme]["card"])
+    content_frame.place(x=inner_x1, y=inner_y1, width=inner_w, height=inner_h)
+
+    # 6) Compute the score / percentage
     score = sum(1 for x in app.answers_outcome if x)
     total = len(app.answers_outcome)
-    percentage = round((score / total) * 100)
+    percentage = int(round((score / total) * 100)) if total > 0 else 0
 
-    # 🎉 Header
-    result = tk.Label(
-        app.master,
+    # 7) Draw a big “Quiz Complete!” header (centered near top of card)
+    tk.Label(
+        content_frame,
         text="🎉 Quiz Complete! 🎉",
-        font=("Montserrat", 28, "bold"),
-        bg=app.colors[app.theme]['bg'],
-        fg=app.colors[app.theme]['fg']
-    )
-    result.pack(pady=40)
+        font=("Montserrat", 24, "bold"),
+        bg=app.colors[app.theme]["card"],
+        fg=app.colors[app.theme]["fg"]
+    ).pack(pady=(20, 10))
 
-    score_label = tk.Label(
-        app.master,
-        text=f"You answered {score} out of {total} questions correctly ({percentage}%)!",
-        font=("Montserrat", 20),
-        bg=app.colors[app.theme]['bg'],
-        fg=app.colors[app.theme]['fg']
-    )
-    score_label.pack(pady=20)
+    # 8) Draw a circular percentage chart using a small Canvas
+    #    - We’ll draw a light‐gray circle, then an arc in “accent” color for the percentage.
+    circle_d = 200  # diameter
+    margin = 10
+    circle_x = inner_w // 2 - circle_d // 2
+    circle_y = 60 + margin
 
-    # Play Again (full quiz)
-    restart_btn = tk.Button(
-        app.master,
+    chart_canvas = tk.Canvas(
+        content_frame,
+        width=circle_d + margin * 2,
+        height=circle_d + margin * 2,
+        bg=app.colors[app.theme]["card"],
+        highlightthickness=0
+    )
+    chart_canvas.place(x=circle_x - margin, y=circle_y - margin)
+
+    # 8a) Background circle (light gray)
+    chart_canvas.create_oval(
+        margin, margin, circle_d + margin, circle_d + margin,
+        outline=app.colors[app.theme]["shadow"],
+        width=8,
+        fill=""
+    )
+
+    # 8b) Percentage arc (from 90° descending by % of 360)
+    extent_angle = int(360 * (percentage / 100))
+    chart_canvas.create_arc(
+        margin, margin, circle_d + margin, circle_d + margin,
+        start=90,  # start at top
+        extent=-extent_angle,  # negative for clockwise
+        style="arc",
+        outline=app.colors[app.theme]["accent"],
+        width=8
+    )
+
+    # 8c) Overlay the percentage text in center
+    chart_canvas.create_text(
+        circle_d // 2 + margin,
+        circle_d // 2 + margin,
+        text=f"{percentage}%",
+        font=("Montserrat", 20, "bold"),
+        fill=app.colors[app.theme]["fg"]
+    )
+
+    # 9) Display the “You answered X/Y correctly” text underneath the circle:
+    tk.Label(
+        content_frame,
+        text=f"You answered {score} of {total} questions correctly!",
+        font=("Montserrat", 14),
+        bg=app.colors[app.theme]["card"],
+        fg=app.colors[app.theme]["fg"]
+    ).place(relx=0.5, y=circle_y + circle_d + margin + 40, anchor="n")
+    # 10) Create two rounded‐corner “button” areas at the bottom of the card.
+    #     We’ll draw them as Canvas shapes + text + click bindings.
+
+    btn_w, btn_h = 160, 50
+    btn_radius = 20
+    btn_spacing = 20
+
+    # a) “Play Again” button (accent color)
+    play_x = inner_w // 2 - btn_w - btn_spacing // 2
+    play_y = inner_h - btn_h - 30
+
+    play_canvas = tk.Canvas(
+        content_frame,
+        width=btn_w,
+        height=btn_h,
+        highlightthickness=0,
+        bg=app.colors[app.theme]["card"]
+    )
+    play_canvas.place(x=play_x, y=play_y)
+
+    play_rect = app.draw_rounded_rectangle(
+        play_canvas,
+        0, 0, btn_w, btn_h,
+        radius=btn_radius,
+        fill=app.colors[app.theme]["accent"],
+        outline=""
+    )
+    play_text = play_canvas.create_text(
+        btn_w // 2,
+        btn_h // 2,
         text="Play Again",
-        font=("Montserrat", 18, "bold"),
-        bg=app.colors[app.theme]['success'],
-        fg="white",
-        command=app.start_screen,
-        padx=20,
-        pady=10,
-        relief="flat"
+        font=("Montserrat", 14, "bold"),
+        fill="white"
     )
-    restart_btn.pack(pady=20)
 
-    # Retry Incorrect Questions
+    # Hover + click for Play Again
+    def play_enter(e):
+        play_canvas.itemconfig(play_rect, fill=app.colors[app.theme]["card_hover"])
+        play_canvas.config(cursor="hand2")
+    def play_leave(e):
+        play_canvas.itemconfig(play_rect, fill=app.colors[app.theme]["accent"])
+        play_canvas.config(cursor="")
+
+    play_canvas.tag_bind(play_rect, "<Enter>", play_enter)
+    play_canvas.tag_bind(play_text, "<Enter>", play_enter)
+    play_canvas.tag_bind(play_rect, "<Leave>", play_leave)
+    play_canvas.tag_bind(play_text, "<Leave>", play_leave)
+    play_canvas.tag_bind(play_rect, "<Button-1>", lambda e: app.start_screen())
+    play_canvas.tag_bind(play_text, "<Button-1>", lambda e: app.start_screen())
+
+    # b) “Retry Incorrect” or “Back to Main Menu” button (button color / fallback)
     if app.incorrect_indices:
-        retry_btn = tk.Button(
-            app.master,
-            text="Retry Incorrect Questions",
-            font=("Montserrat", 16, "bold"),
-            bg=app.colors[app.theme]['button'],
-            fg="white",
-            command=app.play_incorrect_quiz,
-            padx=20,
-            pady=10,
-            relief="flat"
-        )
-        retry_btn.pack()
+        btn_label = "Retry Incorrect"
+        btn_command = lambda: app.play_incorrect_quiz()
+        btn_fill = app.colors[app.theme]["button"]
+    else:
+        btn_label = "Back to Main Menu"
+        btn_command = lambda: app.home_screen()
+        btn_fill = app.colors[app.theme]["button"]
+
+    back_x = inner_w // 2 + btn_spacing // 2
+    back_y = play_y
+
+    back_canvas = tk.Canvas(
+        content_frame,
+        width=btn_w,
+        height=btn_h,
+        highlightthickness=0,
+        bg=app.colors[app.theme]["card"]
+    )
+    back_canvas.place(x=back_x, y=back_y)
+
+    back_rect = app.draw_rounded_rectangle(
+        back_canvas,
+        0, 0, btn_w, btn_h,
+        radius=btn_radius,
+        fill=btn_fill,
+        outline=""
+    )
+    back_text = back_canvas.create_text(
+        btn_w // 2, btn_h // 2,
+        text=btn_label,
+        font=("Montserrat", 14, "bold"),
+        fill="white"
+    )
+
+    # Hover + click for Retry/Back
+    def back_enter(e):
+        back_canvas.itemconfig(back_rect, fill=app.colors[app.theme]["card_hover"])
+        back_canvas.config(cursor="hand2")
+    def back_leave(e):
+        back_canvas.itemconfig(back_rect, fill=btn_fill)
+        back_canvas.config(cursor="")
+
+    back_canvas.tag_bind(back_rect, "<Enter>", back_enter)
+    back_canvas.tag_bind(back_text, "<Enter>", back_enter)
+    back_canvas.tag_bind(back_rect, "<Leave>", back_leave)
+    back_canvas.tag_bind(back_text, "<Leave>", back_leave)
+    back_canvas.tag_bind(back_rect, "<Button-1>", lambda e: btn_command())
+    back_canvas.tag_bind(back_text, "<Button-1>", lambda e: btn_command())
+
+    # 11) Finally, redraw the progress bar at the bottom of the root window (unchanged):
+    app.master.configure(bg=app.colors[app.theme]["bg"])
+    app.update_progress_bar()
