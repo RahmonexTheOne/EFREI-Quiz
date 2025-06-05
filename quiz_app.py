@@ -61,6 +61,10 @@ class QuizApp:
             pady=10
         )
         btn.pack(pady=10, fill="x", padx=20)
+
+    def admin_security_screen(self):
+        from ui.screens import admin_security_screen
+        admin_security_screen(self)    
         
 
     def show_menu(self):

@@ -205,7 +205,7 @@ MCQ,Quel outil est utilisé pour ajouter des rôles dans Server Manager ?,CMD,Po
 MCQ,Comment Server Manager est-il lancé automatiquement ?,Par une tâche planifiée,Par une stratégie de groupe,Par défaut au démarrage,En cliquant sur le bureau,3
 MCQ,Qu’est-ce qu’un rôle dans Server Manager ?,Un outil graphique,Une fonction principale du serveur,Un périphérique réseau,Une mise à jour système,2
 MCQ,Qu’est-ce qu’une fonctionnalité dans Server Manager ?,Un processus système,Un logiciel antivirus,Une fonction de support du serveur,Un pare-feu,3
-MCQ,Peut-on avoir plusieurs rôles sur un même serveur ?,Non,Oui, mais seulement deux,Uniquement si le serveur est virtuel,Uniquement sur Windows Server 2003,2
+MCQ,Peut-on avoir plusieurs rôles sur un même serveur ?,Non,"Oui, mais seulement deux",Uniquement si le serveur est virtuel,Uniquement sur Windows Server 2003,2
 MCQ,Quel est le risque d’installer AD DS et SharePoint sur le même serveur ?,Aucune,Perte de données,Ralentissement de la RAM,Compromission de la sécurité,4
 MCQ,Où trouve-t-on le menu Shared Folders ?,Dans les services de domaine,Dans le tableau de bord de Server Manager,Dans le menu démarrer,Dans le Gestionnaire de périphériques,2
 MCQ,Quelle information trouve-t-on dans “Local Server” ?,Groupes locaux,Propriétés système,Utilisateurs distants uniquement,Comptes mail,2
@@ -215,11 +215,10 @@ MCQ,Où consulter les erreurs du système ?,Journal d'événements,Journal des u
 MCQ,À quoi sert le Best Practice Analyzer ?,Installer un antivirus,Analyser les vulnérabilités logicielles,Proposer des bonnes pratiques de configuration,Supprimer les services inutiles,3
 MCQ,Quel élément permet de visualiser l’utilisation CPU ?,Moniteur de fiabilité,Moniteur de performance,Service DNS,Planificateur de tâches,2
 MCQ,Que permet la console “Computer Management” ?,Gérer les serveurs Linux,Gérer tous les aspects du serveur Windows,Désinstaller Server Manager,Gérer les fichiers temporaires,2
-MCQ,Quels sont les trois grands blocs de Computer Management ?,Système,Utilisateurs,Applications,Système,Stockage,Services et Applications,2
+MCQ,"Quels sont les trois grands blocs de Computer Management ?","Système, Stockage, Services et Applications","Système, Utilisateurs, Applications","Utilisateurs, Stockage, Applications","Utilisateurs, Services et Applications, Système",1
 MCQ,Où accède-t-on aux tâches planifiées ?,Services,Planificateur de tâches,Stratégies de groupe,Console AD,2
 MCQ,Que contient la section Active Tasks ?,Tâches supprimées,Tâches exécutées,Statut des tâches en cours,Utilisateurs actifs,3
 MCQ,Quel est l’intérêt des dossiers dans le planificateur de tâches ?,Classer les pilotes,Organiser les fichiers,Organiser les tâches par fonction,Créer des partitions,3
-MCQ,Quels sont les onglets d’une tâche planifiée ?,Rôles,Services,Onglets : Général, Déclencheurs, Actions, etc.,Connexions,3
 MCQ,Qu’est-ce que le WS-Management ?,Un antivirus,Un protocole SOAP pour l’administration,Un langage de programmation,Une version de Windows Update,2
 MCQ,Quelle commande configure WinRM ?,netstat -r,winrm quickconfig –q,tasklist /svc,firewall.cpl,2
 MCQ,Pourquoi créer une vue personnalisée dans Event Viewer ?,Pour supprimer les logs,Pour exporter la base de registre,Pour filtrer et sauvegarder des événements précis,Pour synchroniser les mises à jour,3
@@ -243,6 +242,7 @@ MCQ,Quel type de règle dans IPSEC permet l’authentification sans sécurité ?
 MCQ,Quelle règle est utilisée pour les serveurs DHCP ?,Règle Tunnel,Règle Custom,Règle d'exemption d'authentification,Règle Isolation,3
 MCQ,Quel protocole crée un tunnel sécurisé sur Internet ?,SMTP,L2TP/IPSec,POP3,IMAP,2
 MCQ,Quel outil permet de gérer Windows Firewall avec IPSec ?,GPO,Netsh ou la console MMC,PowerShell ISE uniquement,Task Manager,2
-MCQ,Par défaut, que fait le pare-feu pour les connexions entrantes ?,Les accepte,Les redirige,Les bloque,Les ignore,3
 MCQ,Comment IPSEC gère-t-il l’authentification ?,Avec les utilisateurs locaux,Via HTTP,Par clé pré-partagée ou Kerberos,Par DNS,3
 MCQ,Quel type de règle IPSEC exige l’authentification in/out pour un tunnel ?,Custom,Tunnel,Exemption,Serveur unique,2
+MCQ,Quels sont les onglets d’une tâche planifiée ?,Rôles,Services,"Onglets : Général, Déclencheurs, Actions, etc.",Connexions,3
+MCQ,"Par défaut, que fait le pare-feu pour les connexions entrantes ?",Les accepte,Les redirige,Les bloque,Les ignore,3

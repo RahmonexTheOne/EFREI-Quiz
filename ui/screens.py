@@ -68,7 +68,7 @@ def start_screen(app):
     # 1) Clear everything except progress bar + menu_btn:
     app.clear_window()
 
-    # 2) Full‐screen background:
+    # 2) Full-screen background:
     screen_w = app.master.winfo_screenwidth()
     screen_h = app.master.winfo_screenheight()
 
@@ -79,7 +79,7 @@ def start_screen(app):
     canvas.create_image(0, 0, image=app.bg_start_tk, anchor="nw")
     canvas.pack(fill="both", expand=True)
 
-    # 3) Draw the menu‐icon PNG on that Canvas:
+    # 3) Draw the menu-icon PNG on that Canvas:
     menu_id = canvas.create_image(
         screen_w - 10 - 16,
         10 + 16,
@@ -87,7 +87,6 @@ def start_screen(app):
         anchor="center"
     )
     canvas.tag_bind(menu_id, "<Button-1>", lambda e: app.show_menu())
-
 
     # 5) Draw the title & subtitle at 1/3 down:
     cx = screen_w // 2
@@ -166,9 +165,125 @@ def start_screen(app):
     canvas.tag_bind(card2_id, "<Enter>", lambda e, cid=card2_id: on_enter(e, cid))
     canvas.tag_bind(card2_id, "<Leave>", lambda e, cid=card2_id: on_leave(e, cid))
 
-    # 9) Reset quiz state + redraw progress bar:
+    # ────────────────────────────────────────────────────────────────────────────
+    # 9) Third card (Administration et sécurité Windows) below DevOps:
+    # ────────────────────────────────────────────────────────────────────────────
+    y1_3 = y2_2 + gap
+    y2_3 = y1_3 + card_h
+    card3_id = app.draw_rounded_rectangle(
+        canvas, x1, y1_3, x2, y2_3,
+        radius=radius,
+        fill=app.colors[app.theme]["card"],
+        outline=app.colors[app.theme]["shadow"]
+    )
+    canvas.create_text(
+        cx, y1_3 + card_h // 2,
+        text="Administration et Sécurité Windows",
+        font=("Montserrat", 14),
+        fill=app.colors[app.theme]["fg"],
+        width=card_w - 40,
+        justify="center"
+    )
+    canvas.tag_bind(card3_id, "<Button-1>", lambda e: app.admin_security_screen())
+    canvas.tag_bind(card3_id, "<Enter>", lambda e, cid=card3_id: on_enter(e, cid))
+    canvas.tag_bind(card3_id, "<Leave>", lambda e, cid=card3_id: on_leave(e, cid))
+
+    # 10) Reset quiz state + redraw progress bar:
     app.answers_outcome = []
     app.update_progress_bar()
+
+
+def admin_security_screen(app):
+    # 1) Effacer tout sauf la barre de progression + le bouton menu :
+    app.clear_window()
+    app.update_progress_bar()
+
+    # 2) Afficher le fond plein écran :
+    screen_w = app.master.winfo_screenwidth()
+    screen_h = app.master.winfo_screenheight()
+
+    bg_image = Image.open("assets/background_menu.png").resize((screen_w, screen_h))
+    app.bg_admin_tk = ImageTk.PhotoImage(bg_image)
+
+    canvas = tk.Canvas(app.master, width=screen_w, height=screen_h, highlightthickness=0)
+    canvas.create_image(0, 0, image=app.bg_admin_tk, anchor="nw")
+    canvas.pack(fill="both", expand=True)
+
+    # 3) Dessiner le menu icon dans le coin haut-droite :
+    menu_id = canvas.create_image(
+        screen_w - 10 - 16,
+        10 + 16,
+        image=app.menu_icon,
+        anchor="center"
+    )
+    canvas.tag_bind(menu_id, "<Button-1>", lambda e: app.show_menu())
+
+    # 4) Afficher un titre centré :
+    cx = screen_w // 2
+    cy = screen_h // 3
+
+    canvas.create_text(
+        cx, cy - 40,
+        text="Administration et Sécurité Windows",
+        font=("Montserrat", 24, "bold"),
+        fill=app.colors[app.theme]["fg"]
+    )
+    canvas.create_text(
+        cx, cy,
+        text="Choisissez une catégorie :",
+        font=("Montserrat", 16),
+        fill=app.colors[app.theme]["fg"]
+    )
+
+        # ────────────────────────────────────────────────────────────────────────────
+    # 5) Création de deux boutons directement sur le Canvas (plus plats, sans cadre)
+    # ────────────────────────────────────────────────────────────────────────────
+    # Coordonnées pour placer les deux boutons juste en dessous du titre :
+    btn_y = cy + 50  # décalage vertical sous le texte
+    btn_spacing = 200  # écart horizontal entre les deux boutons
+
+    # Bouton “Exams”
+    exams_btn = tk.Button(
+        app.master,
+        text="Exams",
+        font=("Montserrat", 14, "bold"),
+        bg=app.colors[app.theme]["button"],
+        fg="white",
+        relief="flat",
+        bd=0,
+        padx=30,
+        pady=10,
+        cursor="hand2",
+        command=lambda: app.play_quiz("assets/admin-windows-security-exam.csv")
+    )
+    # On “pose” le bouton sur le même Canvas (sous-jacent) :
+    canvas.create_window(
+        cx - btn_spacing // 2,  # moitié de l’espacement à gauche du centre
+        btn_y,
+        window=exams_btn,
+        anchor="n"
+    )
+
+    # Bouton “General”
+    general_btn = tk.Button(
+        app.master,
+        text="General",
+        font=("Montserrat", 14, "bold"),
+        bg=app.colors[app.theme]["button"],
+        fg="white",
+        relief="flat",
+        bd=0,
+        padx=30,
+        pady=10,
+        cursor="hand2",
+        command=lambda: app.play_quiz("assets/admin-windows-security.csv")
+    )
+    canvas.create_window(
+        cx + btn_spacing // 2,  # moitié de l’espacement à droite du centre
+        btn_y,
+        window=general_btn,
+        anchor="n"
+    )
 
 
 

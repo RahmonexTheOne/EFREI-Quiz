@@ -6,7 +6,7 @@ MCQ,"OpenID est un protocole appartenant à Microsoft.","Oui","Non","","",2
 MCQ,"Lorsque vous réglez la valeur du registre LDAPServerIntegrity sur vrai, cela impose l'utilisation de LDAPs pour les Simple Binds.","Oui","Non","","",1
 MCQ,"Le transfert de zone DNS doit être configuré sur une IP spécifique ou ne pas être autorisé.","Oui","Non","","",1
 MCQ,"SAM-R est un protocole qui peut être utilisé pour afficher la session de l'utilisateur sur des serveurs.","Oui","Non","","",2
-MCQ,"Pourquoi Active Directory est-il une cible idéale pour les attaquants ?","Il permet l'accès aux données financières","Il permet l'accès aux applications héritées","Il permet l'accès aux serveurs de production","Il permet l'accès à toutes les boîtes aux lettres",5
+MCQ,"Pourquoi Active Directory est-il une cible idéale pour les attaquants ?","Il permet l'accès aux données financières","Il permet l'accès aux applications héritées","Il permet l'accès aux serveurs de production","Il permet l'accès à toutes les boîtes aux lettres","1,2,3,4"
 MCQ,"Quels outils et fonctionnalités Windows peuvent être utilisés pour effectuer une copie de l'ombre de la base de données ?","WMI","LDAP","NETSH","NTP",1
 MCQ,"Quelles sont les phases génériques d'une attaque observées dans les environnements Microsoft ?","Reconnaissance/Mouvement latéral/Crédits compromis/Domination","Reconnaissance/Crédits compromis/Mouvement latéral/Domination","Crédits compromis/Reconnaissance/Mouvement latéral/Domination","",2
 MCQ,"NTLM Roasting est une technique pour déchiffrer le challenge NTLM.","Oui","Non","","",2
