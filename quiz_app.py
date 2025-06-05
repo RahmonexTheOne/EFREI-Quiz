@@ -1,3 +1,4 @@
+
 import pandas as pd
 import tkinter as tk
 from PIL import Image, ImageTk
@@ -19,7 +20,6 @@ class QuizApp:
         menu_image = Image.open("assets/menu.png").convert("RGBA").resize((32, 32))
         self.menu_icon = ImageTk.PhotoImage(menu_image)
 
-        # Replace Exit button with Hamburger Menu
         self.menu_btn = tk.Button(
             self.master,
             image=self.menu_icon,
@@ -30,7 +30,6 @@ class QuizApp:
             relief="flat"
         )
         self.menu_btn.place(relx=1.0, rely=0.0, x=-10, y=10, anchor="ne")
-
 
         self.progress_canvas = tk.Canvas(
             self.master,
@@ -54,88 +53,72 @@ class QuizApp:
     def draw_rounded_rectangle(self, *args, **kwargs):
         return draw_rounded_rectangle(*args, **kwargs)
 
+    def styled_button(self, parent, text, command, bg):
+        btn = tk.Button(
+            parent,
+            text=text,
+            font=("Montserrat", 14, "bold"),
+            bg=bg,
+            fg="white",
+            activebackground=self.colors[self.theme]["card_hover"],
+            relief="flat",
+            command=command,
+            bd=0,
+            cursor="hand2",
+            padx=20,
+            pady=10
+        )
+        btn.pack(pady=10, fill="x", padx=20)
+
     def show_menu(self):
         if self.overlay_frame:
-            return  # Already shown
+            return
 
-        # Load background image
+        self.overlay_frame = tk.Canvas(self.master,
+                                       width=self.master.winfo_screenwidth(),
+                                       height=self.master.winfo_screenheight(),
+                                       highlightthickness=0)
+        self.overlay_frame.place(relx=0, rely=0, relwidth=1, relheight=1)
+
         bg_image = Image.open("assets/background_menu.png").resize(
             (self.master.winfo_screenwidth(), self.master.winfo_screenheight())
         )
         self.bg_image_tk = ImageTk.PhotoImage(bg_image)
-
-        # Use Canvas to hold the background image
-        self.overlay_frame = tk.Canvas(self.master, width=self.master.winfo_screenwidth(), height=self.master.winfo_screenheight(), highlightthickness=0)
-        self.overlay_frame.pack(fill="both", expand=True)
         self.overlay_frame.create_image(0, 0, image=self.bg_image_tk, anchor="nw")
 
-        # === MENU BOX (with rounded border look using padding) ===
-        menu_box = tk.Frame(
+        menu_x = self.master.winfo_screenwidth() // 2 - 150
+        menu_y = self.master.winfo_screenheight() // 2 - 150
+        menu_width = 300
+        menu_height = 420
+        radius = 25
+
+        draw_rounded_rectangle(
             self.overlay_frame,
-            bg=self.colors[self.theme]["card"],
-            bd=0,
-            highlightthickness=0
-        )
-        self.overlay_frame.create_window(
-            self.master.winfo_screenwidth() // 2,
-            self.master.winfo_screenheight() // 2,
-            window=menu_box,
-            anchor="center"
+            menu_x, menu_y,
+            menu_x + menu_width, menu_y + menu_height,
+            radius=radius,
+            fill=self.colors[self.theme]["card"],
+            outline=""
         )
 
-        menu_box.configure(padx=30, pady=30)
+        menu_frame = tk.Frame(self.overlay_frame, bg=self.colors[self.theme]["card"])
+        self.overlay_frame.create_window(menu_x + menu_width // 2,
+                                         menu_y + menu_height // 2,
+                                         window=menu_frame,
+                                         anchor="center")
 
-        # You want this menu to look like a rounded card — here's the trick:
-        menu_box.config(bg=self.colors[self.theme]["card"])
-        menu_box.configure(highlightbackground="#444", highlightthickness=1)
-
-        # === TITLE ===
         tk.Label(
-            menu_box,
+            menu_frame,
             text="Menu",
             font=("Montserrat", 18, "bold"),
             bg=self.colors[self.theme]["card"],
             fg=self.colors[self.theme]["fg"]
-        ).pack(pady=(0, 20))
+        ).pack(pady=(10, 20))
 
-        # === BUTTON CREATOR WITH ROUNDED LOOK ===
-        def styled_button(text, command, bg):
-            btn = tk.Button(
-                menu_box,
-                text=text,
-                font=("Montserrat", 14, "bold"),
-                bg=bg,
-                fg="white",
-                activebackground=self.colors[self.theme]["card_hover"],
-                relief="flat",
-                padx=20,
-                pady=10,
-                bd=0,
-                command=command,
-                cursor="hand2"
-            )
-            # Apply rounded corners — Tkinter doesn't support this natively.
-            # So we simulate it using `Canvas.create_window` or padding & bg matching.
-            btn.pack(pady=6, ipadx=5, ipady=5, fill="x")
-            btn.configure(highlightthickness=0)
-            return btn
-
-        styled_button("Reset Quiz", lambda: [self.close_menu(), self.start_screen()], self.colors[self.theme]["button"])
-        styled_button("Back to Main Menu", lambda: [self.close_menu(), self.home_screen()], self.colors[self.theme]["button"])
-        styled_button("Exit App", self.confirm_exit, self.colors[self.theme]["error"])
-
-        # === CLOSE MENU BUTTON ===
-        tk.Button(
-            menu_box,
-            text="❌ Close Menu",
-            font=("Montserrat", 12),
-            bg=self.colors[self.theme]["card_hover"],
-            fg="white",
-            relief="flat",
-            command=self.close_menu,
-            cursor="hand2"
-        ).pack(pady=(15, 0), ipadx=5, ipady=3)
-
+        self.styled_button(menu_frame, "Reset Quiz", lambda: [self.close_menu(), self.start_screen()], self.colors[self.theme]["button"])
+        self.styled_button(menu_frame, "Back to Main Menu", lambda: [self.close_menu(), self.home_screen()], self.colors[self.theme]["button"])
+        self.styled_button(menu_frame, "Exit App", self.confirm_exit, self.colors[self.theme]["error"])
+        self.styled_button(menu_frame, "❌ Close Menu", self.close_menu, self.colors[self.theme]["card_hover"])
 
     def close_menu(self):
         if self.overlay_frame:
@@ -143,10 +126,7 @@ class QuizApp:
             self.overlay_frame = None
             self.bg_image_tk = None
 
-
-
     def get_current_screen_id(self):
-        # Naive but effective approach, expand if needed
         if hasattr(self, 'questions') and self.current_question < len(self.questions):
             return "quiz"
         elif self.answers_outcome == []:
@@ -162,8 +142,6 @@ class QuizApp:
             self.start_screen()
         else:
             self.home_screen()
-
-
 
     def confirm_exit(self):
         if tk.messagebox.askyesno("Exit Confirmation", "Are you sure you want to quit the app?"):
@@ -199,7 +177,11 @@ class QuizApp:
         display_question(self, q_type, q_data)
 
     def update_timer(self):
+        if not hasattr(self, 'timer_label') or not self.timer_label.winfo_exists():
+            return  # Avoid updating a destroyed widget
+
         self.timer_label.configure(text=f"{self.remaining_time}s")
+
         if self.remaining_time > 0:
             self.remaining_time -= 1
             self.timer_id = self.master.after(1000, self.update_timer)
@@ -207,6 +189,7 @@ class QuizApp:
             if self.action_btn.cget("text") == "Submit":
                 self.check_answer()
                 self.action_btn.configure(text="Next", command=self.on_action_btn)
+
 
     def on_action_btn(self):
         if self.action_btn.cget("text") == "Submit":
