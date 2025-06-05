@@ -37,6 +37,7 @@ class QuizApp:
         self.current_question = 0
         self.selected_answers = set()
         self.answers_outcome = []
+        self.incorrect_indices = []
 
         self.master.configure(bg=self.colors[self.theme]['bg'])
         self.home_screen()
@@ -52,18 +53,28 @@ class QuizApp:
 
     def play_quiz(self, csv_path):
         self.data = pd.read_csv(csv_path)
-        self.questions = self.data.sample(frac=1).reset_index(drop=True)
+        full_data = self.data.sample(frac=1).reset_index(drop=True)
+        self.questions = full_data.head(50)
         self.current_question = 0
         self.answers_outcome = [None] * len(self.questions)
+        self.correct_streak = 0
+        self.incorrect_indices = []
+        self.display_question()
+
+    def play_incorrect_quiz(self):
+        self.questions = self.questions.iloc[self.incorrect_indices].reset_index(drop=True)
+        self.current_question = 0
+        self.answers_outcome = [None] * len(self.questions)
+        self.correct_streak = 0
+        self.incorrect_indices = []  # ← CLEAR this after using it
         self.display_question()
 
 
     def display_question(self):
         from ui.screens import display_question
         q_data = self.questions.iloc[self.current_question]
-        q_type = q_data['Type']  # Ensure it's extracted from q_data
+        q_type = q_data['Type']
         display_question(self, q_type, q_data)
-
 
     def update_timer(self):
         self.timer_label.configure(text=f"{self.remaining_time}s")
@@ -110,6 +121,13 @@ class QuizApp:
 
         q_correct = (found_correct and not found_incorrect)
         self.answers_outcome[self.current_question] = q_correct
+
+        if q_correct:
+            self.correct_streak += 1
+        else:
+            self.correct_streak = 0
+            self.incorrect_indices.append(self.current_question)
+
         self.update_progress_bar()
 
     def next_question(self):

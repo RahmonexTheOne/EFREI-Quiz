@@ -108,6 +108,7 @@ def display_question(app, q_type, q_data):
         display_fill_question(app, q_data)
     else:
         raise ValueError(f"Unknown question type: {q_type}")
+        
 
 def display_mcq_question(app, q_data, override_choices=None):
     app.clear_window()
@@ -173,6 +174,26 @@ def display_mcq_question(app, q_data, override_choices=None):
         bg=app.colors[app.theme]['button'], fg="white", relief="flat",
         padx=20, pady=10, command=app.on_action_btn)
     app.action_btn.pack(anchor="e", pady=10)
+
+    # --- Correct Streak Message (outside content box) ---
+    if getattr(app, "correct_streak", 0) >= 5:
+        streak_label = tk.Label(
+            app.master,
+            text=f"🔥 {app.correct_streak} bonnes réponses d’affilée !",
+            font=("Montserrat", 12, "bold"),
+            fg=app.colors[app.theme]['success'],
+            bg=app.colors[app.theme]['bg']
+        )
+        streak_label.place(relx=0.5, rely=0.85, anchor="center")
+        # Save reference if you want to clear later
+        app.streak_label = streak_label
+    else:
+        # Remove old streak label if it exists and streak drops
+        if hasattr(app, 'streak_label'):
+            app.streak_label.destroy()
+            del app.streak_label
+
+
 
 #--------------------------------------------------------
 # Fill Question
@@ -264,41 +285,58 @@ def update_progress_bar(self):
             outline=self.colors[self.theme]['bg']
         )
 
-def show_result(self):
-    """Unchanged final screen."""
-    self.clear_window()
-    self.master.configure(bg=self.colors[self.theme]['bg'])
+def show_result(app):
+    app.clear_window()
+    app.master.configure(bg=app.colors[app.theme]['bg'])
 
+    score = sum(1 for x in app.answers_outcome if x)
+    total = len(app.answers_outcome)
+    percentage = round((score / total) * 100)
+
+    # 🎉 Header
     result = tk.Label(
-        self.master,
-        text="🎊 Quiz Complete! 🎊",
+        app.master,
+        text="🎉 Quiz Complete! 🎉",
         font=("Montserrat", 28, "bold"),
-        bg=self.colors[self.theme]['bg'],
-        fg=self.colors[self.theme]['fg']
+        bg=app.colors[app.theme]['bg'],
+        fg=app.colors[app.theme]['fg']
     )
     result.pack(pady=40)
 
-    correct_count = sum(1 for outcome in self.answers_outcome if outcome)
-    total_count = len(self.answers_outcome)
-
     score_label = tk.Label(
-        self.master,
-        text=f"You answered {correct_count} out of {total_count} questions correctly!",
+        app.master,
+        text=f"You answered {score} out of {total} questions correctly ({percentage}%)!",
         font=("Montserrat", 20),
-        bg=self.colors[self.theme]['bg'],
-        fg=self.colors[self.theme]['fg']
+        bg=app.colors[app.theme]['bg'],
+        fg=app.colors[app.theme]['fg']
     )
     score_label.pack(pady=20)
 
+    # Play Again (full quiz)
     restart_btn = tk.Button(
-        self.master,
+        app.master,
         text="Play Again",
         font=("Montserrat", 18, "bold"),
-        bg=self.colors[self.theme]['success'],
+        bg=app.colors[app.theme]['success'],
         fg="white",
-        command=self.home_screen,
+        command=app.start_screen,
         padx=20,
         pady=10,
         relief="flat"
     )
-    restart_btn.pack(pady=30)  
+    restart_btn.pack(pady=20)
+
+    # Retry Incorrect Questions
+    if app.incorrect_indices:
+        retry_btn = tk.Button(
+            app.master,
+            text="Retry Incorrect Questions",
+            font=("Montserrat", 16, "bold"),
+            bg=app.colors[app.theme]['button'],
+            fg="white",
+            command=app.play_incorrect_quiz,
+            padx=20,
+            pady=10,
+            relief="flat"
+        )
+        retry_btn.pack()

@@ -330,7 +330,6 @@ MCQ,"Que signifie CI/CD ?","Custom Interface / Code Deployment","Continuous Inte
 MCQ,"Pourquoi utilise-t-on Jenkins dans un pipeline DevOps ?","Pour héberger des sites web","Pour stocker des images","Pour automatiser intégration et déploiement","Pour tester les API REST",3
 MCQ,"Quel est l'objectif principal de Jenkins ?",Tester manuellement,Déployer manuellement,Automatiser l’intégration et le déploiement,Remplacer les développeurs,3
 MCQ,"Qu'est-ce que l'intégration continue (CI) ?",Un test manuel du code,Une livraison mensuelle,Une pratique visant à tester automatiquement chaque révision de code,Une sauvegarde automatique,3
-MCQ,"Quel est le rôle du fichier scriptprojet1.sh ?",Créer un utilisateur Jenkins,Lancer Jenkins,Effectuer un déploiement manuel,Installer Git,3
 MCQ,"Quelle étape n'est pas incluse dans un déploiement manuel classique ?",Build Java,Push du code,Utilisation de Kubernetes,Téléchargement du code sur le serveur,3
 MCQ,"Que génère le build d’un projet Java ?",Un fichier .py,Un fichier .zip,Un fichier webapp.war,Un fichier config.ini,3
 MCQ,"Quel outil est utilisé pour compiler les projets Java ?",Git,Maven,Docker,Ansible,2
