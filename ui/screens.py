@@ -271,7 +271,7 @@ def display_mcq_question(app, q_data, override_choices=None):
     submit_region_h = 45 + 20
 
     # e) Timer and some top padding: the timer label is 20px tall + 10px top margin
-    timer_region_h = 20 + 10
+    timer_region_h = 60 + 10
 
     # f) Title region above question box already counted in title_region_h
 
@@ -335,15 +335,35 @@ def display_mcq_question(app, q_data, override_choices=None):
     # ────────────────────────────────────────────────────────────────────────────
     # 7) Timer label (top‐right):
     # ────────────────────────────────────────────────────────────────────────────
-    app.timer_label = tk.Label(
+    # Load & resize your timer PNG to a 60×60 square:
+    #    (assumes "assets/timer_box.png" is a transparent circle or stopwatch‐shaped image)
+    timer_img = Image.open("assets/timer_box.png").convert("RGBA").resize((60, 60))
+    app.timer_img_tk = ImageTk.PhotoImage(timer_img)
+
+    # Create a Canvas exactly 60×60 px, with the same background as the card:
+    timer_canvas = tk.Canvas(
         content_frame,
+        width=60,
+        height=60,
+        bg=app.colors[app.theme]['card'],   # so no white “canvas” shows
+        highlightthickness=0
+    )
+    timer_canvas.pack(anchor="ne", pady=5, padx=5)
+
+    # Now draw the actual timer‐circle PNG on top of that shadow:
+    timer_canvas.create_image(0, 0, image=app.timer_img_tk, anchor="nw")
+
+    # Overlay the countdown text in dark blue (#1E90FF) at the center of the 60×60 box:
+    app.timer_text_id = timer_canvas.create_text(
+        30, 35,                      # center of a 60×60 square
         text="25s",
         font=("Montserrat", 12, "bold"),
-        bg=app.colors[app.theme]['timer_bg'],
-        fg=app.colors[app.theme]['timer_fg']
+        fill="#1E90FF"               # dark‐blue instead of green
     )
-    app.timer_label.pack(anchor="ne", pady=(10, 0), padx=10)
+
+    # Initialize your countdown variable and kick off the timer loop:
     app.remaining_time = 25
+    app.timer_canvas = timer_canvas     # so update_timer() can find it
     app.update_timer()
 
     # ────────────────────────────────────────────────────────────────────────────

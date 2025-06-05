@@ -271,18 +271,20 @@ class QuizApp:
         display_question(self, q_type, q_data)
 
     def update_timer(self):
-        if not hasattr(self, 'timer_label') or not self.timer_label.winfo_exists():
-            return  # Avoid updating a destroyed widget
+        # if the timer Canvas was destroyed or doesn’t exist, bail out
+        if not hasattr(self, 'timer_canvas') or not self.timer_canvas.winfo_exists():
+            return
 
-        self.timer_label.configure(text=f"{self.remaining_time}s")
+        # Update the overlaid text to show the new remaining_time (in seconds)
+        self.timer_canvas.itemconfig(self.timer_text_id, text=f"{self.remaining_time}s")
 
         if self.remaining_time > 0:
             self.remaining_time -= 1
             self.timer_id = self.master.after(1000, self.update_timer)
         else:
-            if self.action_btn.cget("text") == "Submit":
-                self.check_answer()
-                self.action_btn.configure(text="Next", command=self.on_action_btn)
+            # … when time is up, you can auto‐submit or whatever you want:
+            self.check_answer()
+
 
 
     def on_action_btn(self):
