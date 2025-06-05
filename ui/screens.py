@@ -1,87 +1,175 @@
 import tkinter as tk
 import re
 import pandas as pd
+from PIL import Image, ImageTk
+import textwrap
+
 
 def home_screen(app):
+    # 1) Wipe out anything except the progress bar / menu button:
     app.clear_window()
-    frame = tk.Frame(app.master, bg=app.colors[app.theme]['card'])
-    frame.place(relx=0.5, rely=0.5, anchor="center")
-    frame.configure(highlightthickness=2, highlightbackground=app.colors[app.theme]['shadow'])
 
-    tk.Label(frame, text="EFREI Quiz", font=("Montserrat", 34, "bold"),
-             bg=app.colors[app.theme]['card'], fg=app.colors[app.theme]['fg']).pack(pady=(50, 20))
+    # 2) Load & draw a full‐screen background image on a Canvas:
+    screen_w = app.master.winfo_screenwidth()
+    screen_h = app.master.winfo_screenheight()
 
-    tk.Label(frame, text="Challenge yourself with randomly generated quizzes",
-             font=("Montserrat", 16), bg=app.colors[app.theme]['card'], fg=app.colors[app.theme]['fg']).pack(pady=(0, 30))
+    bg_image = Image.open("assets/background_menu.png").resize((screen_w, screen_h))
+    app.bg_home_tk = ImageTk.PhotoImage(bg_image)
 
-    tk.Button(frame, text="Let's Get Started", font=("Montserrat", 16, "bold"),
-              bg=app.colors[app.theme]['button'], fg="white", command=app.start_screen,
-              relief="flat", padx=30, pady=10).pack(pady=(0, 50))
+    canvas = tk.Canvas(app.master, width=screen_w, height=screen_h, highlightthickness=0)
+    canvas.create_image(0, 0, image=app.bg_home_tk, anchor="nw")
+    canvas.pack(fill="both", expand=True)
 
+    # draw the 32×32 PNG at top‐right (10px from each edge):
+    menu_id = canvas.create_image(
+        screen_w - 10 - 16,   # x = windowWidth − 10px − halfOfIconWidth
+        10 + 16,              # y = 10px + halfOfIconHeight
+        image=app.menu_icon,
+        anchor="center"
+    )
+    canvas.tag_bind(menu_id, "<Button-1>", lambda e: app.show_menu())
+
+
+    # 3) Compute center coordinates:
+    cx = screen_w // 2
+    cy = screen_h // 2
+
+    # 4) Instead of text, load & draw title.png (transparent) at center:
+    title_image = Image.open("assets/title.png").convert("RGBA")
+    app.title_tk = ImageTk.PhotoImage(title_image)
+    # Adjust the y‐offset (here: –30) so the image sits roughly where the text used to be
+    canvas.create_image(cx, cy - 80, image=app.title_tk, anchor="center")
+
+    # 5) “Let’s Get Started” button below the image:
+    start_btn = tk.Button(
+        app.master,
+        text="Let's Get Started",
+        font=("Montserrat", 16, "bold"),
+        bg=app.colors[app.theme]["button"],
+        fg="white",
+        relief="flat",
+        bd=0,
+        padx=30,
+        pady=10,
+        cursor="hand2",
+        command=app.start_screen
+    )
+    canvas.create_window(cx, cy + 100, window=start_btn)
+
+    # 7) Reset answers_outcome and redraw the progress bar at the bottom:
     app.answers_outcome = []
     app.update_progress_bar()
 
+
+import tkinter as tk
+from PIL import Image, ImageTk
+
 def start_screen(app):
+    # 1) Clear everything except progress bar + menu_btn:
     app.clear_window()
 
-    title_label = tk.Label(
-        app.master,
+    # 2) Full‐screen background:
+    screen_w = app.master.winfo_screenwidth()
+    screen_h = app.master.winfo_screenheight()
+
+    bg_image = Image.open("assets/background_menu.png").resize((screen_w, screen_h))
+    app.bg_start_tk = ImageTk.PhotoImage(bg_image)
+
+    canvas = tk.Canvas(app.master, width=screen_w, height=screen_h, highlightthickness=0)
+    canvas.create_image(0, 0, image=app.bg_start_tk, anchor="nw")
+    canvas.pack(fill="both", expand=True)
+
+    # 3) Draw the menu‐icon PNG on that Canvas:
+    menu_id = canvas.create_image(
+        screen_w - 10 - 16,
+        10 + 16,
+        image=app.menu_icon,
+        anchor="center"
+    )
+    canvas.tag_bind(menu_id, "<Button-1>", lambda e: app.show_menu())
+
+
+    # 5) Draw the title & subtitle at 1/3 down:
+    cx = screen_w // 2
+    cy = screen_h // 3
+
+    canvas.create_text(
+        cx, cy - 40,
         text="Play Quiz",
         font=("Montserrat", 28, "bold"),
-        justify="center",
-        bg=app.colors[app.theme]['bg'],
-        fg=app.colors[app.theme]['fg']
+        fill=app.colors[app.theme]["fg"]
     )
-    title_label.pack(pady=(100, 30))
-
-    subtitle = tk.Label(
-        app.master,
+    canvas.create_text(
+        cx, cy,
         text="Choose the unit to prepare:",
         font=("Montserrat", 16),
-        bg=app.colors[app.theme]['bg'],
-        fg=app.colors[app.theme]['fg']
+        fill=app.colors[app.theme]["fg"]
     )
-    subtitle.pack(pady=(0, 10))
 
-    # --- LDAP Unit ---
-    ldap_label = tk.Label(
-        app.master,
+    # 6) Prepare card dimensions & colors:
+    card_w = 800
+    card_h = 80
+    radius = 20
+    gap = 30
+
+    x1 = cx - card_w // 2
+    x2 = cx + card_w // 2
+
+    # Hover handlers (change fill + cursor)
+    def on_enter(e, cid):
+        canvas.itemconfig(cid, fill=app.colors[app.theme]["card_hover"])
+        canvas.config(cursor="hand2")
+
+    def on_leave(e, cid):
+        canvas.itemconfig(cid, fill=app.colors[app.theme]["card"])
+        canvas.config(cursor="")
+
+    # 7) First card (LDAP) at y = cy+40 → cy+40+card_h
+    y1 = cy + 40
+    y2 = y1 + card_h
+    card1_id = app.draw_rounded_rectangle(
+        canvas, x1, y1, x2, y2,
+        radius=radius,
+        fill=app.colors[app.theme]["card"],
+        outline=app.colors[app.theme]["shadow"]
+    )
+    canvas.create_text(
+        cx, y1 + card_h // 2,
         text="Architectures et Infrastructures sécurisées d'entreprise (DNS, LDAP, APACHE, DHCP)",
         font=("Montserrat", 14),
-        wraplength=700,
-        bg=app.colors[app.theme]['card'],
-        fg=app.colors[app.theme]['fg'],
-        padx=30,
-        pady=20,
-        relief="flat",
-        cursor="hand2",
-        bd=3
+        fill=app.colors[app.theme]["fg"],
+        width=card_w - 40,
+        justify="center"
     )
-    ldap_label.pack(pady=20)
-    ldap_label.configure(highlightthickness=2, highlightbackground=app.colors[app.theme]['shadow'])
-    ldap_label.bind("<Enter>", lambda e: ldap_label.configure(bg=app.colors[app.theme]['card_hover']))
-    ldap_label.bind("<Leave>", lambda e: ldap_label.configure(bg=app.colors[app.theme]['card']))
-    ldap_label.bind("<Button-1>", lambda e: app.play_quiz("assets/ldap.csv"))
+    canvas.tag_bind(card1_id, "<Button-1>", lambda e: app.play_quiz("assets/ldap.csv"))
+    canvas.tag_bind(card1_id, "<Enter>", lambda e, cid=card1_id: on_enter(e, cid))
+    canvas.tag_bind(card1_id, "<Leave>", lambda e, cid=card1_id: on_leave(e, cid))
 
-    # --- DevOps Unit ---
-    devops_label = tk.Label(
-        app.master,
+    # 8) Second card (DevOps) below the first:
+    y1_2 = y2 + gap
+    y2_2 = y1_2 + card_h
+    card2_id = app.draw_rounded_rectangle(
+        canvas, x1, y1_2, x2, y2_2,
+        radius=radius,
+        fill=app.colors[app.theme]["card"],
+        outline=app.colors[app.theme]["shadow"]
+    )
+    canvas.create_text(
+        cx, y1_2 + card_h // 2,
         text="Delivery Management, DevOps & Pipeline",
         font=("Montserrat", 14),
-        wraplength=700,
-        bg=app.colors[app.theme]['card'],
-        fg=app.colors[app.theme]['fg'],
-        padx=30,
-        pady=20,
-        relief="flat",
-        cursor="hand2",
-        bd=3
+        fill=app.colors[app.theme]["fg"],
+        width=card_w - 40,
+        justify="center"
     )
-    devops_label.pack(pady=20)
-    devops_label.configure(highlightthickness=2, highlightbackground=app.colors[app.theme]['shadow'])
-    devops_label.bind("<Enter>", lambda e: devops_label.configure(bg=app.colors[app.theme]['card_hover']))
-    devops_label.bind("<Leave>", lambda e: devops_label.configure(bg=app.colors[app.theme]['card']))
-    devops_label.bind("<Button-1>", lambda e: app.play_quiz("assets/devops.csv"))
+    canvas.tag_bind(card2_id, "<Button-1>", lambda e: app.play_quiz("assets/devops.csv"))
+    canvas.tag_bind(card2_id, "<Enter>", lambda e, cid=card2_id: on_enter(e, cid))
+    canvas.tag_bind(card2_id, "<Leave>", lambda e, cid=card2_id: on_leave(e, cid))
+
+    # 9) Reset quiz state + redraw progress bar:
+    app.answers_outcome = []
+    app.update_progress_bar()
+
 
 
 
@@ -110,45 +198,208 @@ def display_question(app, q_type, q_data):
         raise ValueError(f"Unknown question type: {q_type}")
         
 
+
 def display_mcq_question(app, q_data, override_choices=None):
+    # 1) Clear the window except for the progress bar:
     app.clear_window()
     app.update_progress_bar()
 
-    container_canvas = tk.Canvas(app.master, bg=app.colors[app.theme]['bg'], highlightthickness=0)
-    container_canvas.place(relx=0.5, rely=0.45, anchor="center", width=800, height=500)
+    # 2) Draw the full‐screen background image on one Canvas:
+    screen_w = app.master.winfo_screenwidth()
+    screen_h = app.master.winfo_screenheight()
 
-    app.draw_rounded_rectangle(container_canvas, 0, 0, 800, 500, radius=40,
-        fill=app.colors[app.theme]['card'], outline=app.colors[app.theme]['shadow'])
+    bg_image = Image.open("assets/background_menu.png").resize((screen_w, screen_h))
+    app.bg_question_tk = ImageTk.PhotoImage(bg_image)
 
-    content_frame = tk.Frame(container_canvas, bg=app.colors[app.theme]['card'])
-    content_frame.place(relx=0.5, rely=0.5, anchor="center")
+    bg_canvas = tk.Canvas(
+        app.master,
+        width=screen_w,
+        height=screen_h,
+        highlightthickness=0
+    )
+    bg_canvas.create_image(0, 0, image=app.bg_question_tk, anchor="nw")
+    bg_canvas.pack(fill="both", expand=True)
 
-    app.timer_label = tk.Label(content_frame, text="25s", font=("Montserrat", 12, "bold"),
-        bg=app.colors[app.theme]['timer_bg'], fg=app.colors[app.theme]['timer_fg'])
-    app.timer_label.pack(anchor="ne", pady=5)
-    app.remaining_time = 25
-    app.update_timer()
+    # 3) Draw the menu icon in the top‐right of that Canvas:
+    menu_id = bg_canvas.create_image(
+        screen_w - 10 - 16,
+        10 + 16,
+        image=app.menu_icon,
+        anchor="center"
+    )
+    bg_canvas.tag_bind(menu_id, "<Button-1>", lambda e: app.show_menu())
 
-    tk.Label(content_frame, text=f"Question {app.current_question+1}/{len(app.questions)}",
-        font=("Montserrat", 18, "bold"), bg=app.colors[app.theme]['card'],
-        fg=app.colors[app.theme]['fg']).pack()
+    # ────────────────────────────────────────────────────────────────────────────
+    # 4) Determine how tall the card must be, based on content:
+    # ────────────────────────────────────────────────────────────────────────────
+    inset = 8  # pixels of padding around the frame
 
-    question_canvas = tk.Canvas(content_frame, width=700, height=80,
-        bg=app.colors[app.theme]['card'], highlightthickness=0)
-    question_canvas.pack(pady=(10,5))
-    app.draw_rounded_rectangle(question_canvas, 0, 0, 700, 80, radius=20,
-        fill=app.colors[app.theme]['question_bg'], outline="")
-    question_canvas.create_text(350, 40, text=q_data['Title'], font=("Montserrat", 14, "bold"),
-        fill=app.colors[app.theme]['fg'], width=650, justify="center")
+    # a) Title “Question X/Y” + timer area: roughly 40px for title + 30px top padding
+    title_region_h = 40 + 30
 
-    choice_frame = tk.Frame(content_frame, bg=app.colors[app.theme]['card'])
-    choice_frame.pack(pady=(5,10))
+    # b) Question text box: we fix its width to inner_w - 100, then wrap text
+    #    to count lines. Each line ~ 20px tall, plus top/bottom padding for that box.
 
+    # Compute inner_w (temporarily assume card_w = 800, will recalc later).
+    card_w = 800
+    inner_w_temp = card_w - inset * 2
+    question_box_w = inner_w_temp - 100
+
+    # Wrap the question text at approx (characters per line) = question_box_w // avg_char_px.
+    # A rough average of 8 pixels per character for Montserrat‐14.
+    approx_chars_per_line = max(int(question_box_w / 8), 20)
+    wrapped = textwrap.wrap(q_data['Title'], width=approx_chars_per_line)
+    num_lines = max(len(wrapped), 1)
+    # Each line about 24px high (font size 14 + some spacing). Plus 20px vertical padding.
+    question_region_h = num_lines * 24 + 20
+
+    # c) Choices: each choice canvas we use height=50 + 10px vertical margin => 60px per choice
+    import re, pandas as pd
     if override_choices:
         choice_texts = override_choices
     else:
-        choice_columns = sorted([col for col in q_data.index if 'Choice' in col],
-            key=lambda x: int(re.search(r'\d+', x).group()) if re.search(r'\d+', x) else 0)
+        choice_columns = sorted(
+            [col for col in q_data.index if 'Choice' in col],
+            key=lambda x: int(re.search(r'\d+', x).group()) if re.search(r'\d+', x) else 0
+        )
+        choice_texts = [q_data[col] for col in choice_columns if pd.notna(q_data[col])]
+
+    n_choices = len(choice_texts)
+    choices_region_h = n_choices * 60 + 10  # +10 extra top padding
+
+    # d) Submit button region: 45px high + 20px bottom padding
+    submit_region_h = 45 + 20
+
+    # e) Timer and some top padding: the timer label is 20px tall + 10px top margin
+    timer_region_h = 20 + 10
+
+    # f) Title region above question box already counted in title_region_h
+
+    # Sum everything to get total content height inside the card:
+    total_content_h = (
+        timer_region_h +
+        title_region_h +
+        question_region_h +
+        choices_region_h +
+        submit_region_h +
+        20  # some buffer between choices and submit
+    )
+
+    # Now final card height = inset*2 + total_content_h
+    card_h = inset * 2 + total_content_h
+    card_w = 800  # keep width fixed
+
+    # Compute card's coordinates:
+    cx, cy = screen_w // 2, screen_h // 2
+    x1 = cx - (card_w // 2)
+    y1 = cy - (card_h // 2)
+    x2 = cx + (card_w // 2)
+    y2 = cy + (card_h // 2)
+    radius = 40
+
+    # 5a) Drop‐shadow behind the card (offset by 6 px):
+    app.draw_rounded_rectangle(
+        bg_canvas,
+        x1 + 6, y1 + 6,
+        x2 + 6, y2 + 6,
+        radius=radius,
+        fill="#111111",
+        outline=""
+    )
+    # 5b) The card itself:
+    app.draw_rounded_rectangle(
+        bg_canvas,
+        x1, y1, x2, y2,
+        radius=radius,
+        fill=app.colors[app.theme]['card'],
+        outline=app.colors[app.theme]['shadow']
+    )
+
+    # 6) Place a Frame slightly inset so its square corners stay hidden behind the card’s rounded edges:
+    inner_x1 = x1 + inset
+    inner_y1 = y1 + inset
+    inner_w = card_w - inset * 2
+    inner_h = card_h - inset * 2
+
+    content_frame = tk.Frame(
+        app.master,
+        bg=app.colors[app.theme]['card']
+    )
+    content_frame.place(
+        x=inner_x1,
+        y=inner_y1,
+        width=inner_w,
+        height=inner_h
+    )
+
+    # ────────────────────────────────────────────────────────────────────────────
+    # 7) Timer label (top‐right):
+    # ────────────────────────────────────────────────────────────────────────────
+    app.timer_label = tk.Label(
+        content_frame,
+        text="25s",
+        font=("Montserrat", 12, "bold"),
+        bg=app.colors[app.theme]['timer_bg'],
+        fg=app.colors[app.theme]['timer_fg']
+    )
+    app.timer_label.pack(anchor="ne", pady=(10, 0), padx=10)
+    app.remaining_time = 25
+    app.update_timer()
+
+    # ────────────────────────────────────────────────────────────────────────────
+    # 8) “Question X/Y” title:
+    # ────────────────────────────────────────────────────────────────────────────
+    tk.Label(
+        content_frame,
+        text=f"Question {app.current_question + 1}/{len(app.questions)}",
+        font=("Montserrat", 18, "bold"),
+        bg=app.colors[app.theme]['card'],
+        fg=app.colors[app.theme]['fg']
+    ).pack(pady=(10, 10))
+
+    # ────────────────────────────────────────────────────────────────────────────
+    # 9) Draw the rounded‐corner sub‐box for the question text:
+    # ────────────────────────────────────────────────────────────────────────────
+    q_canvas = tk.Canvas(
+        content_frame,
+        width=inner_w - 100,
+        height=question_region_h,
+        bg=app.colors[app.theme]['card'],
+        highlightthickness=0
+    )
+    q_canvas.pack(pady=(0, 10))
+    app.draw_rounded_rectangle(
+        q_canvas,
+        0, 0,
+        inner_w - 100, question_region_h,
+        radius=20,
+        fill=app.colors[app.theme]['question_bg'],
+        outline=""
+    )
+    q_canvas.create_text(
+        (inner_w - 100) // 2,
+        question_region_h // 2,
+        text=q_data['Title'],
+        font=("Montserrat", 14, "bold"),
+        fill=app.colors[app.theme]['fg'],
+        width=inner_w - 120,
+        justify="center"
+    )
+
+    # ────────────────────────────────────────────────────────────────────────────
+    # 10) Choices area (packed inside choice_holder):
+    # ────────────────────────────────────────────────────────────────────────────
+    choice_holder = tk.Frame(content_frame, bg=app.colors[app.theme]['card'])
+    choice_holder.pack(padx=20, pady=(5, 10), fill="x")
+
+    import pandas as pd, re
+    if override_choices:
+        choice_texts = override_choices
+    else:
+        choice_columns = sorted(
+            [col for col in q_data.index if 'Choice' in col],
+            key=lambda x: int(re.search(r'\d+', x).group()) if re.search(r'\d+', x) else 0
+        )
         choice_texts = [q_data[col] for col in choice_columns if pd.notna(q_data[col])]
 
     correct_indices = [int(x.strip()) - 1 for x in str(q_data['Correct']).split(',') if x.strip().isdigit()]
@@ -158,77 +409,222 @@ def display_mcq_question(app, q_data, override_choices=None):
     app.selected_answers = set()
 
     for idx, choice_text in enumerate(choice_texts):
-        c = tk.Canvas(choice_frame, width=700, height=50,
-            bg=app.colors[app.theme]['card'], highlightthickness=0)
-        c.pack(pady=5)
-        app.draw_rounded_rectangle(c, 5, 5, 695, 45, radius=20,
-            fill=app.colors[app.theme]['card_hover'], outline=app.colors[app.theme]['accent'])
+        c = tk.Canvas(
+            choice_holder,
+            height=50,
+            bg=app.colors[app.theme]['card'],
+            highlightthickness=0
+        )
+        c.pack(fill="x", pady=5)
+        canvas_w = inner_w - 40  # same width as question sub‐box + margins
+
+        app.draw_rounded_rectangle(
+            c,
+            5, 5,
+            canvas_w - 5, 50 - 5,
+            radius=20,
+            fill=app.colors[app.theme]['card_hover'],
+            outline=app.colors[app.theme]['accent']
+        )
         c.create_oval(15, 15, 35, 35, fill=app.colors[app.theme]['accent'])
-        c.create_text(25, 25, text=chr(65+idx), fill="white", font=("Montserrat", 10, "bold"))
-        c.create_text(50, 25, text=choice_text, anchor="w", font=("Montserrat", 12),
-            width=600, fill=app.colors[app.theme]['fg'])
+        c.create_text(
+            25, 25,
+            text=chr(65 + idx),
+            fill="white",
+            font=("Montserrat", 10, "bold")
+        )
+        c.create_text(
+            50, 25,
+            text=choice_text,
+            anchor="w",
+            font=("Montserrat", 12),
+            width=canvas_w - 100,
+            fill=app.colors[app.theme]['fg']
+        )
         c.bind("<Button-1>", lambda e, i=idx: app.toggle_selection(i))
         app.choice_buttons.append((c, choice_text))
 
-    app.action_btn = tk.Button(content_frame, text="Submit", font=("Montserrat", 14, "bold"),
-        bg=app.colors[app.theme]['button'], fg="white", relief="flat",
-        padx=20, pady=10, command=app.on_action_btn)
-    app.action_btn.pack(anchor="e", pady=10)
+    # ────────────────────────────────────────────────────────────────────────────
+    # 11) “Submit” button as a Canvas, packed under the choices:
+    # ────────────────────────────────────────────────────────────────────────────
+    btn_w, btn_h = 140, 45
+    btn_radius = 20
 
-    # --- Correct Streak Message (outside content box) ---
+    submit_canvas = tk.Canvas(
+        content_frame,
+        width=btn_w,
+        height=btn_h,
+        highlightthickness=0,
+        bg=app.colors[app.theme]['card']
+    )
+    submit_canvas.pack(anchor="e", pady=(0, 10), padx=20)
+
+    rect_id = app.draw_rounded_rectangle(
+        submit_canvas,
+        0, 0, btn_w, btn_h,
+        radius=btn_radius,
+        fill=app.colors[app.theme]['button'],
+        outline=""
+    )
+    text_id = submit_canvas.create_text(
+        btn_w // 2,
+        btn_h // 2,
+        text="Submit",
+        font=("Montserrat", 14, "bold"),
+        fill="white"
+    )
+
+    # 12) Handle Submit → Next transition:
+    def on_submit(e=None):
+        # Prevent double‐click
+        submit_canvas.config(state="disabled")
+
+        # a) Check the answer
+        app.check_answer()
+
+        # b) Change text to “Next”
+        submit_canvas.itemconfig(text_id, text="Next")
+
+        # c) Rebind clicks to next_question()
+        submit_canvas.tag_unbind(rect_id, "<Button-1>")
+        submit_canvas.tag_unbind(text_id, "<Button-1>")
+        submit_canvas.tag_bind(rect_id, "<Button-1>", lambda e: app.next_question())
+        submit_canvas.tag_bind(text_id, "<Button-1>", lambda e: app.next_question())
+
+        # Re‐enable
+        submit_canvas.config(state="normal")
+
+    # Initial binding for “Submit”
+    submit_canvas.tag_bind(rect_id, "<Button-1>", on_submit)
+    submit_canvas.tag_bind(text_id, "<Button-1>", on_submit)
+
+    # Hover effects for the button
+    def on_hover_enter(e):
+        submit_canvas.itemconfig(rect_id, fill=app.colors[app.theme]['card_hover'])
+        submit_canvas.config(cursor="hand2")
+    def on_hover_leave(e):
+        submit_canvas.itemconfig(rect_id, fill=app.colors[app.theme]['button'])
+        submit_canvas.config(cursor="")
+
+    submit_canvas.tag_bind(rect_id, "<Enter>", on_hover_enter)
+    submit_canvas.tag_bind(text_id, "<Enter>", on_hover_enter)
+    submit_canvas.tag_bind(rect_id, "<Leave>", on_hover_leave)
+    submit_canvas.tag_bind(text_id, "<Leave>", on_hover_leave)
+
+    # ────────────────────────────────────────────────────────────────────────────
+    # 13) “Correct streak” indicator (if any) – unchanged
+    # ────────────────────────────────────────────────────────────────────────────
     if getattr(app, "correct_streak", 0) >= 5:
         streak_label = tk.Label(
             app.master,
             text=f"🔥 {app.correct_streak} bonnes réponses d’affilée !",
             font=("Montserrat", 12, "bold"),
             fg=app.colors[app.theme]['success'],
-            bg=app.colors[app.theme]['bg']
+            bg="" 
         )
         streak_label.place(relx=0.5, rely=0.85, anchor="center")
-        # Save reference if you want to clear later
         app.streak_label = streak_label
     else:
-        # Remove old streak label if it exists and streak drops
         if hasattr(app, 'streak_label'):
             app.streak_label.destroy()
             del app.streak_label
 
-
-
 #--------------------------------------------------------
 # Fill Question
 #--------------------------------------------------------    
+import tkinter as tk
+from PIL import Image, ImageTk
+
 def display_fill_question(app, q_data):
+    # 1) Clear the window (keeps only progress bar):
     app.clear_window()
     app.update_progress_bar()
 
-    container = tk.Frame(app.master, bg=app.colors[app.theme]["card"])
-    container.place(relx=0.5, rely=0.45, anchor="center", width=700, height=350)
+    # 2) Draw full‐screen background image:
+    screen_w = app.master.winfo_screenwidth()
+    screen_h = app.master.winfo_screenheight()
 
-    tk.Label(container, text=f"Question {app.current_question+1}/{len(app.questions)}",
-             font=("Montserrat", 18, "bold"), bg=app.colors[app.theme]["card"],
-             fg=app.colors[app.theme]["fg"]).pack(pady=(20, 10))
+    bg_image = Image.open("assets/background_menu.png").resize((screen_w, screen_h))
+    app.bg_fill_tk = ImageTk.PhotoImage(bg_image)
 
-    tk.Label(container, text=q_data["Title"], font=("Montserrat", 14),
-             bg=app.colors[app.theme]["card"], fg=app.colors[app.theme]["fg"], wraplength=650).pack()
+    bg_canvas = tk.Canvas(app.master, width=screen_w, height=screen_h, highlightthickness=0)
+    bg_canvas.create_image(0, 0, image=app.bg_fill_tk, anchor="nw")
+    bg_canvas.pack(fill="both", expand=True)
 
-    # Simulated options for fill-in (could be dynamically generated or from file later)
+    # 3) Draw the menu icon in the top‐right corner:
+    menu_id = bg_canvas.create_image(
+        screen_w - 10 - 16,
+        10 + 16,
+        image=app.menu_icon,
+        anchor="center"
+    )
+    bg_canvas.tag_bind(menu_id, "<Button-1>", lambda e: app.show_menu())
+
+    # 4) Create the card container in the center for the fill‐in question:
+    card_w, card_h = 700, 350
+
+    # — remove bg="" here; the rounded rectangle will cover the canvas —
+    container = tk.Canvas(
+        app.master,
+        width=card_w,
+        height=card_h,
+        highlightthickness=0
+    )
+    container.place(relx=0.5, rely=0.5, anchor="center")
+
+    # Draw the rounded card
+    app.draw_rounded_rectangle(
+        container,
+        0, 0, card_w, card_h,
+        radius=30,
+        fill=app.colors[app.theme]["card"],
+        outline=app.colors[app.theme]["shadow"]
+    )
+
+    # Place a Frame inside for labels, dropdown, feedback, etc.
+    wrap_frame = tk.Frame(container, bg=app.colors[app.theme]["card"])
+    container.create_window(card_w//2, card_h//2, window=wrap_frame)
+
+    # 5) Question number + title
+    tk.Label(
+        wrap_frame,
+        text=f"Question {app.current_question+1}/{len(app.questions)}",
+        font=("Montserrat", 18, "bold"),
+        bg=app.colors[app.theme]["card"],
+        fg=app.colors[app.theme]["fg"]
+    ).pack(pady=(20, 10))
+
+    tk.Label(
+        wrap_frame,
+        text=q_data["Title"],
+        font=("Montserrat", 14),
+        bg=app.colors[app.theme]["card"],
+        fg=app.colors[app.theme]["fg"],
+        wraplength=650
+    ).pack()
+
+    # 6) Dropdown for fill‐in choices (sample options)
     options = [
         "Infrastructure as Code", "Pipeline", "Deployment", "Provisioning",
         "Version Control", "Automation", "Monitoring", "Containerization"
     ]
-
     app.fill_var = tk.StringVar()
-    app.fill_dropdown = tk.OptionMenu(container, app.fill_var, *options)
+    app.fill_dropdown = tk.OptionMenu(wrap_frame, app.fill_var, *options)
     app.fill_dropdown.config(font=("Montserrat", 14), width=40)
     app.fill_dropdown.pack(pady=20)
 
-    app.feedback_label = tk.Label(container, font=("Montserrat", 12, "bold"),
-                                  bg=app.colors[app.theme]["card"], fg=app.colors[app.theme]["fg"])
+    # 7) Feedback label (initially blank)
+    app.feedback_label = tk.Label(
+        wrap_frame,
+        font=("Montserrat", 12, "bold"),
+        bg=app.colors[app.theme]["card"],
+        fg=app.colors[app.theme]["fg"]
+    )
     app.feedback_label.pack()
 
     app.correct_answers = [str(q_data["Correct"]).strip()]
 
+    # 8) Submit button
     def check_choice():
         selected = app.fill_var.get().strip().lower()
         expected = app.correct_answers[0].strip().lower()
@@ -246,10 +642,20 @@ def display_fill_question(app, q_data):
         app.update_progress_bar()
         app.action_btn.configure(text="Next", command=app.on_action_btn)
 
-    app.action_btn = tk.Button(container, text="Submit", font=("Montserrat", 14, "bold"),
-                               bg=app.colors[app.theme]["button"], fg="white", relief="flat",
-                               command=check_choice)
+    app.action_btn = tk.Button(
+        wrap_frame,
+        text="Submit",
+        font=("Montserrat", 14, "bold"),
+        bg=app.colors[app.theme]["button"],
+        fg="white",
+        relief="flat",
+        command=check_choice,
+        cursor="hand2",
+        padx=20,
+        pady=10
+    )
     app.action_btn.pack(pady=10)
+
 
 
 def update_progress_bar(self):

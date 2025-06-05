@@ -9,9 +9,9 @@ def get_theme_colors(theme):
             "card_hover": "#3b3e4c",
             "success": "#2ecc71",
             "error": "#e74c3c",
-            "button": "#8e44ad",
+            "button": "#3498db",
             "shadow": "#15161e",
-            "accent": "#6c5ce7",
+            "accent": "#2980b9",
             "question_bg": "#1a1b25",
             "timer_bg": "#1c2c1c",
             "timer_fg": "#2ecc71"
