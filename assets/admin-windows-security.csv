@@ -1,0 +1,248 @@
+Type,Title,Choice,Choice,Choice,Choice,Correct
+MCQ,Quelle est l'une des principales nouveautés de Windows Server 2012 ?,Un nouveau gestionnaire de tâches,Un menu Démarrer repensé,Un nouveau gestionnaire de serveur,Un antivirus intégré,3
+MCQ,Quel est l'objectif principal de SMB 3.0 ?,Support de l'impression réseau uniquement,Améliorer les connexions VPN,Améliorer le partage de fichiers et d'imprimantes,Rendre le serveur plus rapide,3
+MCQ,Quelle est la fonctionnalité de SMB Multichannel ?,Augmente le nombre de serveurs,Supporte plusieurs connexions par session SMB,Permet le routage dynamique,Augmente la sécurité du serveur,2
+MCQ,Quel est l'avantage de SMB Scale Out ?,Augmente la latence,Réduit le nombre de connexions,Augmente l'évolutivité et la bande passante,Réduit l'utilisation de RAM,3
+MCQ,Qu'est-ce que DAC dans Windows Server 2012 ?,Un logiciel antivirus,Un outil de gestion de pare-feu,Un contrôle d'accès dynamique,Un outil de virtualisation,3
+MCQ,Quel service est utilisé pour déployer les règles DAC ?,Service DHCP,Service DNS,Active Directory,Hyper-V,3
+MCQ,Quelle méthode est utilisée pour modifier le BCD ?,Utilisation de Notepad,Utilisation de PowerShell uniquement,Utilisation de BCDEdit.exe,Utilisation de CMD.exe,3
+MCQ,Qu'est-ce que le BCD Store contient ?,Les logs système,Les identifiants utilisateur,Les informations de démarrage,Les fichiers d'installation,3
+MCQ,Quel protocole est utilisé par DirectAccess ?,PPTP,HTTP,IPSec,FTP,3
+MCQ,Quelle édition de Windows Server 2012 est la plus complète ?,Essentials,Foundation,Standard,Datacenter,4
+MCQ,Quel est le rôle de RemoteFX ?,Support de l’audio sur RDP,Minimiser l’utilisation CPU et bande passante,Créer des sessions RDP multiples,Configurer DNS automatiquement,2
+MCQ,Quel est l'avantage du système de fichiers ReFS ?,Réduit la consommation d'énergie,Améliore l’interface graphique,Supporte les étiquettes de volume,Fonctionne avec Storage Spaces,4
+MCQ,Quelle est la résolution minimale requise pour Windows Server 2012 ?,1024x768,1280x720,SVGA 800x600,640x480,3
+MCQ,Quel est le minimum de RAM requis ?,128MB,256MB,512MB,1GB,3
+MCQ,Quelle méthode n'est pas supportée pour modifier le BCD ?,BCDEdit.exe,WMI,Powershell,Excel,4
+MCQ,Qu'est-ce que l'outil BPA ?,Analyseur antivirus,Firewall intelligent,Analyseur de bonnes pratiques,Optimiseur de disques,3
+MCQ,Quel est le rôle de Hyper-V Replica ?,Créer des VLANs,Réduire les attaques DDoS,Assurer la continuité des activités,Créer des GPO,3
+MCQ,Quel format remplace VHD dans Hyper-V ?,VHDX,VHD2,VDSX,VXHD,1
+MCQ,Quel service offre l'accès réseau automatique depuis Internet ?,DHCP,VPN classique,DirectAccess,FTP,3
+MCQ,Quel composant est responsable de la sélection du système au démarrage ?,Task Scheduler,Windows Boot Manager,Device Manager,System Monitor,2
+MCQ,Quelle est l'une des principales nouveautés de Windows Server 2012 ? (suite 2),Un nouveau gestionnaire de tâches,Un menu Démarrer repensé,Un nouveau gestionnaire de serveur,Un antivirus intégré,3
+MCQ,Quel est l'objectif principal de SMB 3.0 ? (suite 2),Support de l'impression réseau uniquement,Améliorer les connexions VPN,Améliorer le partage de fichiers et d'imprimantes,Rendre le serveur plus rapide,3
+MCQ,Quelle est la fonctionnalité de SMB Multichannel ? (suite 2),Augmente le nombre de serveurs,Supporte plusieurs connexions par session SMB,Permet le routage dynamique,Augmente la sécurité du serveur,2
+MCQ,Quel est l'avantage de SMB Scale Out ? (suite 2),Augmente la latence,Réduit le nombre de connexions,Augmente l'évolutivité et la bande passante,Réduit l'utilisation de RAM,3
+MCQ,Qu'est-ce que DAC dans Windows Server 2012 ? (suite 2),Un logiciel antivirus,Un outil de gestion de pare-feu,Un contrôle d'accès dynamique,Un outil de virtualisation,3
+MCQ,Quel service est utilisé pour déployer les règles DAC ? (suite 2),Service DHCP,Service DNS,Active Directory,Hyper-V,3
+MCQ,Quelle méthode est utilisée pour modifier le BCD ? (suite 2),Utilisation de Notepad,Utilisation de PowerShell uniquement,Utilisation de BCDEdit.exe,Utilisation de CMD.exe,3
+MCQ,Qu'est-ce que le BCD Store contient ? (suite 2),Les logs système,Les identifiants utilisateur,Les informations de démarrage,Les fichiers d'installation,3
+MCQ,Quel protocole est utilisé par DirectAccess ? (suite 2),PPTP,HTTP,IPSec,FTP,3
+MCQ,Quelle édition de Windows Server 2012 est la plus complète ? (suite 2),Essentials,Foundation,Standard,Datacenter,4
+MCQ,Quel est le rôle de RemoteFX ? (suite 2),Support de l’audio sur RDP,Minimiser l’utilisation CPU et bande passante,Créer des sessions RDP multiples,Configurer DNS automatiquement,2
+MCQ,Quel est l'avantage du système de fichiers ReFS ? (suite 2),Réduit la consommation d'énergie,Améliore l’interface graphique,Supporte les étiquettes de volume,Fonctionne avec Storage Spaces,4
+MCQ,Quelle est la résolution minimale requise pour Windows Server 2012 ? (suite 2),1024x768,1280x720,SVGA 800x600,640x480,3
+MCQ,Quel est le minimum de RAM requis ? (suite 2),128MB,256MB,512MB,1GB,3
+MCQ,Quelle méthode n'est pas supportée pour modifier le BCD ? (suite 2),BCDEdit.exe,WMI,Powershell,Excel,4
+MCQ,Qu'est-ce que l'outil BPA ? (suite 2),Analyseur antivirus,Firewall intelligent,Analyseur de bonnes pratiques,Optimiseur de disques,3
+MCQ,Quel est le rôle de Hyper-V Replica ? (suite 2),Créer des VLANs,Réduire les attaques DDoS,Assurer la continuité des activités,Créer des GPO,3
+MCQ,Quel format remplace VHD dans Hyper-V ? (suite 2),VHDX,VHD2,VDSX,VXHD,1
+MCQ,Quel service offre l'accès réseau automatique depuis Internet ? (suite 2),DHCP,VPN classique,DirectAccess,FTP,3
+MCQ,Quel composant est responsable de la sélection du système au démarrage ? (suite 2),Task Scheduler,Windows Boot Manager,Device Manager,System Monitor,2
+MCQ,Quelle est l'une des principales nouveautés de Windows Server 2012 ? (suite 3),Un nouveau gestionnaire de tâches,Un menu Démarrer repensé,Un nouveau gestionnaire de serveur,Un antivirus intégré,3
+MCQ,Quel est l'objectif principal de SMB 3.0 ? (suite 3),Support de l'impression réseau uniquement,Améliorer les connexions VPN,Améliorer le partage de fichiers et d'imprimantes,Rendre le serveur plus rapide,3
+MCQ,Quelle est la fonctionnalité de SMB Multichannel ? (suite 3),Augmente le nombre de serveurs,Supporte plusieurs connexions par session SMB,Permet le routage dynamique,Augmente la sécurité du serveur,2
+MCQ,Quel est l'avantage de SMB Scale Out ? (suite 3),Augmente la latence,Réduit le nombre de connexions,Augmente l'évolutivité et la bande passante,Réduit l'utilisation de RAM,3
+MCQ,Qu'est-ce que DAC dans Windows Server 2012 ? (suite 3),Un logiciel antivirus,Un outil de gestion de pare-feu,Un contrôle d'accès dynamique,Un outil de virtualisation,3
+MCQ,Quel service est utilisé pour déployer les règles DAC ? (suite 3),Service DHCP,Service DNS,Active Directory,Hyper-V,3
+MCQ,Quelle méthode est utilisée pour modifier le BCD ? (suite 3),Utilisation de Notepad,Utilisation de PowerShell uniquement,Utilisation de BCDEdit.exe,Utilisation de CMD.exe,3
+MCQ,Qu'est-ce que le BCD Store contient ? (suite 3),Les logs système,Les identifiants utilisateur,Les informations de démarrage,Les fichiers d'installation,3
+MCQ,Quel protocole est utilisé par DirectAccess ? (suite 3),PPTP,HTTP,IPSec,FTP,3
+MCQ,Quelle édition de Windows Server 2012 est la plus complète ? (suite 3),Essentials,Foundation,Standard,Datacenter,4
+MCQ,Quel est le rôle de RemoteFX ? (suite 3),Support de l’audio sur RDP,Minimiser l’utilisation CPU et bande passante,Créer des sessions RDP multiples,Configurer DNS automatiquement,2
+MCQ,Quel est l'avantage du système de fichiers ReFS ? (suite 3),Réduit la consommation d'énergie,Améliore l’interface graphique,Supporte les étiquettes de volume,Fonctionne avec Storage Spaces,4
+MCQ,Quelle est la résolution minimale requise pour Windows Server 2012 ? (suite 3),1024x768,1280x720,SVGA 800x600,640x480,3
+MCQ,Quel est le minimum de RAM requis ? (suite 3),128MB,256MB,512MB,1GB,3
+MCQ,Quelle méthode n'est pas supportée pour modifier le BCD ? (suite 3),BCDEdit.exe,WMI,Powershell,Excel,4
+MCQ,Qu'est-ce que l'outil BPA ? (suite 3),Analyseur antivirus,Firewall intelligent,Analyseur de bonnes pratiques,Optimiseur de disques,3
+MCQ,Quel est le rôle de Hyper-V Replica ? (suite 3),Créer des VLANs,Réduire les attaques DDoS,Assurer la continuité des activités,Créer des GPO,3
+MCQ,Quel format remplace VHD dans Hyper-V ? (suite 3),VHDX,VHD2,VDSX,VXHD,1
+MCQ,Quel service offre l'accès réseau automatique depuis Internet ? (suite 3),DHCP,VPN classique,DirectAccess,FTP,3
+MCQ,Quel composant est responsable de la sélection du système au démarrage ? (suite 3),Task Scheduler,Windows Boot Manager,Device Manager,System Monitor,2
+MCQ,Quelle est l'une des principales nouveautés de Windows Server 2012 ? (suite 4),Un nouveau gestionnaire de tâches,Un menu Démarrer repensé,Un nouveau gestionnaire de serveur,Un antivirus intégré,3
+MCQ,Quel est l'objectif principal de SMB 3.0 ? (suite 4),Support de l'impression réseau uniquement,Améliorer les connexions VPN,Améliorer le partage de fichiers et d'imprimantes,Rendre le serveur plus rapide,3
+MCQ,Quelle est la fonctionnalité de SMB Multichannel ? (suite 4),Augmente le nombre de serveurs,Supporte plusieurs connexions par session SMB,Permet le routage dynamique,Augmente la sécurité du serveur,2
+MCQ,Quel est l'avantage de SMB Scale Out ? (suite 4),Augmente la latence,Réduit le nombre de connexions,Augmente l'évolutivité et la bande passante,Réduit l'utilisation de RAM,3
+MCQ,Qu'est-ce que DAC dans Windows Server 2012 ? (suite 4),Un logiciel antivirus,Un outil de gestion de pare-feu,Un contrôle d'accès dynamique,Un outil de virtualisation,3
+MCQ,Quel service est utilisé pour déployer les règles DAC ? (suite 4),Service DHCP,Service DNS,Active Directory,Hyper-V,3
+MCQ,Quelle méthode est utilisée pour modifier le BCD ? (suite 4),Utilisation de Notepad,Utilisation de PowerShell uniquement,Utilisation de BCDEdit.exe,Utilisation de CMD.exe,3
+MCQ,Qu'est-ce que le BCD Store contient ? (suite 4),Les logs système,Les identifiants utilisateur,Les informations de démarrage,Les fichiers d'installation,3
+MCQ,Quel protocole est utilisé par DirectAccess ? (suite 4),PPTP,HTTP,IPSec,FTP,3
+MCQ,Quelle édition de Windows Server 2012 est la plus complète ? (suite 4),Essentials,Foundation,Standard,Datacenter,4
+MCQ,Quel est le rôle de RemoteFX ? (suite 4),Support de l’audio sur RDP,Minimiser l’utilisation CPU et bande passante,Créer des sessions RDP multiples,Configurer DNS automatiquement,2
+MCQ,Quel est l'avantage du système de fichiers ReFS ? (suite 4),Réduit la consommation d'énergie,Améliore l’interface graphique,Supporte les étiquettes de volume,Fonctionne avec Storage Spaces,4
+MCQ,Quelle est la résolution minimale requise pour Windows Server 2012 ? (suite 4),1024x768,1280x720,SVGA 800x600,640x480,3
+MCQ,Quel est le minimum de RAM requis ? (suite 4),128MB,256MB,512MB,1GB,3
+MCQ,Quelle méthode n'est pas supportée pour modifier le BCD ? (suite 4),BCDEdit.exe,WMI,Powershell,Excel,4
+MCQ,Qu'est-ce que l'outil BPA ? (suite 4),Analyseur antivirus,Firewall intelligent,Analyseur de bonnes pratiques,Optimiseur de disques,3
+MCQ,Quel est le rôle de Hyper-V Replica ? (suite 4),Créer des VLANs,Réduire les attaques DDoS,Assurer la continuité des activités,Créer des GPO,3
+MCQ,Quel format remplace VHD dans Hyper-V ? (suite 4),VHDX,VHD2,VDSX,VXHD,1
+MCQ,Quel service offre l'accès réseau automatique depuis Internet ? (suite 4),DHCP,VPN classique,DirectAccess,FTP,3
+MCQ,Quel composant est responsable de la sélection du système au démarrage ? (suite 4),Task Scheduler,Windows Boot Manager,Device Manager,System Monitor,2
+MCQ,Quelle est l'une des principales nouveautés de Windows Server 2012 ? (suite 5),Un nouveau gestionnaire de tâches,Un menu Démarrer repensé,Un nouveau gestionnaire de serveur,Un antivirus intégré,3
+MCQ,Quel est l'objectif principal de SMB 3.0 ? (suite 5),Support de l'impression réseau uniquement,Améliorer les connexions VPN,Améliorer le partage de fichiers et d'imprimantes,Rendre le serveur plus rapide,3
+MCQ,Quelle est la fonctionnalité de SMB Multichannel ? (suite 5),Augmente le nombre de serveurs,Supporte plusieurs connexions par session SMB,Permet le routage dynamique,Augmente la sécurité du serveur,2
+MCQ,Quel est l'avantage de SMB Scale Out ? (suite 5),Augmente la latence,Réduit le nombre de connexions,Augmente l'évolutivité et la bande passante,Réduit l'utilisation de RAM,3
+MCQ,Qu'est-ce que DAC dans Windows Server 2012 ? (suite 5),Un logiciel antivirus,Un outil de gestion de pare-feu,Un contrôle d'accès dynamique,Un outil de virtualisation,3
+MCQ,Quel service est utilisé pour déployer les règles DAC ? (suite 5),Service DHCP,Service DNS,Active Directory,Hyper-V,3
+MCQ,Quelle méthode est utilisée pour modifier le BCD ? (suite 5),Utilisation de Notepad,Utilisation de PowerShell uniquement,Utilisation de BCDEdit.exe,Utilisation de CMD.exe,3
+MCQ,Qu'est-ce que le BCD Store contient ? (suite 5),Les logs système,Les identifiants utilisateur,Les informations de démarrage,Les fichiers d'installation,3
+MCQ,Quel protocole est utilisé par DirectAccess ? (suite 5),PPTP,HTTP,IPSec,FTP,3
+MCQ,Quelle édition de Windows Server 2012 est la plus complète ? (suite 5),Essentials,Foundation,Standard,Datacenter,4
+MCQ,Quel est le rôle de RemoteFX ? (suite 5),Support de l’audio sur RDP,Minimiser l’utilisation CPU et bande passante,Créer des sessions RDP multiples,Configurer DNS automatiquement,2
+MCQ,Quel est l'avantage du système de fichiers ReFS ? (suite 5),Réduit la consommation d'énergie,Améliore l’interface graphique,Supporte les étiquettes de volume,Fonctionne avec Storage Spaces,4
+MCQ,Quelle est la résolution minimale requise pour Windows Server 2012 ? (suite 5),1024x768,1280x720,SVGA 800x600,640x480,3
+MCQ,Quel est le minimum de RAM requis ? (suite 5),128MB,256MB,512MB,1GB,3
+MCQ,Quelle méthode n'est pas supportée pour modifier le BCD ? (suite 5),BCDEdit.exe,WMI,Powershell,Excel,4
+MCQ,Qu'est-ce que l'outil BPA ? (suite 5),Analyseur antivirus,Firewall intelligent,Analyseur de bonnes pratiques,Optimiseur de disques,3
+MCQ,Quel est le rôle de Hyper-V Replica ? (suite 5),Créer des VLANs,Réduire les attaques DDoS,Assurer la continuité des activités,Créer des GPO,3
+MCQ,Quel format remplace VHD dans Hyper-V ? (suite 5),VHDX,VHD2,VDSX,VXHD,1
+MCQ,Quel service offre l'accès réseau automatique depuis Internet ? (suite 5),DHCP,VPN classique,DirectAccess,FTP,3
+MCQ,Quel composant est responsable de la sélection du système au démarrage ? (suite 5),Task Scheduler,Windows Boot Manager,Device Manager,System Monitor,2
+MCQ,Quel est l’objectif principal de l'installation Server Core ?,Avoir une interface graphique complète,Réduire la surface d’attaque,Rendre l’installation plus lente,Augmenter les services par défaut,2
+MCQ,Quel composant n’est PAS installé par défaut avec Server Core ?,Invite de commande,Explorateur Windows,Services de base,PowerShell,2
+MCQ,Quelle est la méthode principale de gestion de Server Core ?,Interface graphique,Bureau à distance,Ligne de commande,Menu Démarrer,3
+MCQ,Quel rôle n’est PAS pris en charge par Server Core ?,Serveur DNS,Serveur DHCP,Contrôleur de domaine,Contrôleur de domaine en lecture seule,4
+MCQ,Quel est un avantage de Server Core ?,Consomme plus de ressources,Moins sécurisé,Réduit la maintenance,Ajoute des applications tierces automatiquement,3
+MCQ,Quel outil peut être utilisé pour renommer un serveur sur Server Core ?,explorer.exe,netdom.exe,mmc.exe,exploit.exe,2
+MCQ,Quel outil permet de définir une adresse IP statique ?,ipconfig,set-ip,netsh,nmap,3
+MCQ,Quel rôle utilise la commande `ocsetup DNS-Server-Full-Role` ?,Serveur DHCP,Serveur DNS,Serveur NFS,Serveur d'impression,2
+MCQ,Comment peut-on modifier le mot de passe administrateur par ligne de commande ?,passwd,admin /setpwd,net user Administrator,userset,3
+MCQ,Quelle commande permet d’activer le serveur Windows ?,activate.exe,net activate,slmgr.vbs /ato,winact /run,3
+MCQ,Que signifie une valeur de retour `ReturnValue=0` après renommage ?,Erreur,Redémarrage requis,Succès,Accès refusé,3
+MCQ,Quel rôle utilise la commande `ocsetup DHCPServer` ?,Serveur DNS,Serveur DHCP,Serveur de fichiers,Serveur VPN,2
+MCQ,Quel est l'intérêt d'utiliser `dnscmd` ?,Configurer le DHCP,Configurer un rôle de streaming,Configurer DNS,Modifier les paramètres du pare-feu,3
+MCQ,Quelle commande autorise un serveur DHCP dans un domaine ?,authorize dhcp,netsh dhcp add server,add-dhcp /auth,enable dhcp domain,2
+MCQ,Quel est le principal inconvénient de Server Core ?,Plus de sécurité,Moins d’espace disque utilisé,Pas d’interface graphique,Support élargi,3
+MCQ,Quelle commande est utilisée pour afficher tous les profils du pare-feu ?,netsh firewall view,netsh advfirewall show allprofiles,show firewall profiles,getfirewall /all,2
+MCQ,Quel rôle de fichiers permet la réplication entre serveurs ?,NFS,FRS,DFS,SMB,3
+MCQ,Quel outil peut être utilisé pour activer les mises à jour automatiques ?,net update,cscript scregedit.wsf /AU 4,wuauclt.exe /auto,update auto /set,2
+MCQ,Quelle commande ouvre le port RDP sur Server Core ?,netsh open rdp,netsh advfirewall firewall add rule name="TS Admin" protocol=TCP dir=in localport=3389 action=allow,enable-rdp,firewall allow 3389,2
+MCQ,Quelle commande installe le rôle de serveur d'impression ?,Start /w ocsetup Printing-Server-Role,install printserver.exe,printer /add role,Add-PrintRole,1
+MCQ,Quel rôle permet la gestion des vidéos en streaming ?,Hyper-V,Media Foundation,Streaming Media Services,IIS File Sharing,3
+MCQ,Quel est le fichier utilisé pour une installation silencieuse d’Active Directory ?,setup.ini,install.txt,unattend.txt,dcsetup.txt,3
+MCQ,Quelle commande permet d’exécuter un script à distance avec WinRS ?,winrs -r:<NomServeur> <commande>,remrun <Nom>,rundist <nom>,remex <nom>,1
+MCQ,Quel rôle nécessite l’autorisation dans Active Directory ?,Serveur de fichiers,Serveur DNS,Serveur DHCP,Serveur d’impression,3
+MCQ,Quel est le protocole utilisé par DFS pour accéder aux partages ?,FTP,NFS,SMB,RDP,3
+MCQ,Quel est l’intérêt de l’interface minimale dans Server Core ?,Augmenter les performances graphiques,Réduire les risques de sécurité,Améliorer le support utilisateur,Afficher plus de logs,2
+MCQ,Quelle commande redémarre le serveur ?,shutdown /r,net restart,reboot -f,systemctl restart,1
+MCQ,Quel fichier permet d’ajouter automatiquement des rôles ?,setupconfig.ini,unattend.xml,install.wim,autorun.inf,2
+MCQ,Que fait la commande `netdom renamecomputer` ?,Supprime un serveur,Rename un ordinateur,Ajoute un rôle,Change un mot de passe,2
+MCQ,Quelle commande affiche la configuration réseau actuelle ?,netconfig,ifstat,ipconfig,ipshow,3
+MCQ,Quel outil graphique peut être utilisé à distance pour gérer Server Core ?,MMC,PowerGUI,Notepad++,Paint,1
+MCQ,Quel outil PowerShell permet la gestion des rôles ?,Enable-Server,Add-WindowsFeature,Set-Roles,Install-ServerRole,2
+MCQ,Quel protocole est activé pour les connexions distantes sur Server Core ?,HTTP,SSH,RDP,FTP,3
+MCQ,Quel rôle nécessite `Active Directory Domain Services` ?,Serveur DNS,Contrôleur de domaine,Serveur de fichiers,Serveur DHCP,2
+MCQ,Que fait la commande `sconfig` ?,Rend le système graphique,Lance un menu de configuration,Lance le navigateur,Crée une VM,2
+MCQ,Quel est l'avantage du rôle Hyper-V ?,Créer des serveurs DHCP,Gérer les utilisateurs,Virtualiser des systèmes,Configurer DNS,3
+MCQ,Quelle extension permet de rejoindre un domaine ?,netdom join,domain.exe /add,join-server.exe,net join dom,1
+MCQ,Quel outil permet de tester la connectivité réseau ?,netcheck,cmd ping,ping,testnet,3
+MCQ,Quel est le chemin d’accès aux paramètres IP dans PowerShell ?,Get-IP,Set-AdapterConfig,Get-NetIPConfiguration,ipshow config,3
+MCQ,Quel fichier est essentiel pour déployer Server Core via image ?,boot.ini,install.iso,install.wim,netimage.cfg,3
+MCQ,Quelle commande liste les rôles installés ?,roles /list,get-roles,Get-WindowsFeature,show roles,3
+MCQ,Quelle méthode est recommandée pour mettre à jour un Server Core ?,GUI,WSUS,Update Center,App Store,2
+MCQ,Quel type d’administration est privilégiée avec Server Core ?,Locale,Graphique,À distance,Via navigateur,3
+MCQ,Quel est l’intérêt principal de la virtualisation via Server Core ?,Créer des containers,Alléger les serveurs,Tester les scripts,Renforcer la sécurité,2
+MCQ,Quel outil crée une stratégie de groupe ?,groupcreator.exe,gpmc.msc,gpedit.ps1,adminpol.msc,2
+MCQ,Que fait la commande `Enable-PSRemoting` ?,Active Hyper-V,Active PowerShell distant,Configure la langue,Modifie le DNS,2
+MCQ,Quel module PowerShell permet la gestion des réseaux ?,NetModule,NetworkShell,NetAdapter,NetSettings,3
+MCQ,Quel format de fichier est utilisé pour les réponses automatiques ?,XML,JSON,YAML,TXT,1
+MCQ,Quel service permet la sauvegarde système sur Server Core ?,Windows Backup,Core Save,Backup Tool,SafeCopy,1
+MCQ,Comment ajouter un rôle via ligne de commande ?,Add-Role,Role-Install,Install-WindowsFeature,enable-role,3
+MCQ,Quelle commande affiche les groupes d'un utilisateur ?,net group user,get-usergroups,user /showgroups,whoami /groups,4
+MCQ,Que fait la commande `Set-ExecutionPolicy` ?,Modifie les droits du pare-feu,Définit le niveau d'exécution des scripts,Crée un utilisateur,Ajoute un rôle,2
+MCQ,Quel outil graphique peut se connecter à Server Core pour l’administration ?,Remote Desktop,Explorer.exe,cmd.exe,services.exe,1
+MCQ,Quel format est utilisé par `unattend` pour le déploiement ?,CSV,XML,JSON,INI,2
+MCQ,Quel outil permet d’accéder à l’Observateur d’événements à distance ?,eventvwr.msc,logman.exe,syslog.exe,winlog.exe,1
+MCQ,Quelle commande affiche le statut du pare-feu ?,firewall /check,status firewall,netsh advfirewall show allprofiles,show fw state,3
+MCQ,Quel outil permet de joindre un domaine avec interface graphique ?,join-ui.exe,Server Manager,Windows Admin Center,GUI-DomainJoin,3
+MCQ,Que permet le rôle DFS ?,Sauvegarde réseau,Accès FTP,Synchronisation de dossiers,Scan antivirus,3
+MCQ,Quelle commande affiche les services en cours ?,net services,tasklist,services.msc,get-service,4
+MCQ,Quel est le rôle de `slmgr.vbs /ipk` ?,Définir une clé produit,Installer PowerShell,Configurer le DNS,Lancer la GUI,1
+MCQ,Quel port est ouvert pour le bureau à distance ?,22,443,3389,8080,3
+MCQ,Quelle commande ajoute un utilisateur ?,user add,net user <nom> /add,add-user,usrcreate,2
+MCQ,Quel fichier est utilisé pour configurer une réponse automatique d’installation ?,autoconf.ini,response.xml,unattend.xml,setupconf.cfg,3
+MCQ,Que permet le rôle de Contrôleur de Domaine ?,Création de fichiers,Gestion d'utilisateurs et de politiques,Gestion des impressions,Analyse réseau,2
+MCQ,Quelle commande redémarre un service ?,net start /r,<service> restart,restart-service <nom>,service reboot <nom>,3
+MCQ,Quel outil PowerShell affiche les adresses IP ?,get-ip,Get-NetIPAddress,show-ip,get-ipv4,2
+MCQ,Quel est l’intérêt de la configuration minimale ?,Plus d'outils,Plus de services,Moins de vulnérabilités,Interface enrichie,3
+MCQ,Quel outil PowerShell permet de modifier la configuration réseau ?,Set-NetIPConfiguration,NetConfigure,ipconfig /set,Set-IPAddress,1
+MCQ,Quel outil permet de faire des installations de rôle par script ?,ocsetup,script-role.exe,installexec.ps1,roleconfig.exe,1
+MCQ,Quelle commande configure le DNS ?,dnsconfig,setdns,netsh interface ip set dns,name-dns /set,3
+MCQ,Quel outil est utilisé pour vérifier les ports ouverts ?,openport.exe,nmap,firewall view,netstat,2
+MCQ,Quel est l’avantage du redémarrage via ligne de commande ?,Plus lent,Redémarrage différé,Contrôle distant,Réservé à l’admin,3
+MCQ,Quel outil Microsoft permet de gérer plusieurs serveurs Server Core ?,WSUS,Windows Admin Center,System Center,Windows Defender,2
+MCQ,Quelle commande désinstalle un rôle ?,Remove-WindowsFeature,delete-role.exe,rm-role,disablefeature,1
+MCQ,Quel outil permet de lister les interfaces réseau ?,list-nics,get-interface,netsh interface show interface,ifconfig -l,3
+MCQ,Quel fichier permet un déploiement sans assistance ?,answer.ini,unattend.xml,config.json,setup.bat,2
+MCQ,Quel service doit être configuré pour joindre un domaine ?,DHCP,DNS,FTP,RDS,2
+MCQ,Quelle commande liste les rôles installés ?,list-roles,get-windowsfeature,get-roles-installed,role /list,2
+MCQ,Que fait `sconfig` ?,Lance l’interface graphique,Affiche la config réseau,Propose une interface d’administration textuelle,Lance le pare-feu,3
+MCQ,Quel rôle est requis pour l’accès à distance sécurisé ?,Hyper-V,RDS,VPN,DHCP,3
+MCQ,Quel outil gère les scripts de démarrage ?,GPO Manager,Startup.exe,PowerShell ISE,Task Scheduler,1
+MCQ,Quelle extension de fichier est utilisée pour les scripts PowerShell ?,`.psh`,`.bash`,`.ps1`,`.sh`,3
+MCQ,Quel outil de ligne de commande permet de voir les utilisateurs connectés ?,whoami,users,query user,net show users,3
+MCQ,Quel rôle gère les imprimantes ?,Print Services,Impression Center,Printer Role,Spooler Service,1
+MCQ,Quel outil gère les règles de sécurité via des stratégies ?,Group Policy Management,GPO Designer,Policy Maker,Admin Security Tool,1
+MCQ,Quel est l’avantage principal de Server Core ?,Plus de drivers,Interface graphique avancée,Moins d’attaque potentielle,Support de jeux,3
+MCQ,Quelle commande active le Bureau à Distance ?,enable-rdp.ps1,Set-RemoteAccess,Enable-NetFirewallRule -DisplayGroup "Remote Desktop",Activate-RDP,3
+MCQ,Quel outil permet de tester une connectivité réseau ?,netconnect,ping,traceconn,showconn,2
+MCQ,Que permet `netdom` ?,Gérer les services,Déploiement de rôles,Gestion du domaine en ligne de commande,Gestion de la RAM,3
+MCQ,Quel service est essentiel au bon fonctionnement de Kerberos ?,NTP,DHCP,DNS,Firewall,1
+MCQ,Quel outil affiche les processus actifs ?,procman,top,tasklist,psview,3
+MCQ,Que signifie “Core” dans Server Core ?,Cœur physique,Version de base sans GUI,Service principal,Réseau local,2
+MCQ,Quelle commande désactive un pare-feu ?,set fw off,disable-firewall,netsh advfirewall set allprofiles state off,fw /disable,3
+MCQ,Quel fichier stocke les logs système ?,/var/log/syslog,log.json,Event Viewer,system.evtx,4
+MCQ,Quel outil de diagnostic analyse les disques ?,diskdiag,diskcheck,Check Disk,chkdsk,4
+MCQ,Quelle commande permet d’attribuer une adresse IP ?,ipconfig /assign,net ip add,set-address,netsh interface ip set address,4
+MCQ,Quel outil est requis pour gérer les GPO depuis une autre machine ?,GPMC,RSAT,GPO Tools,DomMan,2
+MCQ,Quel service Windows gère l’activation ?,Activation.exe,Windows Licensing Service,slmgr.vbs,LicenseCenter,3
+MCQ,Quel outil graphique peut monitorer la performance ?,PerfMon,NetMon,GraphView,sysmonitor,1
+MCQ,Quel est le rôle principal du Server Manager ?,Installer et configurer un antivirus,Gérer les utilisateurs locaux,Gérer et surveiller les serveurs Windows,Créer des scripts de démarrage,3
+MCQ,Que remplace Server Manager dans Windows Server 2012 ?,Gestionnaire de périphériques,Gestionnaire de fichiers,Manage Your Server et Configure Your Server,Internet Explorer,3
+MCQ,Comment Server Manager simplifie-t-il l’administration ?,En supprimant les rôles,En centralisant les outils et l’état du système,En réduisant les fonctionnalités disponibles,En bloquant les connexions distantes,2
+MCQ,Quel outil est utilisé pour ajouter des rôles dans Server Manager ?,CMD,PowerShell,Assistant de rôles,Regedit,3
+MCQ,Comment Server Manager est-il lancé automatiquement ?,Par une tâche planifiée,Par une stratégie de groupe,Par défaut au démarrage,En cliquant sur le bureau,3
+MCQ,Qu’est-ce qu’un rôle dans Server Manager ?,Un outil graphique,Une fonction principale du serveur,Un périphérique réseau,Une mise à jour système,2
+MCQ,Qu’est-ce qu’une fonctionnalité dans Server Manager ?,Un processus système,Un logiciel antivirus,Une fonction de support du serveur,Un pare-feu,3
+MCQ,Peut-on avoir plusieurs rôles sur un même serveur ?,Non,Oui, mais seulement deux,Uniquement si le serveur est virtuel,Uniquement sur Windows Server 2003,2
+MCQ,Quel est le risque d’installer AD DS et SharePoint sur le même serveur ?,Aucune,Perte de données,Ralentissement de la RAM,Compromission de la sécurité,4
+MCQ,Où trouve-t-on le menu Shared Folders ?,Dans les services de domaine,Dans le tableau de bord de Server Manager,Dans le menu démarrer,Dans le Gestionnaire de périphériques,2
+MCQ,Quelle information trouve-t-on dans “Local Server” ?,Groupes locaux,Propriétés système,Utilisateurs distants uniquement,Comptes mail,2
+MCQ,Que permet IE ESC ?,Optimiser la navigation,Bloquer les mises à jour,Augmenter la RAM,Réduire l’exposition aux attaques web,4
+MCQ,Quel lien permet de configurer les mises à jour ?,Gérer les journaux,Configurer IE ESC,Configurer les mises à jour,Moniteur de performance,3
+MCQ,Où consulter les erreurs du système ?,Journal d'événements,Journal des utilisateurs,Historique Windows,Services,1
+MCQ,À quoi sert le Best Practice Analyzer ?,Installer un antivirus,Analyser les vulnérabilités logicielles,Proposer des bonnes pratiques de configuration,Supprimer les services inutiles,3
+MCQ,Quel élément permet de visualiser l’utilisation CPU ?,Moniteur de fiabilité,Moniteur de performance,Service DNS,Planificateur de tâches,2
+MCQ,Que permet la console “Computer Management” ?,Gérer les serveurs Linux,Gérer tous les aspects du serveur Windows,Désinstaller Server Manager,Gérer les fichiers temporaires,2
+MCQ,Quels sont les trois grands blocs de Computer Management ?,Système,Utilisateurs,Applications,Système,Stockage,Services et Applications,2
+MCQ,Où accède-t-on aux tâches planifiées ?,Services,Planificateur de tâches,Stratégies de groupe,Console AD,2
+MCQ,Que contient la section Active Tasks ?,Tâches supprimées,Tâches exécutées,Statut des tâches en cours,Utilisateurs actifs,3
+MCQ,Quel est l’intérêt des dossiers dans le planificateur de tâches ?,Classer les pilotes,Organiser les fichiers,Organiser les tâches par fonction,Créer des partitions,3
+MCQ,Quels sont les onglets d’une tâche planifiée ?,Rôles,Services,Onglets : Général, Déclencheurs, Actions, etc.,Connexions,3
+MCQ,Qu’est-ce que le WS-Management ?,Un antivirus,Un protocole SOAP pour l’administration,Un langage de programmation,Une version de Windows Update,2
+MCQ,Quelle commande configure WinRM ?,netstat -r,winrm quickconfig –q,tasklist /svc,firewall.cpl,2
+MCQ,Pourquoi créer une vue personnalisée dans Event Viewer ?,Pour supprimer les logs,Pour exporter la base de registre,Pour filtrer et sauvegarder des événements précis,Pour synchroniser les mises à jour,3
+MCQ,Quel service doit être actif pour recevoir des journaux à distance ?,DHCP,WSUS,Windows Event Collector,Firewall,3
+MCQ,À quoi sert le Moniteur de fiabilité ?,Gérer les droits d’accès,Analyser le stockage réseau,Surveiller les performances globales,Gérer les mises à jour,3
+MCQ,Quel outil permet de gérer les utilisateurs locaux ?,Console AD,Invite de commandes,Local Users and Groups,PowerShell uniquement,3
+MCQ,Quel outil gère les volumes disques ?,Gestionnaire de périphériques,Gestionnaire de volume,Gestion des disques,Performance Monitor,3
+MCQ,Que permet la copie de clichés instantanés (VSS) ?,Créer des partitions,Défragmenter le disque,Restaurer les fichiers à un instant donné,Dupliquer les logs,3
+MCQ,Qu'est-ce que WMI ?,Un antivirus,Un protocole de virtualisation,Une interface de gestion système,Un pare-feu,3
+MCQ,Où se trouve la base WMI ?,%appdata%,%windir%\System32\Wbem\Repository,%temp%,C:\WMI\,2
+MCQ,Quelle est l'évolution du pare-feu dans Windows Server 2012 ?,Il a été supprimé,Il est devenu bidirectionnel et intègre IPSec,Il utilise uniquement TCP,Il est désactivé par défaut,2
+MCQ,Qu'est-ce que IPSEC ?,Un protocole web,Un service DNS,Un protocole réseau de sécurisation du trafic,Un outil de supervision,3
+MCQ,Que permet le Service Hardening ?,Allouer plus de mémoire,Bloquer ou autoriser les services individuellement,Créer des comptes invités,Désactiver IE,2
+MCQ,Que permet le paramètre ASC ?,Bloquer toutes les connexions,Ignorer les règles de blocage avec authentification,Mettre à jour l’antivirus,Désactiver le pare-feu,2
+MCQ,Quel protocole est utilisé pour l’échange de clés ?,SNMP,DHCP,Diffie-Hellman,SSL,3
+MCQ,Quel est le rôle d’OAKLEY ?,Configurer les GPO,Générer et échanger les clés de session,Analyser les logs,Désactiver les ports,2
+MCQ,Qu'est-ce que le SA1 dans IPSEC ?,L’algorithme de hash,Le canal sécurisé pour les données,La clé principale de session,Le fichier journal,3
+MCQ,Quels protocoles peuvent protéger les paquets IPSEC ?,FTP et HTTP,AH et ESP,SMTP et DNS,IPV6 et TCP,2
+MCQ,Que fait AH ?,Hash uniquement les données,Hash le paquet entier,Crée un tunnel SSL,Chiffre les logs,2
+MCQ,Quel type de règle dans IPSEC permet l’authentification sans sécurité ?,Isolation,Exemption d’authentification,Tunnel,Serveur à serveur,2
+MCQ,Quelle règle est utilisée pour les serveurs DHCP ?,Règle Tunnel,Règle Custom,Règle d'exemption d'authentification,Règle Isolation,3
+MCQ,Quel protocole crée un tunnel sécurisé sur Internet ?,SMTP,L2TP/IPSec,POP3,IMAP,2
+MCQ,Quel outil permet de gérer Windows Firewall avec IPSec ?,GPO,Netsh ou la console MMC,PowerShell ISE uniquement,Task Manager,2
+MCQ,Par défaut, que fait le pare-feu pour les connexions entrantes ?,Les accepte,Les redirige,Les bloque,Les ignore,3
+MCQ,Comment IPSEC gère-t-il l’authentification ?,Avec les utilisateurs locaux,Via HTTP,Par clé pré-partagée ou Kerberos,Par DNS,3
+MCQ,Quel type de règle IPSEC exige l’authentification in/out pour un tunnel ?,Custom,Tunnel,Exemption,Serveur unique,2

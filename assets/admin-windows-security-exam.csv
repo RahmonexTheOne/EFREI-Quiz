@@ -1,0 +1,41 @@
+Type,Title,Choice1,Choice2,Choice3,Choice4,Correct
+MCQ,"Le site AD DS Paris est composé de deux contrôleurs de domaine DC1 et DC2. Vous utilisez un outil LDAP pour modifier l'attribut numéro de téléphone sur un objet utilisateur. L'outil cible DC1 pour l'opération. Combien de temps devez-vous attendre pour voir la valeur répliquée sur DC2 ?","Quelques secondes","Quelques minutes","Cela dépend du planning défini sur le site AD DS Paris","",1
+MCQ,"Les objets de stratégie de groupe peuvent être utilisés pour configurer quel aspect de la configuration ?","Seulement les paramètres de l'ordinateur","Les deux","Seulement l'environnement de l'utilisateur","",2
+MCQ,"Lorsque vous vous inscrivez à un service cloud de Microsoft (tel qu'Azure ou Office 365), vous obtenez automatiquement un annuaire Azure AD associé à votre locataire.","Oui","Non","","",1
+MCQ,"OpenID est un protocole appartenant à Microsoft.","Oui","Non","","",2
+MCQ,"Lorsque vous réglez la valeur du registre LDAPServerIntegrity sur vrai, cela impose l'utilisation de LDAPs pour les Simple Binds.","Oui","Non","","",1
+MCQ,"Le transfert de zone DNS doit être configuré sur une IP spécifique ou ne pas être autorisé.","Oui","Non","","",1
+MCQ,"SAM-R est un protocole qui peut être utilisé pour afficher la session de l'utilisateur sur des serveurs.","Oui","Non","","",2
+MCQ,"Pourquoi Active Directory est-il une cible idéale pour les attaquants ?","Il permet l'accès aux données financières","Il permet l'accès aux applications héritées","Il permet l'accès aux serveurs de production","Il permet l'accès à toutes les boîtes aux lettres",5
+MCQ,"Quels outils et fonctionnalités Windows peuvent être utilisés pour effectuer une copie de l'ombre de la base de données ?","WMI","LDAP","NETSH","NTP",1
+MCQ,"Quelles sont les phases génériques d'une attaque observées dans les environnements Microsoft ?","Reconnaissance/Mouvement latéral/Crédits compromis/Domination","Reconnaissance/Crédits compromis/Mouvement latéral/Domination","Crédits compromis/Reconnaissance/Mouvement latéral/Domination","",2
+MCQ,"NTLM Roasting est une technique pour déchiffrer le challenge NTLM.","Oui","Non","","",2
+MCQ,"Les FGPP sont utilisés pour ?","Appliquer le mot de passe de l'administrateur local sur les serveurs et les postes de travail","Appliquer une politique de mot de passe spécifique à un utilisateur ou à un groupe d'utilisateurs","Changer la politique de mot de passe sur un serveur local ou un poste de travail","",2
+MCQ,"Quelle est la différence entre une attaque par force brute et une attaque par pulvérisation de mots de passe ?","Une attaque par force brute est lorsque l'attaquant essaie de nombreux mots de passe différents...","Une attaque par force brute est une tentative d'essayer quelques mots de passe communs...","","",1
+MCQ,"Laquelle des pratiques suivantes facilite le mouvement latéral pour un attaquant ?","Pas de restriction réseau","Même mot de passe d'administrateur local","Pas de restriction de connexion","Toutes les réponses",4
+MCQ,"Qu'est-ce qu'une attaque Pass the ticket ?","Pass-the-Ticket est une technique de mouvement latéral dans laquelle les attaquants volent un ticket Kerberos et le déchiffrent","Pass-the-Ticket est une technique où les attaquants volent un ticket Kerberos et le réutilisent","Pass-the-Ticket est une technique de l'homme du milieu","",2
+MCQ,"Azure AD PRT ne peut pas être abusé.","Oui","Non","","",2
+MCQ,"L'attaque DCSync est une attaque de spoofing dans laquelle un attaquant prétend être un Contrôleur de Domaine...","Oui","Non","","",1
+MCQ,"Une attaque Golden Ticket est un type d'attaque où un adversaire prend le contrôle du compte KRBTGT.","Oui","Non","","",1
+MCQ,"Persistent signifie être capable de conserver des privilèges même lorsque des détections sont détectées.","Oui","Non","","",1
+MCQ,"Le pilier Infrastructure n'est pas concerné par la stratégie Zero Trust.","Oui","Non","","",2
+MCQ,"Quel est le principal objectif de la Gestion des Identités Privilegiées dans la stratégie Zero Trust et comment est-elle mise en œuvre avec Azure Active Directory ?","Assurer la gestion centralisée des identités","Gestion des accès basée sur le risque","Stockage sécurisé des identités","Synchroniser les identités entre annuaires",2
+MCQ,"Comment le concept de 'Posture Management' s'inscrit-il dans l'architecture Zero Trust de Microsoft ?","Surveillance continue et Microsoft Defender","Déploiement de pare-feux","Gestion centralisée avec Azure Security Center","Utilisation de VPN",1
+MCQ,"Quelle est l'importance de l'Évaluation Continue des Risques et de l'Automatisation dans Zero Trust ?","Analyse comportementale en temps réel","Réponse automatisée aux incidents","Protection antivirus complète","Conformité réglementaire",2
+MCQ,"Quelle est la principale fonctionnalité de Microsoft Defender pour l'Identité ?","Filtrage de contenu web","Protection contre les malwares","Analyse du trafic réseau","Gestion des mises à jour",3
+MCQ,"En quoi consiste l'approche de Microsoft en matière d'Accès Conditionnel ?","Blocage systématique pour non vérifiés","Authentification multifacteur systématique","Politiques dynamiques basées sur le contexte","Accès basé uniquement sur les rôles",3
+MCQ,"Quelle est l'une des principales fonctionnalités d'Azure AD PIM ?","Gestion automatique des mises à jour","Surveillance de l'activité réseau","Accès privilégié temporaire basé sur les rôles","Chiffrement intégral des données",3
+MCQ,"Quel est l'avantage principal de la suppression de l'accès permanent dans Azure AD PIM ?","Simplification de la délégation","Augmentation de la visibilité","Réduction de l'exposition","Toutes les réponses ci-dessus",4
+MCQ,"Quel est l'objectif de la revue d'accès dans Azure AD PIM ?","MFA avant activation de rôle","Justification d'activation de rôle","Révision de la nécessité d'un rôle","Activation temporaire de rôles",3
+MCQ,"Quelle est la recommandation principale de Microsoft pour sécuriser l'accès privilégié dans Azure AD ?","Comptes d'urgence systématiques","Synchronisation de hash de mot de passe","MFA pour tous les comptes admins","Séparation des comptes",3
+MCQ,"Quelle est la stratégie recommandée pour la gestion des rôles administratifs dans Azure AD ?","Rôles permanents pour tous","Limiter les admins globaux à <5","Utiliser des groupes pour déléguer","Activer plusieurs rôles via groupes",3
+MCQ,"Quel est le rôle principal des clés Kerberos dans Azure AD ?","Synchronisation directe des mots de passe","Génération de TGT partiels","Chiffrement des données en transit","Réplication entre forêts",2
+MCQ,"Comment Azure AD gère-t-il l'authentification avec une clé FIDO2 ?","Confiance via certificats","Nonce signé vers Azure AD","Jetons OAuth","MFA via SMS ou appels",2
+MCQ,"Quelle est la fonction de l'authentification CBA dans Azure AD ?","Authentification par mot de passe","Jetons physiques ou mobiles","Certificats X.509","Remplacement total du mot de passe",3
+MCQ,"Quel est le processus d'inscription pour Microsoft Authenticator ?","Activation 2FA par appel/SMS","Enregistrement du mobile dans Azure AD","Connexion initiale avec mot de passe","Activation par admin système",2
+MCQ,"Comment FIDO2 supporte-t-il l'authentification sans mot de passe ?","Authentification par empreinte digitale","Clés utilisant la crypto asymétrique","Reconnaissance faciale uniquement","Mobile obligatoire avec Azure AD",2
+MCQ,"Quelle est la fonction de 'userAccountControl' dans Active Directory ?","Infos de connexion","Paramètres de verrouillage","Indicateurs de sécurité","Contrôle d'accès aux ressources",3
+MCQ,"Quel est le rôle de 'userPassword' dans Active Directory ?","Mot de passe en clair","Compatibilité LDAP","Infos d'authentification MFA","Contrôle d'accès aux services",2
+MCQ,"Quelle est la meilleure pratique pour les transferts de zone DNS ?","Activer pour tous les serveurs","Restreindre à des serveurs spécifiques","Synchroniser entre forêts","Autoriser sur DNS secondaires uniquement",2
+MCQ,"Quelle est la vulnérabilité du protocole SMBv1 ?","Pas de MFA","MITM possible","Obsolète et risqué","Pas de chiffrement réseau",3
+MCQ,"Quelle mesure pour limiter l'énumération SMB ?","Limiter aux admins locaux","Désactiver complètement SMB","Utiliser SMBv1","Autoriser tous les utilisateurs",1
