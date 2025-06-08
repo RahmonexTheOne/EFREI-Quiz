@@ -188,7 +188,30 @@ def start_screen(app):
     canvas.tag_bind(card3_id, "<Enter>", lambda e, cid=card3_id: on_enter(e, cid))
     canvas.tag_bind(card3_id, "<Leave>", lambda e, cid=card3_id: on_leave(e, cid))
 
-    # 10) Reset quiz state + redraw progress bar:
+    # ─────────────────────────────────────────────────────────────────────────
+    # 10) Fourth card (Orchestration et containers) below Admin & Sec Win:
+    # ─────────────────────────────────────────────────────────────────────────
+    y1_4 = y2_3 + gap
+    y2_4 = y1_4 + card_h
+    card4_id = app.draw_rounded_rectangle(
+        canvas, x1, y1_4, x2, y2_4,
+        radius=radius,
+        fill=app.colors[app.theme]["card"],
+        outline=app.colors[app.theme]["shadow"]
+    )
+    canvas.create_text(
+        cx, y1_4 + card_h // 2,
+        text="Orchestration et Containers",
+        font=("Montserrat", 14),
+        fill=app.colors[app.theme]["fg"],
+        width=card_w - 40,
+        justify="center"
+    )
+    canvas.tag_bind(card4_id, "<Button-1>", lambda e: app.play_quiz("assets/docker_orchestration.csv"))
+    canvas.tag_bind(card4_id, "<Enter>", lambda e, cid=card4_id: on_enter(e, cid))
+    canvas.tag_bind(card4_id, "<Leave>", lambda e, cid=card4_id: on_leave(e, cid))
+
+    # 11) Reset quiz state + redraw progress bar:
     app.answers_outcome = []
     app.update_progress_bar()
 
