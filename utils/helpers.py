@@ -1,4 +1,6 @@
 import pandas as pd
+import sys
+import os
 
 def get_theme_colors(theme):
     return {
@@ -26,3 +28,8 @@ def draw_rounded_rectangle(canvas, x1, y1, x2, y2, radius=25, **kwargs):
         x1, y2-radius, x1, y1+radius, x1, y1
     ]
     return canvas.create_polygon(points, **kwargs, smooth=True)
+
+def resource_path(rel_path):
+    """Get absolute path to resource, works for dev and for PyInstaller."""
+    base = getattr(sys, "_MEIPASS", os.path.dirname(__file__))
+    return os.path.join(base, rel_path)           

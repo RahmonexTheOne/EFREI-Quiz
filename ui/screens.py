@@ -3,6 +3,9 @@ import re
 import pandas as pd
 from PIL import Image, ImageTk
 import textwrap
+import sys, os
+
+from utils.helpers import resource_path
 
 
 def home_screen(app):
@@ -13,7 +16,7 @@ def home_screen(app):
     screen_w = app.master.winfo_screenwidth()
     screen_h = app.master.winfo_screenheight()
 
-    bg_image = Image.open("assets/background_menu.png").resize((screen_w, screen_h))
+    bg_image = Image.open(resource_path("assets/background_menu.png")).resize((screen_w, screen_h))
     app.bg_home_tk = ImageTk.PhotoImage(bg_image)
 
     canvas = tk.Canvas(app.master, width=screen_w, height=screen_h, highlightthickness=0)
@@ -35,7 +38,7 @@ def home_screen(app):
     cy = screen_h // 2
 
     # 4) Instead of text, load & draw title.png (transparent) at center:
-    title_image = Image.open("assets/title.png").convert("RGBA")
+    title_image = Image.open(resource_path("assets/title.png")).convert("RGBA")
     app.title_tk = ImageTk.PhotoImage(title_image)
     # Adjust the y‐offset (here: –30) so the image sits roughly where the text used to be
     canvas.create_image(cx, cy - 80, image=app.title_tk, anchor="center")
@@ -60,10 +63,6 @@ def home_screen(app):
     app.answers_outcome = []
     app.update_progress_bar()
 
-
-import tkinter as tk
-from PIL import Image, ImageTk
-
 def start_screen(app):
     # 1) Clear everything except progress bar + menu_btn:
     app.clear_window()
@@ -72,7 +71,7 @@ def start_screen(app):
     screen_w = app.master.winfo_screenwidth()
     screen_h = app.master.winfo_screenheight()
 
-    bg_image = Image.open("assets/background_menu.png").resize((screen_w, screen_h))
+    bg_image = Image.open(resource_path("assets/background_menu.png")).resize((screen_w, screen_h))
     app.bg_start_tk = ImageTk.PhotoImage(bg_image)
 
     canvas = tk.Canvas(app.master, width=screen_w, height=screen_h, highlightthickness=0)
@@ -140,7 +139,7 @@ def start_screen(app):
         width=card_w - 40,
         justify="center"
     )
-    canvas.tag_bind(card1_id, "<Button-1>", lambda e: app.play_quiz("assets/ldap.csv"))
+    canvas.tag_bind(card1_id, "<Button-1>", lambda e: app.play_quiz(resource_path("assets/ldap.csv")))
     canvas.tag_bind(card1_id, "<Enter>", lambda e, cid=card1_id: on_enter(e, cid))
     canvas.tag_bind(card1_id, "<Leave>", lambda e, cid=card1_id: on_leave(e, cid))
 
@@ -161,7 +160,7 @@ def start_screen(app):
         width=card_w - 40,
         justify="center"
     )
-    canvas.tag_bind(card2_id, "<Button-1>", lambda e: app.play_quiz("assets/devops.csv"))
+    canvas.tag_bind(card2_id, "<Button-1>", lambda e: app.play_quiz(resource_path("assets/devops.csv")))
     canvas.tag_bind(card2_id, "<Enter>", lambda e, cid=card2_id: on_enter(e, cid))
     canvas.tag_bind(card2_id, "<Leave>", lambda e, cid=card2_id: on_leave(e, cid))
 
@@ -207,7 +206,7 @@ def start_screen(app):
         width=card_w - 40,
         justify="center"
     )
-    canvas.tag_bind(card4_id, "<Button-1>", lambda e: app.play_quiz("assets/docker_orchestration.csv"))
+    canvas.tag_bind(card4_id, "<Button-1>", lambda e: app.play_quiz(resource_path("assets/docker_orchestration.csv")))
     canvas.tag_bind(card4_id, "<Enter>", lambda e, cid=card4_id: on_enter(e, cid))
     canvas.tag_bind(card4_id, "<Leave>", lambda e, cid=card4_id: on_leave(e, cid))
 
@@ -225,7 +224,7 @@ def admin_security_screen(app):
     screen_w = app.master.winfo_screenwidth()
     screen_h = app.master.winfo_screenheight()
 
-    bg_image = Image.open("assets/background_menu.png").resize((screen_w, screen_h))
+    bg_image = Image.open(resource_path("assets/background_menu.png")).resize((screen_w, screen_h))
     app.bg_admin_tk = ImageTk.PhotoImage(bg_image)
 
     canvas = tk.Canvas(app.master, width=screen_w, height=screen_h, highlightthickness=0)
@@ -277,7 +276,7 @@ def admin_security_screen(app):
         padx=30,
         pady=10,
         cursor="hand2",
-        command=lambda: app.play_quiz("assets/admin-windows-security-exam.csv")
+        command=lambda: app.play_quiz(resource_path("assets/admin-windows-security-exam.csv"))
     )
     # On “pose” le bouton sur le même Canvas (sous-jacent) :
     canvas.create_window(
@@ -299,7 +298,7 @@ def admin_security_screen(app):
         padx=30,
         pady=10,
         cursor="hand2",
-        command=lambda: app.play_quiz("assets/admin-windows-security.csv")
+        command=lambda: app.play_quiz(resource_path("assets/admin-windows-security.csv"))
     )
     canvas.create_window(
         cx + btn_spacing // 2,  # moitié de l’espacement à droite du centre
@@ -346,7 +345,7 @@ def display_mcq_question(app, q_data, override_choices=None):
     screen_w = app.master.winfo_screenwidth()
     screen_h = app.master.winfo_screenheight()
 
-    bg_image = Image.open("assets/background_menu.png").resize((screen_w, screen_h))
+    bg_image = Image.open(resource_path("assets/background_menu.png")).resize((screen_w, screen_h))
     app.bg_question_tk = ImageTk.PhotoImage(bg_image)
 
     bg_canvas = tk.Canvas(
@@ -475,7 +474,7 @@ def display_mcq_question(app, q_data, override_choices=None):
     # ────────────────────────────────────────────────────────────────────────────
     # Load & resize your timer PNG to a 60×60 square:
     #    (assumes "assets/timer_box.png" is a transparent circle or stopwatch‐shaped image)
-    timer_img = Image.open("assets/timer_box.png").convert("RGBA").resize((60, 60))
+    timer_img = Image.open(resource_path("assets/timer_box.png")).convert("RGBA").resize((60, 60))
     app.timer_img_tk = ImageTk.PhotoImage(timer_img)
 
     # Create a Canvas exactly 60×60 px, with the same background as the card:
@@ -706,7 +705,7 @@ def display_fill_question(app, q_data):
     screen_w = app.master.winfo_screenwidth()
     screen_h = app.master.winfo_screenheight()
 
-    bg_image = Image.open("assets/background_menu.png").resize((screen_w, screen_h))
+    bg_image = Image.open(resource_path("assets/background_menu.png")).resize((screen_w, screen_h))
     app.bg_fill_tk = ImageTk.PhotoImage(bg_image)
 
     bg_canvas = tk.Canvas(app.master, width=screen_w, height=screen_h, highlightthickness=0)
@@ -861,7 +860,7 @@ def show_result(app):
     screen_w = app.master.winfo_screenwidth()
     screen_h = app.master.winfo_screenheight()
 
-    bg_image = Image.open("assets/background_menu.png").resize((screen_w, screen_h))
+    bg_image = Image.open(resource_path("assets/background_menu.png")).resize((screen_w, screen_h))
     app.bg_result_tk = ImageTk.PhotoImage(bg_image)
 
     bg_canvas = tk.Canvas(app.master, width=screen_w, height=screen_h, highlightthickness=0)

@@ -3,8 +3,11 @@ import pandas as pd
 import tkinter as tk
 from PIL import Image, ImageTk
 import tkinter.messagebox
+import sys, os
+
 from ui.screens import home_screen, start_screen, play_quiz
 from utils.helpers import get_theme_colors, draw_rounded_rectangle
+from utils.helpers import resource_path
 
 class QuizApp:
     def __init__(self, master):
@@ -17,7 +20,7 @@ class QuizApp:
         self.overlay_frame = None
 
         # ─── Load menu PNG (32×32) ───
-        menu_image = Image.open("assets/menu.png").convert("RGBA").resize((32, 32))
+        menu_image = Image.open(resource_path("assets/menu.png")).convert("RGBA").resize((32, 32))
         self.menu_icon = ImageTk.PhotoImage(menu_image)
 
         # ─── Progress bar (same as before) ───
@@ -31,7 +34,7 @@ class QuizApp:
         self.master.bind("<Configure>", lambda e: self.update_progress_bar())
 
         # ─── Initial data, etc. ───
-        self.data = pd.read_csv("assets/ldap.csv")
+        self.data = pd.read_csv(resource_path("assets/ldap.csv"))
         self.current_question = 0
         self.selected_answers = set()
         self.answers_outcome = []
@@ -64,7 +67,7 @@ class QuizApp:
 
     def admin_security_screen(self):
         from ui.screens import admin_security_screen
-        admin_security_screen(self)    
+        admin_security_screen(self) 
         
 
     def show_menu(self):
@@ -84,7 +87,7 @@ class QuizApp:
         self.overlay_frame.place(relx=0, rely=0, relwidth=1, relheight=1)
 
         # 2) Draw the background_menu.png stretched to fill the window
-        bg_image = Image.open("assets/background_menu.png").resize((w, h))
+        bg_image = Image.open(resource_path("assets/background_menu.png")).resize((w, h))
         self.menu_bg_tk = ImageTk.PhotoImage(bg_image)
         self.overlay_frame.create_image(0, 0, image=self.menu_bg_tk, anchor="nw")
 
