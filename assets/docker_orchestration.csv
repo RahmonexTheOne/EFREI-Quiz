@@ -1,0 +1,292 @@
+Type,Title,Choice1,Choice2,Choice3,Choice4,Correct
+MCQ,What is the primary role of Docker in container orchestration?,Monitor network performance,Automate deployment of containerized applications,Manage virtual machines,Compile source code,2
+MCQ,Which command builds a Docker image from a Dockerfile?,docker build,docker pull,docker commit,docker run,1
+MCQ,Which Dockerfile instruction specifies the base image?,ENTRYPOINT,CMD,RUN,FROM,4
+MCQ,Which docker run option publishes a container port to the host?,-P,-p,--network,-v,2
+MCQ,Which command lists running Docker containers?,docker ls,docker ps,docker images,docker containers list,2
+MCQ,Which command removes all stopped containers and unused images?,docker system prune,docker rm --all,docker cleanup,docker prune all,1
+MCQ,Which field in docker-compose.yml specifies the syntax version?,syntaxVersion,apiVersion,version,composeVersion,3
+MCQ,Which kubectl command lists pods in the default namespace?,kubectl list pods,kubectl ps,kubectl get pods,kubectl pods,3
+MCQ,Which kubectl command provides full details about a pod?,kubectl explain pod <name>,kubectl inspect pod <name>,kubectl info pod <name>,kubectl describe pod <name>,4
+MCQ,Which type of Kubernetes Service exposes only an internal cluster?,ClusterIP,LoadBalancer,ExternalName,NodePort,1
+MCQ,Which type of Kubernetes Service opens a port on all cluster nodes?,NodePort,ClusterIP,Ingress,LoadBalancer,1
+MCQ,Which Kubernetes resource isolates resources within the same cluster?,Zone,Namespace,Project,Context,2
+MCQ,Which command applies a Kubernetes configuration file?,kubectl apply -f,kubectl create -f,kubectl set -f,kubectl run -f,1
+MCQ,Which Helm file defines the default values of the chart?,Defaults.yaml,values.yaml,Chart.yaml,Config.yaml,2
+MCQ,Which command installs a Helm chart named myapp from the current directory?,helm install myapp ./,helm run myapp ./,helm install myapp /charts/myapp,helm deploy myapp ./,1
+MCQ,Which kubectl integrated tool deploys Kustomize manifests?,kubectl build -k,kubectl edit -k,kubectl kustomize,kubectl apply -k,4
+MCQ,Which YAML directive references an alias defined by & elsewhere?,&,*,#,@,2
+MCQ,Which file is used to exclude files during Docker image build?,.dockerignore,.ignore,dockerignore.txt,docker.exclude,1
+MCQ,Which command shows logs of a container named web?,docker log web,docker logs web,docker logs --web,docker show logs web,2
+MCQ,Which Dockerfile directive sets the container's entry point?,ENTRYPOINT,WORKDIR,CMD,EXPOSE,1
+MCQ,Which Dockerfile directive adds metadata as labels?,ANNOTATE,ENV,MAINTAINER,LABEL,4
+MCQ,Which Kubernetes command scales a deployment named frontend to 5 replicas?,kubectl resize deployment frontend --count=5,kubectl scale deployment frontend --replicas=5,kubectl update deployment frontend --replicas=5,kubectl set replicas deployment frontend 5,2
+MCQ,Which Kubernetes resource stores sensitive data encoded in base64?,Volume,ConfigMap,Secret,PersistentVolumeClaim,3
+MCQ,Which kubectl option forwards a local port to a pod named mypod?,kubectl net-forward mypod --port,kubectl proxy --pod mypod,kubectl port-forward pod/mypod 8080:80,kubectl forward-port mypod 8080:80,3
+MCQ,Which command creates a namespace named test?,kubectl init namespace test,kubectl add namespace test,kubectl new namespace test,kubectl create namespace test,4
+MCQ,Which type of Docker volume mounts a host directory into the container?,Tmpfs mount,Bind mount,Volume,Docker-managed volume,2
+MCQ,Which type of Docker volume is managed by Docker and stored in /var/lib/docker/volumes?,Host mount,Volume,Overlay mount,Bind mount,2
+MCQ,Which Kubernetes deployment strategy updates one pod at a time?,Recreate,BlueGreen,RollingUpdate,Canary,3
+MCQ,Which deployment strategy recreates all pods before applying the new version?,Canary,RollingUpdate,BlueGreen,Recreate,4
+MCQ,Which command deletes a deployment named backend?,kubectl remove deployment backend,kubectl delete backend deployment,kubectl destroy deployment backend,kubectl delete deployment backend,4
+MCQ,Which Dockerfile directive sets an environment variable?,ENV,ARG,VAR,SET,1
+MCQ,Which Dockerfile directive specifies a build-time-only variable?,SET,ARG,ENV,BUILD,2
+MCQ,Which Kubernetes component orchestrates objects and communicates with the etcd API?,kube-proxy,kube-controller-manager,kube-scheduler,kube-apiserver,4
+MCQ,Which Kubernetes component routes incoming network traffic to pods?,kube-controller-manager,kube-proxy,kube-scheduler,kubelet,2
+MCQ,Which Kubernetes component schedules pod creation on available nodes?,kube-proxy,kubelet,kube-scheduler,kube-apiserver,3
+MCQ,Which field in a Kubernetes Service manifest specifies labels to select pods?,matchLabels,labels,serviceLabels,selector,4
+MCQ,Which command builds a Kubernetes manifest without applying it?,kubectl create --dry-run=client -f,kubectl plan -f,kubectl create --check -f,kubectl apply --plan,1
+MCQ,Which Kustomize directive prefixes resource names?,commonLabels,namePrefix,configMapGenerator,patchesStrategicMerge,2
+MCQ,Which Helm command updates a chart's dependencies?,helm chart deps,helm requirements build,helm dep build,helm dependency update,4
+MCQ,Which directive in a service section of docker-compose.yml mounts a volume?,binds,volumes,mounts,links,2
+MCQ,What does kubectl kustomize output to stdout?,patch files,kustomization output,merged manifests,metadata list,3
+MCQ,Which command uninstalls a Helm chart named mychart?,helm uninstall mychart,helm delete mychart,helm purge mychart,helm remove mychart,1
+MCQ,Which agent runs Kubernetes pods on each node?,kube-proxy,kubelet,kube-scheduler,kube-controller-manager,2
+MCQ,Which Docker command provides detailed information about a container named app?,docker inspect app,docker show app,docker details app,docker info app,1
+MCQ,Which type of Docker network creates an isolated default network for containers?,overlay,none,bridge,host,3
+MCQ,Which type of Docker network shares the host's network namespace?,none,overlay,host,bridge,3
+MCQ,Which Docker command creates a context named prod?,docker context new prod,docker context add prod,docker context init prod,docker context create prod,4
+MCQ,What is the default storage driver used by Docker on Linux?,btrfs,devicemapper,aufs,overlay2,4
+MCQ,Which command tags a local Docker image with a new repository name?,docker repo add,docker rename,docker commit,docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG],4
+MCQ,Which Docker Compose command rebuilds images before starting containers?,docker-compose start --build,docker-compose run --build,docker-compose up --build,docker-compose build,3
+MCQ,What is the default network driver created by Docker Compose?,none,overlay,host,bridge,4
+MCQ,Which Kubernetes object defines the desired state for a set of pods?,DaemonSet,Deployment,StatefulSet,ReplicaSet,4
+MCQ,Which Kubernetes resource ensures that a copy of a pod runs on every node?,StatefulSet,Deployment,DaemonSet,ReplicaSet,3
+MCQ,Which Kubernetes object manages stateful applications with stable network identities?,ReplicaSet,Job,Deployment,StatefulSet,4
+MCQ,Which Kubernetes resource creates pods that run to completion and do not restart?,Job,ReplicaSet,Deployment,CronJob,1
+MCQ,Which Kubernetes object schedules jobs to run periodically?,Job,CronJob,ReplicaSet,Deployment,2
+MCQ,Which type of Kubernetes Service uses a cloud provider's load balancer?,LoadBalancer,ClusterIP,ExternalName,NodePort,1
+MCQ,Which type of Kubernetes Service maps a service to a DNS CNAME record?,NodePort,ExternalName,ClusterIP,LoadBalancer,2
+MCQ,Which file stores Kubernetes client authentication and cluster connection information?,credentials.json,config.yaml,chart.yaml,kubeconfig,4
+MCQ,Which command displays the current Kubernetes context?,kubectl describe context,kubectl get context,kubectl config current-context,kubectl show context,3
+MCQ,Which command lists all available Kubernetes contexts?,kubectl config get-contexts,kubectl get contexts,kubectl list contexts,kubectl show contexts,1
+MCQ,Which flag filters Kubernetes resources by label?,--filter,--selector,-l,--match-label,3
+MCQ,Which command deletes all pods with the label app=nginx?,kubectl delete pod app=nginx,kubectl remove pods -l app=nginx,kubectl rm pods app=nginx,kubectl delete pods -l app=nginx,4
+MCQ,Which field in a Pod spec defines the command to execute inside the container?,entrypoint,command,run,args,2
+MCQ,Which field in a Pod spec defines arguments passed to the command?,options,parameters,args,command,3
+MCQ,Which probe in Kubernetes checks if a container is ready to serve traffic?,livenessProbe,startupProbe,readinessProbe,execProbe,3
+MCQ,Which probe in Kubernetes checks if a container is still alive?,healthProbe,livenessProbe,readinessProbe,startupProbe,2
+MCQ,Which probe type can be used to check application startup before other probes?,initialProbe,readinessProbe,startupProbe,livenessProbe,3
+MCQ,Which metric does the Horizontal Pod Autoscaler use by default?,Network I/O,Memory usage,CPU utilization,Disk I/O,3
+MCQ,Which Kubernetes resource configures automatic scaling of pods?,ClusterAutoscaler,HorizontalPodAutoscaler,PodDisruptionBudget,VerticalPodAutoscaler,2
+MCQ,Which kubectl command shows resource usage metrics for pods and nodes?,kubectl stats,kubectl metrics,kubectl usage,kubectl top,4
+MCQ,Which Kubernetes API group is used by CustomResourceDefinitions (CRDs)?,apiextensions.k8s.io,apps,extensions,kustomize.config.k8s.io,1
+MCQ,Which field in a PersistentVolumeClaim specifies the StorageClass to use?,storageClassName,claimClassName,className,storageClass,1
+MCQ,Which field in a PersistentVolumeClaim requests the storage size?,resources.requests.storage,resources.storage,storage,capacity,1
+MCQ,Which Kubernetes resource limits the number of objects that can be created in a namespace?,ResourceQuota,LimitRange,ObjectQuota,NamespaceQuota,1
+MCQ,Which Kubernetes resource defines default CPU and memory limits in a namespace?,DefaultLimits,ResourceQuota,LimitRange,NamespaceLimits,3
+MCQ,Which command displays cluster information including endpoints?,kubectl info cluster,kubectl cluster-info,kubectl get clusters,kubectl config view,2
+MCQ,Which Kubernetes component runs on each node and manages pod lifecycle?,kubelet,kube-controller-manager,kube-scheduler,kube-proxy,1
+MCQ,Which container pattern in Kubernetes runs helper containers alongside the main container?,sidecar,ephemeral,ambassador,init,1
+MCQ,Which container type runs before application containers start to perform setup tasks?,initContainer,ephemeral,sidecar,hostContainer,1
+MCQ,Which container pattern uses a container to proxy or mediate communication to the outside of the pod?,init,ambassador,proxyContainer,sidecar,2
+MCQ,Which Kubernetes container type is used for debugging purposes and can be added to running pods?,initContainer,ephemeralContainer,debugContainer,sidecarContainer,2
+MCQ,Which Docker command logs into a container registry?,docker push,docker pull,docker login,docker registry login,3
+MCQ,Which Docker command pushes an image to a registry?,docker push,docker publish,docker send,docker upload,1
+MCQ,Which Docker command pulls an image from a registry?,docker download,docker fetch,docker import,docker pull,4
+MCQ,Which environment variable should be used to set an HTTP proxy for Docker builds?,DOCKER_HTTP_PROXY,BUILD_PROXY,HTTP_PROXY,HTTPS_PROXY,3
+MCQ,Which Docker feature allows using multiple FROM instructions to minimize final image size?,layer caching,multi-stage build,buildkit,image squashing,2
+MCQ,Which environment variable should be set to exclude addresses from proxying?,SKIP_PROXY,EXCLUDE_PROXY,HTTP_NO_PROXY,NO_PROXY,4
+MCQ,Which Docker command removes build cache and intermediate images?,docker prune build,docker builder prune,docker system prune,docker image prune,2
+MCQ,Which CNI plugin for Kubernetes supports network policy enforcement and advanced features?,Flannel,Canal,Weave Net,Calico,4
+MCQ,Which Kubernetes resource defines L7 HTTP routing rules?,Route,Ingress,NetworkPolicy,Service,2
+MCQ,Which Kubernetes resource defines rules to allow or block traffic between pods?,Ingress,TrafficPolicy,NetworkPolicy,ServicePolicy,3
+MCQ,Which file in a Helm chart is conventionally used to define helper templates?,Chart.yaml,values.yaml,templates/README.md,_helpers.tpl,4
+MCQ,What is the default namespace called in Kubernetes?,kube-system,kube-public,default,system-default,3
+MCQ,Which command sets a context in kubeconfig as current?,kubectl set-context,kubectl use-context,kubectl config use-context,kubectl config current-context,3
+MCQ,Which Helm command upgrades a release named myapp to the version in the current chart directory?,helm deploy myapp ./,helm update myapp ./,helm install myapp ./,helm upgrade myapp ./,4
+MCQ,Which Kustomize field allows you to generate a ConfigMap from literal key-value pairs?,configMapGenerator,secretGenerator,generatorOptions,resources,1
+MCQ,Which Kustomize feature allows you to apply JSON6902 patches?,strategicMergePatches,patchesJson6902,patches,resourcesPatches,2
+MCQ,Which docker run flag allocates a pseudo-TTY and attaches STDIN?,-i,-tty,-it,-t,4
+MCQ,Which docker run flag keeps STDIN open even if not attached?,-it,-tty,-t,-i,4
+MCQ,Which docker run shorthand opens an interactive TTY session?,-interactive,-ti,-it,-i -t,2
+MCQ,Which command shows the history of an image’s layers?,docker info,docker history,docker images,docker inspect,2
+MCQ,Which Dockerfile directive exposes a port to the host?,EXPOSE,OPEN,INGRESS,PORT,1
+MCQ,Which Compose restart policy always restarts a container on exit?,restart: on-failure,restart: no,restart: unless-stopped,restart: always,4
+MCQ,Which Compose directive sets environment variables for a service?,environment,vars,env_file,env,1
+MCQ,Which Compose key adds entries to a container’s /etc/hosts file?,aliases,network_hosts,extra_hosts,hosts,3
+MCQ,Which Compose option specifies the CPU limit for a container?,deploy.resources.cpus,cpus,cpu_limit,resources.limits.cpus,2
+MCQ,Which Kubernetes resource binds a PersistentVolume to a claim?,PersistentVolume,PersistentVolumeClaim,VolumeBinding,StorageClass,2
+MCQ,Which field in a Pod spec defines volume mounts inside containers?,volumeMounts,volumes,mounts,bindMounts,1
+MCQ,Which kubectl command edits a live resource using the default editor?,kubectl patch,kubectl edit,kubectl apply,kubectl replace,2
+MCQ,Which JSONPath expression retrieves all pod names?,{.items.metadata.name},{.podNames},{.items[*].metadata.name},{.metadata.name},3
+MCQ,Which output flag prints resources in Go template format?,-o custom-columns,-o jsonpath,-o template,-o go-template,4
+MCQ,Which output flag prints resources in JSON format?,-o json,--json,--output=json,-o yaml,1
+MCQ,Which Helm template function returns a default value if the variable is undefined?,toYaml,required,default,include,3
+MCQ,Which directory in a Helm chart holds Kubernetes resource templates?,charts,values,templates,metadata,3
+MCQ,Which object holds the release name inside a Helm template?,.Values.ReleaseName,.Chart.Name,Release.Name,.Release.Name,4
+MCQ,Which Docker volume driver uses the local filesystem by default?,glusterfs,volume-driver-nfs,nfs,local,4
+MCQ,Which Compose option defines the build context for an image?,source,context,path,build,4
+MCQ,Which kubectl command replaces an existing resource from a file?,kubectl replace -f,kubectl create -f,kubectl update -f,kubectl apply -f,1
+MCQ,Which Kustomize directive disables the name suffix hash?,disableSuffixHash,disableNameSuffixHash,nameSuffix,suffixHash,2
+MCQ,Which type of Kubernetes Service maps to an external DNS CNAME record?,NodePort,LoadBalancer,ExternalName,ClusterIP,3
+MCQ,Which kubectl command applies a JSON patch to a resource?,kubectl apply patch,kubectl patch,kubectl patch resource,kubectl edit patch,2
+MCQ,Which Kustomize feature adds common labels to all resources?,commonLabels,metadataLabels,labels,globalLabels,1
+MCQ,Which field in Chart.yaml specifies the chart version?,apiVersion,appVersion,version,name,3
+MCQ,Which Chart.yaml directive lists chart dependencies?,requirements,dependencies,charts,dependenciesChart,2
+MCQ,Which Compose file version introduced the healthcheck instruction?,3.1,2.1,2.0,3.0,2
+MCQ,Which Kubernetes Secret type stores Docker registry credentials?,Opaque,kubernetes.io/basic-auth,kubernetes.io/tls,kubernetes.io/dockerconfigjson,4
+MCQ,Which field in a NetworkPolicy spec defines allowed ingress peers?,from,ingress,to,peers,1
+MCQ,Which field in an Ingress spec defines host and path rules?,rules,httpRules,spec.rules,pathRules,1
+MCQ,Which shorthand command lists StorageClasses?,kubectl get sc,kubectl get storageclasses,kubectl get scs,kubectl get storageclass,1
+MCQ,Which kubectl command shows a resource in YAML format?,kubectl output pod mypod,kubectl show pod mypod,kubectl describe pod mypod,kubectl get pod mypod -o yaml,4
+MCQ,Which resource restricts voluntary pod evictions during node maintenance?,DisruptionBudget,PodDisruptionBudget,PDB,EvictionPolicy,2
+MCQ,Which Helm command rolls back a release to a previous revision?,helm revert,helm rollback,helm undo,helm history,2
+MCQ,Which Dockerfile directive flattens image layers during build?,squash,combine,flatten,merge,1
+MCQ,Which kubectl command cordons a node to prevent new pods scheduling?,kubectl drain,kubectl mark unschedulable,kubectl unschedulable,kubectl cordon,4
+MCQ,Which kubectl command uncordons a node to allow pod scheduling?,kubectl sched,kubectl uncordon,kubectl schedallow,kubectl allow-sched,2
+MCQ,Which field in a Deployment spec sets maxSurge pods during rolling update?,maxUnavailable,unavailable,surgeLimit,maxSurge,4
+MCQ,Which field in a Deployment spec sets maxUnavailable pods during rolling update?,unavailablePods,maxSurge,surgeMax,maxUnavailable,4
+MCQ,Which kubectl command generates bash shell completion scripts?,kubectl complete,kubectl completion bash,kubectl gen-completion,kubectl completion,2
+MCQ,Which Kustomize generator creates secret objects from literal values?,secretGenerator,secretBuilder,secretCreator,configMapGenerator,1
+MCQ,Which Kustomize field specifies common annotations for all resources?,commonAnnotations,globalAnnotations,metaAnnotations,annotations,1
+MCQ,Which kubectl command lists all nodes in the cluster?,kubectl get node,kubectl nodes,kubectl get nodes,kubectl describe nodes,3
+MCQ,Which Compose key controls service startup order based on dependencies?,links,depends,requires,depends_on,4
+MCQ,What environment variable enables BuildKit for a Docker build?,export BUILDKIT=1 docker build,docker build --buildkit,enable buildkit,DOCKER_BUILDKIT=1 docker build,4
+MCQ,Which command lists available Docker contexts?,docker context list,docker context ls,docker contexts,docker ctx ls,2
+MCQ,Which command switches to the Docker context named dev?,docker context use dev,docker ctx select dev,docker use-context dev,context switch dev,1
+MCQ,Which Docker logging driver writes JSON-formatted logs to a local file?,journald,json-file,fluentd,syslog,2
+MCQ,Which field in a Pod spec defines affinity and anti-affinity rules?,tolerations,selector,placement,affinity,4
+MCQ,Which field on a Node object specifies its taints?,spec.taints,status.taints,metadata.taints,data.taints,1
+MCQ,Which key in a kustomization.yaml file references other kustomizations or resource manifests?,bases,patches,resources,components,3
+MCQ,Which Kustomize directive is used to update container image tags?,imageTags,images,imageUpdates,patches,2
+MCQ,Which Helm hook is executed before a chart installation?,pre-upgrade,pre-install,post-install,post-upgrade,2
+MCQ,Which Helm hook runs after a release is uninstalled?,pre-uninstall,post-uninstall,pre-delete,post-delete,4
+MCQ,Which Helm command renders chart templates locally without installing?,helm render,helm template,helm show manifest,helm install --dry-run,2
+MCQ,Which Helm template function converts a data structure into YAML format?,indent,merge,toYaml,fromYaml,3
+MCQ,Which Helm template function injects the output of a named template?,template,render,partial,include,4
+MCQ,Which field in a Helm chart's values.yaml typically sets the default image pull policy?,pullPolicy,image.pullPolicy,chart.pullPolicy,global.pullPolicy,2
+MCQ,Which Docker Compose file version introduced support for extension fields (x-)?,2.1,3.2,3.4,3.7,3
+MCQ,Which Docker Compose feature enables enabling or disabling a subset of services?,profiles,services,groups,includes,1
+MCQ,Which field under a network definition in docker-compose.yml marks the network as external?,external_networks,external: true,external,externalNetworks,3
+MCQ,Which docker run flag sets the hostname inside the container?,--name,-h,--host,--hostname,4
+MCQ,Which docker run option creates a network link between containers?,--connect,--network,--link,links,3
+MCQ,Which Docker Compose field overrides the default container entrypoint?,init,command,overrideEntrypoint,entrypoint,4
+MCQ,Which kubectl option retrieves logs from a previously terminated pod instance?,-prev,--previous,--last,-p,4
+MCQ,Which kubectl command displays the restart count for each pod?,kubectl describe pods,kubectl get pods -o yaml,kubectl get pods,kubectl get pods -o wide,3
+MCQ,Which kubectl subcommand uses the eviction API to gracefully evict a pod?,kubectl evict <pod>,kubectl delete pod/<pod> --evict,kubectl evict pod/<pod>,kubectl drain node/<node>,3
+MCQ,Which lifecycle hook in a container executes immediately after it starts?,postRun,readinessProbe,preStop,postStart,4
+MCQ,Which lifecycle hook in a container executes just before the container is terminated?,preStop,postStart,terminationHook,shutdown,1
+MCQ,Which update strategy for a StatefulSet updates pods in ordinal order one by one?,BlueGreen,OnDelete,RollingUpdate,Recreate,3
+MCQ,Which PersistentVolumeClaim access mode allows multiple nodes to read and write?,ReadWriteMany,ReadWriteOnce,ReadOnlyOnce,ReadOnlyMany,1
+MCQ,Which plugin interface in Kubernetes enables pluggable storage drivers?,FlexVolume,CSI,In-tree,HostPath,2
+MCQ,Which kubectl command provides detailed information about a node's status?,kubectl describe node <name>,kubectl info node <name>,kubectl get node <name> -o yaml,kubectl show node <name>,1
+MCQ,Which field in a Pod spec applies a nodeSelector to schedule pods on labeled nodes?,spec.nodeLabels,metadata.nodeSelector,nodeLabels,spec.nodeSelector,4
+MCQ,Which field in a Pod spec balances pod placement across failure domains?,nodeAffinity,topologySpreadConstraints,podAntiAffinity,affinity,2
+MCQ,Which kubectl flag performs a client-side dry-run without contacting the API server?,--validate,--check,--dry-run=server,--dry-run=client,4
+MCQ,Which Kubernetes CNI plugin uses etcd as its datastore and supports network policies?,Calico,Weave,Canal,Flannel,1
+MCQ,Which kubectl command shows differences between the local manifest and live cluster resources?,kubectl cmp,kubectl preview,kubectl diff,kubectl compare,3
+MCQ,Which Helm command analyzes a chart for possible issues and errors?,helm lint,helm check,helm test,helm validate,1
+MCQ,Which Helm command executes tests defined within a chart after installation?,helm verify,helm run test,helm test,helm check test,3
+MCQ,Which Helm command retrieves the values for an installed release?,helm values,helm show values,helm get values,helm list values,3
+MCQ,Which Helm command downloads a chart from a repository without installing it?,helm fetch,helm get chart,helm download,helm pull,4
+MCQ,Which kubectl command copies files and directories to and from containers?,kubectl copy,kubectl cp,kubectl scp,kubectl transfer,2
+MCQ,Which field under the build section in docker-compose.yml defines build-time arguments?,variables,build_args,args,env_file,3
+MCQ,Which Kustomize generator creates Kubernetes Secret objects from literal values or files?,secretBuilder,resourceGenerator,secretGenerator,configMapGenerator,3
+MCQ,Which Kubernetes object limits total CPU and memory usage per namespace?,LimitRange,ResourceQuota,NamespaceLimit,QuotaSpec,2
+MCQ,Which container runtime implements the Kubernetes CRI and is used by default since the deprecation of Docker shim?,CRI-O,containerd,docker-shim,rkt,2
+MCQ,Which kubectl flag sets the client’s query per second (QPS) rate for interacting with the API server?,--api-server-qps,--kube-api-qps,--qps,--rate,2
+MCQ,Which Helm install option allows specifying multiple values files?,-f,--config,--file,--valuesFile,1
+MCQ,Which field in kustomization.yaml applies strategic merge patches to resources?,resources,patches,patchesStrategicMerge,transformers,3
+MCQ,Which Kustomize generator creates ConfigMap objects from declared literals or files?,resourceGenerator,secretGenerator,configMapGenerator,commonLabels,3
+MCQ,Which kubectl output option uses custom columns defined by the user?,-o custom-columns,--columns,-o columns,--custom-columns,1
+MCQ,Which field in a Helm chart's Chart.yaml specifies the chart API version?,chartVersion,helmAPIVersion,apiVersion,appVersion,3
+MCQ,Which kubectl rollout command displays the status of a deployment's rollout?,kubectl rollout status deployment/<name>,kubectl rollout history deployment/<name>,kubectl rollout get status deployment/<name>,kubectl rollout info deployment/<name>,1
+MCQ,Which Dockerfile feature allows mounting build-time cache directories?,RUN --mount=type=cache,VOLUME cache,COPY --cache,ADD --mount=cache,1
+MCQ,Which command displays Docker disk usage information?,docker df,docker system info,docker system df,docker disk usage,3
+MCQ,Which Docker command shows per-container live resource usage?,docker stats,docker top,docker resource,docker metrics,1
+MCQ,Which Docker command shows the history of an image’s layer size changes?,docker layers,docker image history,docker history,docker inspect,3
+MCQ,Which Docker feature allows combining multiple build stages into one image?,Multi-stage builds,Image bundling,Layer merging,BuildKit squash,1
+MCQ,Which command logs in to a Docker registry using credentials?,docker push --login,docker login,docker registry login,docker auth,2
+MCQ,Which command logs out from a Docker registry?,docker registry logout,docker logout,docker auth logout,docker login --logout,2
+MCQ,Which Compose directive mounts host directories into containers?,volumes,mounts,binds,links,1
+MCQ,Which Compose directive sets restart policies for containers?,restart_policy,restart,policy,restart_policy_config,2
+MCQ,Which Compose option defines custom networks for services?,networks,links,network_mode,use_networks,1
+MCQ,Which Docker network driver uses VXLAN for encrypting cross-host traffic?,host,none,bridge,overlay,4
+MCQ,Which command inspects detailed information about a Docker network?,docker inspect network <network>,docker network info <network>,docker net inspect <network>,docker network inspect <network>,4
+MCQ,Which Kubernetes API object represents a set of rules for network traffic between pods?,NetworkPolicy,Service,PodSecurityPolicy,Ingress,1
+MCQ,Which Kubernetes field in NetworkPolicy defines allowed egress destinations?,destinations,egress,ingress,to,2
+MCQ,Which Kubernetes field in NetworkPolicy defines which pods the policy applies to?,applyTo,podSelector,matchPods,policySelector,2
+MCQ,Which Kubernetes resource type guarantees a schedule of repeating jobs?,Job,CronJob,Deployment,ReplicaSet,2
+MCQ,Which CronJob field defines the schedule in cron format?,schedule,time,cronSchedule,cron,1
+MCQ,Which CronJob field specifies the job template to run?,jobTemplate,jobSpec,template,spec,1
+MCQ,Which Kubernetes Job controller runs pods until a specified number of completions is reached?,Job,Deployment,ReplicationController,CronJob,1
+MCQ,Which Job field sets the maximum number of pods allowed to run concurrently?,spec.parallelism,spec.maxSurge,spec.completions,spec.concurrencyLimit,1
+MCQ,Which Job field sets the desired number of successful completions?,spec.replicas,spec.completions,spec.successCount,spec.minReadySeconds,2
+MCQ,Which Kubernetes object is used to mount persistent storage into pods?,PersistentVolume,StorageClass,PersistentVolumeClaim,VolumeAttachment,3
+MCQ,Which field in PersistentVolumeClaim requests specific storage size?,volumeSize,storage,resources.requests.storage,size,3
+MCQ,Which field in PersistentVolumeClaim sets the access modes?,mode,permissions,access,accessModes,4
+MCQ,Which field in a StorageClass sets dynamic provisioning of volumes?,plugin,provisioner,dynamicProvisioner,driver,2
+MCQ,Which Kubernetes storage backend requires running a separate CSI driver?,local,awsElasticBlockStore,NFS,hostPath,3
+MCQ,Which RBAC API group is used for authorization resources?,authorization.k8s.io,rbac.authorization.k8s.io,rbac.k8s.io,auth.k8s.io,2
+MCQ,Which Kubernetes object binds users to Roles within a namespace?,RoleGrant,RoleBinding,ClusterRoleBinding,Role,2
+MCQ,Which Kubernetes component enforces security contexts on containers?,kube-controller-manager,kubelet,kube-proxy,kube-scheduler,2
+MCQ,Which Kubernetes field configures pod securityContext with Linux capabilities?,securityContext,capabilities,privileged,linuxCapabilities,1
+MCQ,Which Kubernetes admission controller prevents containers from running as root?,RunAsNonRoot,SecurityContextDeny,NoRoot,PodSecurityPolicy,4
+MCQ,Which kube-apiserver flag enables admission controllers at startup?,--admission-control,--enable-plugins,--admission-plugins,--enable-admission-plugins,4
+MCQ,Which Kubernetes object defines EndpointSlices for a Service?,Endpoints,EndpointSlice,ServiceEndpoints,PodEndpoints,2
+MCQ,Which command lists EndpointSlices in a namespace?,kubectl get slices,kubectl get endpointslice,kubectl get endpoints,kubectl get endpointslices,4
+MCQ,Which Ingress controller type is implemented as a Kubernetes DaemonSet?,Contour,NGINX Ingress,Traefik,Istio,2
+MCQ,Which field in an Ingress spec defines TLS configuration?,secure,certs,tls,ssl,3
+MCQ,Which Kubernetes object defines custom resources?,CRD,ResourceDefinition,CustomResourceDefinition,CustomDefinition,3
+MCQ,Which API group prefix is used for Kustomize patches in annotations?,k8s.kustomize.io,config.kustomize.io,kustomize.k8s.io,kustomize.config.k8s.io,4
+MCQ,Which Helm hook annotation deletes resources before upgrade?,helm.sh/hook: post-upgrade,helm.sh/hook: pre-delete,helm.sh/hook: pre-install,helm.sh/hook: pre-upgrade,4
+MCQ,Which Helm hook annotation runs after upgrade is complete?,helm.sh/hook: post-render,helm.sh/hook: post-upgrade,helm.sh/hook: post-install,helm.sh/hook: post-delete,2
+MCQ,Which kubectl plugin can be used to view resource metrics in a dashboard?,kubectl kuboard,kubectl metrics-server,kubectl dashboard,kubectl top,4
+MCQ,Which monitoring tool is commonly deployed as a Kubernetes operator?,Zabbix,Prometheus,Grafana,Nagios,2
+MCQ,Which Kubernetes resource stores Prometheus scraping configurations?,ConfigMap,Secret,PrometheusRule,ServiceMonitor,4
+MCQ,Which CRD is provided by Prometheus Operator to specify alerting rules?,RuleConfig,AlertConfig,AlertRule,PrometheusRule,4
+MCQ,Which Kubernetes tool aggregates logs from multiple pods to a central store?,Fluentd,LogAggregator,LogCollector,Loki,1
+MCQ,Which field in a Pod spec allows setting sysctl parameters?,securityContext.sysctls,podSysctls,sysctls,securityContext.sysctl,1
+MCQ,Which Kubernetes controller handles EndpointSlice reconciliation?,EndpointSlice controller,Kube-controller-manager,Service controller,Endpoint controller,1
+MCQ,Which field in kubelet configuration sets eviction thresholds?,evictionRules,evictionThresholds,evictionHard,evictionPolicies,3
+MCQ,Which Kubernetes feature allows mounting secrets as volumes in pods?,configMap volumes,envFrom,Secret volumes,secretKeyRef,3
+MCQ,Which Helm command lists all releases across all namespaces?,helm list -n all,helm list --all-namespaces,helm list --all,helm list -A,2
+MCQ,Which Docker feature allows mounting SSH keys during build time?,ADD --ssh,SSH-MOUNT,RUN --mount=type=ssh,COPY --ssh,3
+MCQ,Which environment variable enables experimental Docker CLI features?,CLI_EXPERIMENTAL=true,DOCKER_EXPERIMENTAL=1,DOCKER_CLI_EXPERIMENTAL=enabled,ENABLE_DOCKER_EXPERIMENTAL=1,3
+MCQ,Which tool is used to build multi-architecture Docker images?,docker manifest,docker buildx,docker slim,docker multiarch,2
+MCQ,What command lists Docker builder instances?,docker build ls,docker builder list,docker buildx list,docker buildx ls,4
+MCQ,Which Kustomize plugin merges JSON resources?,jsonPatches,JSON6902,strategicMergePatches,mergePatches,2
+MCQ,Which Kustomize feature sets variable values from ConfigMaps and Secrets?,secretVars,vars,varsPrefix,configVars,2
+MCQ,Which kubectl flag applies label selectors when deleting resources?,--filter,--selector,--match-label,-l,2
+MCQ,Which Kubernetes feature enforces least privilege for pod operations?,PodSecurityPolicy,SecurityContext,PodSecurityContext,AdmissionControl,1
+MCQ,Which Kubernetes admission controller validates and potentially modifies requests before persistence?,MutatingAdmissionWebhook,None,Both,ValidatingAdmissionWebhook,3
+MCQ,Which flag in kube-apiserver sets the maximum request body size?,--max-request-size,--max-body-size,--request-body-size,--max-request-bytes,4
+MCQ,Which tool bootstraps a Kubernetes cluster with kubeadm?,kubectl init,kubelet bootstrap,kubeadm init,clusteradm init,3
+MCQ,Which Kubernetes logging driver is used by default on a cluster?,syslog,json-file,journald,fluentd,2
+MCQ,Which Kubernetes component writes cluster audit logs?,kube-auditd,kube-controller-manager,kubelet,kube-apiserver,4
+MCQ,Which HTTP method is used by kubectl port-forward to establish connections?,GET,POST,PATCH,PUT,1
+MCQ,Which file on Kubernetes worker nodes specifies certificate rotation settings?,kube-proxy.conf,kubelet-serving.kubeconfig,kubelet.conf,controller-manager.conf,2
+MCQ,Which Kubernetes concept groups ReplicaSets for easier management?,Job,DaemonSet,Deployment,StatefulSet,3
+MCQ,Which command upgrades kubeadm on existing control-plane nodes?,kubeadm upgrade apply,kubeadm upgrade plan,kubeadm upgrade node,kubeadm upgrade join,1
+MCQ,Which Helm feature allows using subcharts within charts?,dependencies,includes,subcharts,requirements,1
+MCQ,Which field in values.yaml overrides settings for a subchart?,subcharts,global,dependencies,subValues,2
+MCQ,Which Kubernetes metric API aggregates resource metrics from nodes?,metrics-server,custom.metrics.k8s.io,metrics.k8s.io,v1beta1.metrics.k8s.io,3
+MCQ,Which command installs the Metrics Server in a cluster?,helm install metrics-server,kubectl create -f metrics-server.yaml,kustomize build metrics-server | kubectl apply -f -,kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/...,4
+MCQ,Which PersistentVolume access mode supports ReadWriteMany?,awsEBS,hostPath,azureDisk,NFS,4
+MCQ,Which CSI driver interface implements volume snapshot feature?,Snapshotter,VolumeSnapshotData,CSI-Snapshot,VolumeSnapshot,4
+MCQ,Which RBAC object grants permissions across all namespaces?,RoleBinding,ClusterRole,ClusterRoleBinding,Role,2
+MCQ,Which kubectl command applies a Kustomize overlay?,kubectl kustomize overlay | kubectl apply -f -,kubectl apply -f overlay,kubectl apply overlay,kubectl apply -k,4
+MCQ,Which Helm command searches for charts in the stable repository?,helm search stable,helm list stable,helm search repo stable,helm find stable,3
+MCQ,Which Helm chart repository URL is used by default?,https://kubernetes-charts.storage.googleapis.com,https://charts.helm.sh/incubator,https://charts.helm.sh/stable,https://helm.repo.url,1
+MCQ,Which field in Chart.yaml specifies the chart home page?,sources,home,repository,keywords,2
+MCQ,Which Helm command shows the history of a release?,helm status,helm history,helm list,helm log,2
+MCQ,Which Kubernetes secret type stores TLS certificates and keys?,kubernetes.io/dockerconfigjson,kubernetes.io/tls,Opaque,kubernetes.io/basic-auth,2
+MCQ,Which Kustomize generator creates a ConfigMap from literal values or env file?,resources,vars,secretGenerator,configMapGenerator,4
+MCQ,Which Kubernetes API object triggers auto-approval of CSRs?,CSR,CertificateRequest,CertificateSigningRequest,Certificate,3
+MCQ,Which command approves a CSR named csr-nginx?,kubectl cert approve csr-nginx,kubectl certify csr-nginx,kubectl approve csr csr-nginx,kubectl certificate approve csr-nginx,4
+MCQ,Which Kubernetes feature provides self-signed certificates for Ingress?,kubelet TLS,cert-manager,TLS bootstrapping,Ingress controller,2
+MCQ,Which command installs cert-manager via Helm?,helm deploy cert-manager jetstack/cert-manager,helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace,helm install cert-manager cert-manager,helm add repo jetstack,2
+MCQ,Which Helm chart dependency file is renamed to Chart.lock after dependency resolution?,requirements.yaml,dependencies.lock,requirements.lock,Chart.lock,3
+MCQ,Which Kubernetes Pod field specifies an init container?,initContainers,containers.init,preContainers,init,1
+MCQ,Which Kubernetes feature allows debugging by injecting containers into running pods?,initContainers,debugContainers,sidecarDebug,ephemeralContainers,4
+MCQ,Which kubectl command fetches logs from all pods matching a label?,kubectl logs --all -l app=myapp,kubectl logs pods -l app=myapp,kubectl logs -l app=myapp,kubectl logs --selector app=myapp,3
+MCQ,Which kube-proxy mode uses userspace proxying of packets?,iptables,ipvs,userspace,ebpf,3
+MCQ,Which kube-proxy mode provides high-performance packet forwarding?,ipvs,iptables,ebpf,userspace,1
+MCQ,Which field in kube-proxy ConfigMap defines the proxy mode?,proxyMode,mode,configMode,proxy_mode,2
+MCQ,Which Docker Compose command validates and prints the final configuration?,docker-compose lint,docker-compose check,docker-compose validate,docker-compose config,4
+MCQ,Which Helm command creates a new chart skeleton called mychart?,helm init mychart,helm create mychart,helm new chart mychart,helm scaffold mychart,2
+MCQ,Which Kubernetes concept ensures pods tolerate node taints?,anti-affinity,tolerations,nodeSelector,affinity,2
+MCQ,Which field in Pod spec defines tolerations?,spec.taints,tolerations,affinity.tolerations,taints,2
+MCQ,Which kube-scheduler policy file field configures external scheduling extenders?,extenders,plugins,policies,schedulingExtenders,1
+MCQ,Which Kubernetes volume type creates a diskless temporary directory?,secret,configMap,hostPath,emptyDir,4
