@@ -30,6 +30,12 @@ def draw_rounded_rectangle(canvas, x1, y1, x2, y2, radius=25, **kwargs):
     return canvas.create_polygon(points, **kwargs, smooth=True)
 
 def resource_path(rel_path):
-    """Get absolute path to resource, works for dev and for PyInstaller."""
-    base = getattr(sys, "_MEIPASS", os.path.dirname(__file__))
-    return os.path.join(base, rel_path)           
+    """Get absolute path to resource, works for dev and PyInstaller."""
+    # Determine base path: if running under PyInstaller, use _MEIPASS;
+    # otherwise, use project root (parent of utils directory)
+    if hasattr(sys, '_MEIPASS'):
+        base_path = sys._MEIPASS
+    else:
+        # file is in <project_root>/utils/helpers.py
+        base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
+    return os.path.join(base_path, rel_path)   

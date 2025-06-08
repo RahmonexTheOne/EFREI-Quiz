@@ -5,7 +5,7 @@ from PIL import Image, ImageTk
 import tkinter.messagebox
 import sys, os
 
-from ui.screens import home_screen, start_screen, play_quiz
+from ui.screens import home_screen, specialty_screen, semester_screen, unit_screen, play_quiz
 from utils.helpers import get_theme_colors, draw_rounded_rectangle
 from utils.helpers import resource_path
 
@@ -191,7 +191,7 @@ class QuizApp:
             "Reset Quiz",
             start_y,
             self.colors[self.theme]["accent"],
-            lambda: [self.close_menu(), self.start_screen()]
+            lambda: [self.close_menu(), specialty_screen(self)]
         )
 
         # 8) “Back to Main Menu” (accent color)
@@ -240,7 +240,7 @@ class QuizApp:
         if self.previous_screen == "quiz":
             self.display_question()
         elif self.previous_screen == "start":
-            self.start_screen()
+            specialty_screen(self)
         else:
             self.home_screen()
 
@@ -250,9 +250,6 @@ class QuizApp:
 
     def home_screen(self):
         home_screen(self)
-
-    def start_screen(self):
-        start_screen(self)
 
     def play_quiz(self, csv_path):
         self.data = pd.read_csv(csv_path)

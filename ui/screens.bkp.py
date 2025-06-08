@@ -7,23 +7,6 @@ import sys, os
 
 from utils.helpers import resource_path
 
-# Hierarchical course mapping: Specialty -> Semester -> [(Display Name, CSV path)]
-COURSE_MAP = {
-    "Network & Security": {
-        "M1 First Semester (S7)": [
-            ("Architectures et Infrastructures sécurisées d'entreprise (DNS, LDAP, APACHE, DHCP)",
-             resource_path("assets/ldap.csv")),
-        ],
-        "M1 Second Semester (S8)": [
-            ("Administration et Sécurité Windows",
-             resource_path("assets/admin-windows-security.csv")),
-            ("Delivery Management, DevOps & Pipeline",
-             resource_path("assets/devops.csv")),
-            ("Orchestration et Containers",
-             resource_path("assets/docker_orchestration.csv"))
-        ]
-    },
-}
 
 def home_screen(app):
     # 1) Wipe out anything except the progress bar / menu button:
@@ -72,7 +55,7 @@ def home_screen(app):
         padx=30,
         pady=10,
         cursor="hand2",
-        command=lambda: specialty_screen(app)
+        command=app.start_screen
     )
     canvas.create_window(cx, cy + 100, window=start_btn)
 
@@ -80,23 +63,22 @@ def home_screen(app):
     app.answers_outcome = []
     app.update_progress_bar()
 
-
-def specialty_screen(app):
-    """Step 1: choose specialty."""
-    # 1) Clear + progress bar
+def start_screen(app):
+    # 1) Clear everything except progress bar + menu_btn:
     app.clear_window()
-    app.update_progress_bar()
 
-    # 2) Full-screen background
+    # 2) Full-screen background:
     screen_w = app.master.winfo_screenwidth()
     screen_h = app.master.winfo_screenheight()
+
     bg_image = Image.open(resource_path("assets/background_menu.png")).resize((screen_w, screen_h))
-    app.bg_specialty_tk = ImageTk.PhotoImage(bg_image)
+    app.bg_start_tk = ImageTk.PhotoImage(bg_image)
+
     canvas = tk.Canvas(app.master, width=screen_w, height=screen_h, highlightthickness=0)
-    canvas.create_image(0, 0, image=app.bg_specialty_tk, anchor="nw")
+    canvas.create_image(0, 0, image=app.bg_start_tk, anchor="nw")
     canvas.pack(fill="both", expand=True)
 
-    # 3) Menu icon
+    # 3) Draw the menu-icon PNG on that Canvas:
     menu_id = canvas.create_image(
         screen_w - 10 - 16,
         10 + 16,
@@ -105,52 +87,151 @@ def specialty_screen(app):
     )
     canvas.tag_bind(menu_id, "<Button-1>", lambda e: app.show_menu())
 
-    # 4) Title
+    # 5) Draw the title & subtitle at 1/3 down:
     cx = screen_w // 2
     cy = screen_h // 3
+
     canvas.create_text(
         cx, cy - 40,
-        text="Choose Your Specialty",
+        text="Play Quiz",
         font=("Montserrat", 28, "bold"),
-        fill=app.colors[app.theme]['fg']
+        fill=app.colors[app.theme]["fg"]
+    )
+    canvas.create_text(
+        cx, cy,
+        text="Choose the unit to prepare:",
+        font=("Montserrat", 16),
+        fill=app.colors[app.theme]["fg"]
     )
 
-    # 5) Specialty cards
-    card_w, card_h, gap = 600, 80, 30
-    x1, x2 = cx - card_w // 2, cx + card_w // 2
-    for i, spec in enumerate(COURSE_MAP.keys()):
-        y1 = cy + i * (card_h + gap)
-        rect_id = app.draw_rounded_rectangle(
-            canvas, x1, y1, x2, y1 + card_h,
-            radius=20,
-            fill=app.colors[app.theme]['card'],
-            outline=app.colors[app.theme]['shadow']
-        )
-        canvas.create_text(
-            cx, y1 + card_h // 2,
-            text=spec,
-            font=("Montserrat", 16),
-            fill=app.colors[app.theme]['fg']
-        )
-        canvas.tag_bind(rect_id, "<Button-1>", lambda e, s=spec: semester_screen(app, s))
+    # 6) Prepare card dimensions & colors:
+    card_w = 800
+    card_h = 80
+    radius = 20
+    gap = 30
 
+    x1 = cx - card_w // 2
+    x2 = cx + card_w // 2
+
+    # Hover handlers (change fill + cursor)
+    def on_enter(e, cid):
+        canvas.itemconfig(cid, fill=app.colors[app.theme]["card_hover"])
+        canvas.config(cursor="hand2")
+
+    def on_leave(e, cid):
+        canvas.itemconfig(cid, fill=app.colors[app.theme]["card"])
+        canvas.config(cursor="")
+
+    # 7) First card (LDAP) at y = cy+40 → cy+40+card_h
+    y1 = cy + 40
+    y2 = y1 + card_h
+    card1_id = app.draw_rounded_rectangle(
+        canvas, x1, y1, x2, y2,
+        radius=radius,
+        fill=app.colors[app.theme]["card"],
+        outline=app.colors[app.theme]["shadow"]
+    )
+    canvas.create_text(
+        cx, y1 + card_h // 2,
+        text="Architectures et Infrastructures sécurisées d'entreprise (DNS, LDAP, APACHE, DHCP)",
+        font=("Montserrat", 14),
+        fill=app.colors[app.theme]["fg"],
+        width=card_w - 40,
+        justify="center"
+    )
+    canvas.tag_bind(card1_id, "<Button-1>", lambda e: app.play_quiz(resource_path("assets/ldap.csv")))
+    canvas.tag_bind(card1_id, "<Enter>", lambda e, cid=card1_id: on_enter(e, cid))
+    canvas.tag_bind(card1_id, "<Leave>", lambda e, cid=card1_id: on_leave(e, cid))
+
+    # 8) Second card (DevOps) below the first:
+    y1_2 = y2 + gap
+    y2_2 = y1_2 + card_h
+    card2_id = app.draw_rounded_rectangle(
+        canvas, x1, y1_2, x2, y2_2,
+        radius=radius,
+        fill=app.colors[app.theme]["card"],
+        outline=app.colors[app.theme]["shadow"]
+    )
+    canvas.create_text(
+        cx, y1_2 + card_h // 2,
+        text="Delivery Management, DevOps & Pipeline",
+        font=("Montserrat", 14),
+        fill=app.colors[app.theme]["fg"],
+        width=card_w - 40,
+        justify="center"
+    )
+    canvas.tag_bind(card2_id, "<Button-1>", lambda e: app.play_quiz(resource_path("assets/devops.csv")))
+    canvas.tag_bind(card2_id, "<Enter>", lambda e, cid=card2_id: on_enter(e, cid))
+    canvas.tag_bind(card2_id, "<Leave>", lambda e, cid=card2_id: on_leave(e, cid))
+
+    # ────────────────────────────────────────────────────────────────────────────
+    # 9) Third card (Administration et sécurité Windows) below DevOps:
+    # ────────────────────────────────────────────────────────────────────────────
+    y1_3 = y2_2 + gap
+    y2_3 = y1_3 + card_h
+    card3_id = app.draw_rounded_rectangle(
+        canvas, x1, y1_3, x2, y2_3,
+        radius=radius,
+        fill=app.colors[app.theme]["card"],
+        outline=app.colors[app.theme]["shadow"]
+    )
+    canvas.create_text(
+        cx, y1_3 + card_h // 2,
+        text="Administration et Sécurité Windows",
+        font=("Montserrat", 14),
+        fill=app.colors[app.theme]["fg"],
+        width=card_w - 40,
+        justify="center"
+    )
+    canvas.tag_bind(card3_id, "<Button-1>", lambda e: app.admin_security_screen())
+    canvas.tag_bind(card3_id, "<Enter>", lambda e, cid=card3_id: on_enter(e, cid))
+    canvas.tag_bind(card3_id, "<Leave>", lambda e, cid=card3_id: on_leave(e, cid))
+
+    # ─────────────────────────────────────────────────────────────────────────
+    # 10) Fourth card (Orchestration et containers) below Admin & Sec Win:
+    # ─────────────────────────────────────────────────────────────────────────
+    y1_4 = y2_3 + gap
+    y2_4 = y1_4 + card_h
+    card4_id = app.draw_rounded_rectangle(
+        canvas, x1, y1_4, x2, y2_4,
+        radius=radius,
+        fill=app.colors[app.theme]["card"],
+        outline=app.colors[app.theme]["shadow"]
+    )
+    canvas.create_text(
+        cx, y1_4 + card_h // 2,
+        text="Orchestration et Containers",
+        font=("Montserrat", 14),
+        fill=app.colors[app.theme]["fg"],
+        width=card_w - 40,
+        justify="center"
+    )
+    canvas.tag_bind(card4_id, "<Button-1>", lambda e: app.play_quiz(resource_path("assets/docker_orchestration.csv")))
+    canvas.tag_bind(card4_id, "<Enter>", lambda e, cid=card4_id: on_enter(e, cid))
+    canvas.tag_bind(card4_id, "<Leave>", lambda e, cid=card4_id: on_leave(e, cid))
+
+    # 11) Reset quiz state + redraw progress bar:
+    app.answers_outcome = []
     app.update_progress_bar()
 
 
-def semester_screen(app, specialty):
-    """Step 2: choose semester."""
+def admin_security_screen(app):
+    # 1) Effacer tout sauf la barre de progression + le bouton menu :
     app.clear_window()
     app.update_progress_bar()
-    app.current_specialty = specialty
 
+    # 2) Afficher le fond plein écran :
     screen_w = app.master.winfo_screenwidth()
     screen_h = app.master.winfo_screenheight()
+
     bg_image = Image.open(resource_path("assets/background_menu.png")).resize((screen_w, screen_h))
-    app.bg_semester_tk = ImageTk.PhotoImage(bg_image)
+    app.bg_admin_tk = ImageTk.PhotoImage(bg_image)
+
     canvas = tk.Canvas(app.master, width=screen_w, height=screen_h, highlightthickness=0)
-    canvas.create_image(0, 0, image=app.bg_semester_tk, anchor="nw")
+    canvas.create_image(0, 0, image=app.bg_admin_tk, anchor="nw")
     canvas.pack(fill="both", expand=True)
 
+    # 3) Dessiner le menu icon dans le coin haut-droite :
     menu_id = canvas.create_image(
         screen_w - 10 - 16,
         10 + 16,
@@ -159,87 +240,72 @@ def semester_screen(app, specialty):
     )
     canvas.tag_bind(menu_id, "<Button-1>", lambda e: app.show_menu())
 
-    cx, cy = screen_w // 2, screen_h // 3
+    # 4) Afficher un titre centré :
+    cx = screen_w // 2
+    cy = screen_h // 3
+
     canvas.create_text(
         cx, cy - 40,
-        text="Choose Semester",
-        font=("Montserrat", 28, "bold"),
-        fill=app.colors[app.theme]['fg']
+        text="Administration et Sécurité Windows",
+        font=("Montserrat", 24, "bold"),
+        fill=app.colors[app.theme]["fg"]
     )
-
-    semesters = list(COURSE_MAP[specialty].keys())
-    card_w, card_h, gap = 600, 80, 30
-    x1, x2 = cx - card_w // 2, cx + card_w // 2
-    for i, sem in enumerate(semesters):
-        y1 = cy + i * (card_h + gap)
-        rect_id = app.draw_rounded_rectangle(
-            canvas, x1, y1, x2, y1 + card_h,
-            radius=20,
-            fill=app.colors[app.theme]['card'],
-            outline=app.colors[app.theme]['shadow']
-        )
-        canvas.create_text(
-            cx, y1 + card_h // 2,
-            text=sem,
-            font=("Montserrat", 16),
-            fill=app.colors[app.theme]['fg']
-        )
-        canvas.tag_bind(rect_id, "<Button-1>", lambda e, sem=sem: unit_screen(app, sem))
-
-    app.update_progress_bar()
-
-
-def unit_screen(app, semester):
-    """Step 3: choose unit."""
-    app.clear_window()
-    app.update_progress_bar()
-    app.current_semester = semester
-
-    screen_w = app.master.winfo_screenwidth()
-    screen_h = app.master.winfo_screenheight()
-    bg_image = Image.open(resource_path("assets/background_menu.png")).resize((screen_w, screen_h))
-    app.bg_unit_tk = ImageTk.PhotoImage(bg_image)
-    canvas = tk.Canvas(app.master, width=screen_w, height=screen_h, highlightthickness=0)
-    canvas.create_image(0, 0, image=app.bg_unit_tk, anchor="nw")
-    canvas.pack(fill="both", expand=True)
-
-    menu_id = canvas.create_image(
-        screen_w - 10 - 16,
-        10 + 16,
-        image=app.menu_icon,
-        anchor="center"
-    )
-    canvas.tag_bind(menu_id, "<Button-1>", lambda e: app.show_menu())
-
-    cx, cy = screen_w // 2, screen_h // 3
     canvas.create_text(
-        cx, cy - 40,
-        text="Choose Unit",
-        font=("Montserrat", 28, "bold"),
-        fill=app.colors[app.theme]['fg']
+        cx, cy,
+        text="Choisissez une catégorie :",
+        font=("Montserrat", 16),
+        fill=app.colors[app.theme]["fg"]
     )
 
-    units = COURSE_MAP[app.current_specialty][semester]
-    card_w, card_h, gap = 800, 80, 30
-    x1, x2 = cx - card_w // 2, cx + card_w // 2
-    for i, (label, path) in enumerate(units):
-        y1 = cy + i * (card_h + gap)
-        rect_id = app.draw_rounded_rectangle(
-            canvas, x1, y1, x2, y1 + card_h,
-            radius=20,
-            fill=app.colors[app.theme]['card'],
-            outline=app.colors[app.theme]['shadow']
-        )
-        canvas.create_text(
-            cx, y1 + card_h // 2,
-            text=label,
-            font=("Montserrat", 14),
-            fill=app.colors[app.theme]['fg'],
-            width=card_w - 40
-        )
-        canvas.tag_bind(rect_id, "<Button-1>", lambda e, p=path: app.play_quiz(p))
+        # ────────────────────────────────────────────────────────────────────────────
+    # 5) Création de deux boutons directement sur le Canvas (plus plats, sans cadre)
+    # ────────────────────────────────────────────────────────────────────────────
+    # Coordonnées pour placer les deux boutons juste en dessous du titre :
+    btn_y = cy + 50  # décalage vertical sous le texte
+    btn_spacing = 200  # écart horizontal entre les deux boutons
 
-    app.update_progress_bar()
+    # Bouton “Exams”
+    exams_btn = tk.Button(
+        app.master,
+        text="Exams",
+        font=("Montserrat", 14, "bold"),
+        bg=app.colors[app.theme]["button"],
+        fg="white",
+        relief="flat",
+        bd=0,
+        padx=30,
+        pady=10,
+        cursor="hand2",
+        command=lambda: app.play_quiz(resource_path("assets/admin-windows-security-exam.csv"))
+    )
+    # On “pose” le bouton sur le même Canvas (sous-jacent) :
+    canvas.create_window(
+        cx - btn_spacing // 2,  # moitié de l’espacement à gauche du centre
+        btn_y,
+        window=exams_btn,
+        anchor="n"
+    )
+
+    # Bouton “General”
+    general_btn = tk.Button(
+        app.master,
+        text="General",
+        font=("Montserrat", 14, "bold"),
+        bg=app.colors[app.theme]["button"],
+        fg="white",
+        relief="flat",
+        bd=0,
+        padx=30,
+        pady=10,
+        cursor="hand2",
+        command=lambda: app.play_quiz(resource_path("assets/admin-windows-security.csv"))
+    )
+    canvas.create_window(
+        cx + btn_spacing // 2,  # moitié de l’espacement à droite du centre
+        btn_y,
+        window=general_btn,
+        anchor="n"
+    )
 
 
 
@@ -961,8 +1027,8 @@ def show_result(app):
     play_canvas.tag_bind(play_text, "<Enter>", play_enter)
     play_canvas.tag_bind(play_rect, "<Leave>", play_leave)
     play_canvas.tag_bind(play_text, "<Leave>", play_leave)
-    play_canvas.tag_bind(play_rect, "<Button-1>", lambda e: app.specialty_screen(app))
-    play_canvas.tag_bind(play_text, "<Button-1>", lambda e: app.specialty_screen(app))
+    play_canvas.tag_bind(play_rect, "<Button-1>", lambda e: app.start_screen())
+    play_canvas.tag_bind(play_text, "<Button-1>", lambda e: app.start_screen())
 
     # b) “Retry Incorrect” or “Back to Main Menu” button (button color / fallback)
     if app.incorrect_indices:
