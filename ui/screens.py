@@ -25,6 +25,85 @@ COURSE_MAP = {
     },
 }
 
+
+# ────────────────────────────────────────────────────────────────────────────
+# BACK‐BUTTON HELPER (with hover + clickable cursor)
+# ────────────────────────────────────────────────────────────────────────────
+def add_back_button(canvas, app, callback):
+    """
+    Draws a small “Back” button in the top-left corner of the given Canvas,
+    wired to run `callback()` when clicked, with a colored hover effect.
+    """
+    btn_w, btn_h = 100, 40
+    x1, y1 = 20, 20
+    x2, y2 = x1 + btn_w, y1 + btn_h
+
+    # draw the rounded rect
+    rect_id = app.draw_rounded_rectangle(
+        canvas,
+        x1, y1, x2, y2,
+        radius=10,
+        fill=app.colors[app.theme]['error'],    # use “error” red for back
+        outline=""
+    )
+    # label
+    text_id = canvas.create_text(
+        (x1 + x2)/2, (y1 + y2)/2,
+        text="← Back",
+        font=("Montserrat", 12, "bold"),
+        fill="white"
+    )
+
+    # bind click + hover on both shapes
+    for tag in (rect_id, text_id):
+        canvas.tag_bind(tag, "<Button-1>", lambda e: callback())
+        canvas.tag_bind(tag, "<Enter>", lambda e, r=rect_id: (
+            canvas.itemconfig(r, fill=app.colors[app.theme]['card_hover']),
+            canvas.config(cursor="hand2")
+        ))
+        canvas.tag_bind(tag, "<Leave>", lambda e, r=rect_id: (
+            canvas.itemconfig(r, fill=app.colors[app.theme]['error']),
+            canvas.config(cursor="")
+        ))
+
+    return rect_id, text_id
+
+
+def add_menu_card(canvas, app, x1, y1, x2, y2, label, callback, color=None):
+    fill = color or app.colors[app.theme]['card']
+    # 1) rounded rect
+    rect_id = app.draw_rounded_rectangle(
+        canvas, x1, y1, x2, y2,
+        radius=20,
+        fill=fill,
+        outline=app.colors[app.theme]['shadow']
+    )
+    # 2) centered text
+    text_id = canvas.create_text(
+        (x1 + x2)//2, (y1 + y2)//2,
+        text=label,
+        font=("Montserrat", 16, "bold"),
+        fill=app.colors[app.theme]['fg'],
+        width=(x2 - x1) - 40,
+        justify="center"
+    )
+    # 3) click + hover
+    for tag in (rect_id, text_id):
+        canvas.tag_bind(tag, "<Button-1>", lambda e, cb=callback: cb())
+        canvas.tag_bind(tag, "<Enter>",
+            lambda e, r=rect_id: (
+                canvas.itemconfig(r, fill=app.colors[app.theme]['card_hover']),
+                canvas.config(cursor="hand2")
+            )
+        )
+        canvas.tag_bind(tag, "<Leave>",
+            lambda e, r=rect_id, col=fill: (
+                canvas.itemconfig(r, fill=col),
+                canvas.config(cursor="")
+            )
+        )
+    return rect_id, text_id
+
 def home_screen(app):
     # 1) Wipe out anything except the progress bar / menu button:
     app.clear_window()
@@ -117,23 +196,14 @@ def specialty_screen(app):
 
     # 5) Specialty cards
     card_w, card_h, gap = 600, 80, 30
-    x1, x2 = cx - card_w // 2, cx + card_w // 2
-    for i, spec in enumerate(COURSE_MAP.keys()):
-        y1 = cy + i * (card_h + gap)
-        rect_id = app.draw_rounded_rectangle(
-            canvas, x1, y1, x2, y1 + card_h,
-            radius=20,
-            fill=app.colors[app.theme]['card'],
-            outline=app.colors[app.theme]['shadow']
-        )
-        canvas.create_text(
-            cx, y1 + card_h // 2,
-            text=spec,
-            font=("Montserrat", 16),
-            fill=app.colors[app.theme]['fg']
-        )
-        canvas.tag_bind(rect_id, "<Button-1>", lambda e, s=spec: semester_screen(app, s))
+    x1, x2 = cx-card_w//2, cx+card_w//2
+    for i, spec in enumerate(COURSE_MAP):
+        y1 = cy + i*(card_h+gap)
+        cb = lambda s=spec: semester_screen(app, s)
+        add_menu_card(canvas, app, x1, y1, x2, y1+card_h, spec, cb)
 
+        # ─── back to home ───
+    add_back_button(canvas, app, app.home_screen)
     app.update_progress_bar()
 
 
@@ -169,24 +239,16 @@ def semester_screen(app, specialty):
 
     semesters = list(COURSE_MAP[specialty].keys())
     card_w, card_h, gap = 600, 80, 30
-    x1, x2 = cx - card_w // 2, cx + card_w // 2
+    x1, x2 = cx-card_w//2, cx+card_w//2
     for i, sem in enumerate(semesters):
-        y1 = cy + i * (card_h + gap)
-        rect_id = app.draw_rounded_rectangle(
-            canvas, x1, y1, x2, y1 + card_h,
-            radius=20,
-            fill=app.colors[app.theme]['card'],
-            outline=app.colors[app.theme]['shadow']
-        )
-        canvas.create_text(
-            cx, y1 + card_h // 2,
-            text=sem,
-            font=("Montserrat", 16),
-            fill=app.colors[app.theme]['fg']
-        )
-        canvas.tag_bind(rect_id, "<Button-1>", lambda e, sem=sem: unit_screen(app, sem))
+        y1 = cy + i*(card_h+gap)
+        cb = lambda sem=sem: unit_screen(app, sem)
+        add_menu_card(canvas, app, x1, y1, x2, y1+card_h, sem, cb)
 
+    # ─── back to specialty ───
+    add_back_button(canvas, app, lambda: specialty_screen(app))
     app.update_progress_bar()
+
 
 
 def unit_screen(app, semester):
@@ -221,25 +283,16 @@ def unit_screen(app, semester):
 
     units = COURSE_MAP[app.current_specialty][semester]
     card_w, card_h, gap = 800, 80, 30
-    x1, x2 = cx - card_w // 2, cx + card_w // 2
+    x1, x2 = cx-card_w//2, cx+card_w//2
     for i, (label, path) in enumerate(units):
-        y1 = cy + i * (card_h + gap)
-        rect_id = app.draw_rounded_rectangle(
-            canvas, x1, y1, x2, y1 + card_h,
-            radius=20,
-            fill=app.colors[app.theme]['card'],
-            outline=app.colors[app.theme]['shadow']
-        )
-        canvas.create_text(
-            cx, y1 + card_h // 2,
-            text=label,
-            font=("Montserrat", 14),
-            fill=app.colors[app.theme]['fg'],
-            width=card_w - 40
-        )
-        canvas.tag_bind(rect_id, "<Button-1>", lambda e, p=path: app.play_quiz(p))
+        y1 = cy + i*(card_h+gap)
+        cb = lambda p=path: app.play_quiz(p)
+        add_menu_card(canvas, app, x1, y1, x2, y1+card_h, label, cb)
 
+    # ─── back to semester ───
+    add_back_button(canvas, app, lambda: semester_screen(app, app.current_specialty))
     app.update_progress_bar()
+
 
 
 
