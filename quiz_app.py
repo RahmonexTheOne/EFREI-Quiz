@@ -65,6 +65,384 @@ class QuizApp:
         )
         btn.pack(pady=10, fill="x", padx=20)
 
+    def config_quiz_screen(self, csv_path):
+        # Clear everything
+        self.clear_window()
+        self.update_progress_bar()
+
+        # Store path so the "Start" button can pick it up
+        self._pending_csv = csv_path
+
+        # Set background image to fill entire screen
+        w = self.master.winfo_screenwidth()
+        h = self.master.winfo_screenheight()
+        
+        # Create background canvas that fills everything
+        bg_canvas = tk.Canvas(
+            self.master,
+            width=w,
+            height=h,
+            highlightthickness=0
+        )
+        bg_canvas.place(x=0, y=0, relwidth=1, relheight=1)
+        
+        # Load and set background image
+        bg_image = Image.open(resource_path("assets/background_menu.png")).resize((w, h))
+        self.config_bg_tk = ImageTk.PhotoImage(bg_image)
+        bg_canvas.create_image(0, 0, image=self.config_bg_tk, anchor="nw")
+
+        # Title - directly on the background canvas
+        bg_canvas.create_text(
+            w//2, h//2 - 220,
+            text="Quiz Configuration",
+            font=("Montserrat", 28, "bold"),
+            fill="white",
+            anchor="center"
+        )
+
+        # Subtitle - directly on the background canvas
+        bg_canvas.create_text(
+            w//2, h//2 - 185,
+            text="Personalize your quiz experience",
+            font=("Montserrat", 14),
+            fill="white",
+            anchor="center"
+        )
+
+        # Timer Configuration Section - directly on background
+        bg_canvas.create_text(
+            w//2, h//2 - 130,
+            text="⏱️ Duration per Question",
+            font=("Montserrat", 18, "bold"),
+            fill="white",
+            anchor="center"
+        )
+
+        # Timer selection variables and buttons
+        self._timer_var = tk.IntVar(value=25)
+        self.timer_buttons = {}
+        
+        timer_options = [
+            (15, "Fast", "15s"),
+            (25, "Balanced", "25s"),
+            (50, "Thoughtful", "50s")
+        ]
+
+        button_width = 180
+        button_height = 80
+        start_x = w//2 - (3 * button_width + 2 * 30) // 2  # Center 3 buttons with 30px spacing
+
+        for i, (value, label, time_text) in enumerate(timer_options):
+            x = start_x + i * (button_width + 30)
+            y = h//2 - 90
+
+            # Create button canvas positioned absolutely
+            btn_canvas = tk.Canvas(
+                self.master,
+                width=button_width,
+                height=button_height,
+                highlightthickness=0,
+                bg=self.master.cget('bg')
+            )
+            btn_canvas.place(x=x, y=y)
+
+            # Button color
+            btn_color = self.colors[self.theme]['accent'] if value == 25 else self.colors[self.theme]['card_hover']
+            
+            # Draw rounded button
+            btn_rect = self.draw_rounded_rectangle(
+                btn_canvas,
+                0, 0, button_width, button_height,
+                radius=15,
+                fill=btn_color,
+                outline=""
+            )
+
+            # Button text - time
+            btn_canvas.create_text(
+                button_width//2, 30,
+                text=time_text,
+                font=("Montserrat", 14, "bold"),
+                fill="white"
+            )
+
+            # Button text - label
+            btn_canvas.create_text(
+                button_width//2, 55,
+                text=label,
+                font=("Montserrat", 11),
+                fill="white"
+            )
+
+            # Store button elements
+            self.timer_buttons[value] = (btn_canvas, btn_rect, btn_color)
+
+            # Bind click events
+            def make_timer_click(v):
+                return lambda e: self.select_timer(v)
+            
+            btn_canvas.bind("<Button-1>", make_timer_click(value))
+            btn_canvas.bind("<Enter>", lambda e, c=btn_canvas: c.configure(cursor="hand2"))
+            btn_canvas.bind("<Leave>", lambda e, c=btn_canvas: c.configure(cursor=""))
+
+        # Questions Count Configuration Section - directly on background
+        bg_canvas.create_text(
+            w//2, h//2 + 20,
+            text="📊 Number of Questions",
+            font=("Montserrat", 18, "bold"),
+            fill="white",
+            anchor="center"
+        )
+
+        # Count selection variables and buttons
+        self._count_var = tk.IntVar(value=50)
+        self.count_buttons = {}
+        
+        count_options = [
+            (50, "Short", "50"),
+            (100, "Standard", "100"),
+            (200, "Intensive", "200")
+        ]
+
+        for i, (value, label, count_text) in enumerate(count_options):
+            x = start_x + i * (button_width + 30)
+            y = h//2 + 60
+
+            # Create button canvas positioned absolutely
+            btn_canvas = tk.Canvas(
+                self.master,
+                width=button_width,
+                height=button_height,
+                highlightthickness=0,
+                bg=self.master.cget('bg')
+            )
+            btn_canvas.place(x=x, y=y)
+
+            # Button color
+            btn_color = self.colors[self.theme]['accent'] if value == 50 else self.colors[self.theme]['card_hover']
+            
+            # Draw rounded button
+            btn_rect = self.draw_rounded_rectangle(
+                btn_canvas,
+                0, 0, button_width, button_height,
+                radius=15,
+                fill=btn_color,
+                outline=""
+            )
+
+            # Button text - count
+            btn_canvas.create_text(
+                button_width//2, 30,
+                text=count_text,
+                font=("Montserrat", 14, "bold"),
+                fill="white"
+            )
+
+            # Button text - label
+            btn_canvas.create_text(
+                button_width//2, 55,
+                text=label,
+                font=("Montserrat", 11),
+                fill="white"
+            )
+
+            # Store button elements
+            self.count_buttons[value] = (btn_canvas, btn_rect, btn_color)
+
+            # Bind click events
+            def make_count_click(v):
+                return lambda e: self.select_count(v)
+            
+            btn_canvas.bind("<Button-1>", make_count_click(value))
+            btn_canvas.bind("<Enter>", lambda e, c=btn_canvas: c.configure(cursor="hand2"))
+            btn_canvas.bind("<Leave>", lambda e, c=btn_canvas: c.configure(cursor=""))
+
+        # Stats display - directly on background
+        self.stats_text_id = bg_canvas.create_text(
+            w//2, h//2 + 170,
+            text="",
+            font=("Montserrat", 12, "bold"),
+            fill="white",
+            anchor="center"
+        )
+        self.stats_canvas = bg_canvas  # Store reference for updates
+        self.update_config_stats()
+
+        # Start button - positioned absolutely
+        start_canvas = tk.Canvas(
+            self.master,
+            width=220,
+            height=50,
+            highlightthickness=0,
+            bg=self.master.cget('bg')
+        )
+        start_canvas.place(x=w//2-110, y=h//2 + 200)
+
+        # Draw rounded start button
+        self.draw_rounded_rectangle(
+            start_canvas,
+            0, 0, 220, 50,
+            radius=15,
+            fill=self.colors[self.theme]["accent"],
+            outline=""
+        )
+
+        start_canvas.create_text(
+            110, 25,
+            text="🚀 Start Quiz",
+            font=("Montserrat", 14, "bold"),
+            fill="white"
+        )
+
+        # Bind start button events
+        def start_quiz_click(e):
+            self.play_quiz(
+                self._pending_csv,
+                timer=self._timer_var.get(),
+                num_qs=self._count_var.get()
+            )
+
+        start_canvas.bind("<Button-1>", start_quiz_click)
+        start_canvas.bind("<Enter>", lambda e: (
+            start_canvas.delete("all"),
+            self.draw_rounded_rectangle(start_canvas, 0, 0, 220, 50, radius=15, fill=self.colors[self.theme]["success"], outline=""),
+            start_canvas.create_text(110, 25, text="🚀 Start Quiz", font=("Montserrat", 14, "bold"), fill="white"),
+            start_canvas.configure(cursor="hand2")
+        ))
+        start_canvas.bind("<Leave>", lambda e: (
+            start_canvas.delete("all"),
+            self.draw_rounded_rectangle(start_canvas, 0, 0, 220, 50, radius=15, fill=self.colors[self.theme]["accent"], outline=""),
+            start_canvas.create_text(110, 25, text="🚀 Start Quiz", font=("Montserrat", 14, "bold"), fill="white"),
+            start_canvas.configure(cursor="")
+        ))
+
+        # Back button - positioned absolutely
+        back_canvas = tk.Canvas(
+            self.master,
+            width=100,
+            height=40,
+            highlightthickness=0,
+            bg=self.master.cget('bg')
+        )
+        back_canvas.place(x=w//2-50, y=h//2 + 270)
+
+        # Draw red back button
+        self.draw_rounded_rectangle(
+            back_canvas,
+            0, 0, 100, 40,
+            radius=12,
+            fill=self.colors[self.theme]["error"],  # Red color
+            outline=""
+        )
+
+        back_canvas.create_text(
+            50, 20,
+            text="← Back",
+            font=("Montserrat", 11, "bold"),
+            fill="white"
+        )
+
+        # Bind back button events
+        def back_click(e):
+            __import__('ui.screens', fromlist=['specialty_screen']).specialty_screen(self)
+
+        back_canvas.bind("<Button-1>", back_click)
+        back_canvas.bind("<Enter>", lambda e: (
+            back_canvas.delete("all"),
+            self.draw_rounded_rectangle(back_canvas, 0, 0, 100, 40, radius=12, fill="#d32f2f", outline=""),  # Darker red
+            back_canvas.create_text(50, 20, text="← Back", font=("Montserrat", 11, "bold"), fill="white"),
+            back_canvas.configure(cursor="hand2")
+        ))
+        back_canvas.bind("<Leave>", lambda e: (
+            back_canvas.delete("all"),
+            self.draw_rounded_rectangle(back_canvas, 0, 0, 100, 40, radius=12, fill=self.colors[self.theme]["error"], outline=""),
+            back_canvas.create_text(50, 20, text="← Back", font=("Montserrat", 11, "bold"), fill="white"),
+            back_canvas.configure(cursor="")
+        ))
+
+    def select_timer(self, value):
+        """Handle timer button selection"""
+        self._timer_var.set(value)
+        # Update button colors
+        for btn_value, (canvas, rect, original_color) in self.timer_buttons.items():
+            canvas.delete("all")
+            color = self.colors[self.theme]['accent'] if btn_value == value else self.colors[self.theme]['card_hover']
+            
+            self.draw_rounded_rectangle(
+                canvas,
+                0, 0, 180, 80,
+                radius=15,
+                fill=color,
+                outline=""
+            )
+            
+            # Redraw text
+            time_options = {15: ("15s", "Fast"), 25: ("25s", "Balanced"), 50: ("50s", "Thoughtful")}
+            time_text, label = time_options[btn_value]
+            
+            canvas.create_text(
+                90, 30,
+                text=time_text,
+                font=("Montserrat", 14, "bold"),
+                fill="white"
+            )
+            
+            canvas.create_text(
+                90, 55,
+                text=label,
+                font=("Montserrat", 11),
+                fill="white"
+            )
+        
+        self.update_config_stats()
+
+    def select_count(self, value):
+        """Handle count button selection"""
+        self._count_var.set(value)
+        # Update button colors
+        for btn_value, (canvas, rect, original_color) in self.count_buttons.items():
+            canvas.delete("all")
+            color = self.colors[self.theme]['accent'] if btn_value == value else self.colors[self.theme]['card_hover']
+            
+            self.draw_rounded_rectangle(
+                canvas,
+                0, 0, 180, 80,
+                radius=15,
+                fill=color,
+                outline=""
+            )
+            
+            # Redraw text
+            canvas.create_text(
+                90, 30,
+                text=f"{btn_value}",
+                font=("Montserrat", 14, "bold"),
+                fill="white"
+            )
+            
+            count_labels = {50: "Short", 100: "Standard", 200: "Intensive"}
+            canvas.create_text(
+                90, 55,
+                text=count_labels[btn_value],
+                font=("Montserrat", 11),
+                fill="white"
+            )
+        
+        self.update_config_stats()
+
+    def update_config_stats(self):
+        """Update the statistics display"""
+        timer_val = self._timer_var.get()
+        count_val = self._count_var.get()
+        estimated_time = (timer_val * count_val) // 60
+        
+        stats_text = f"📈 Estimated duration: ~{estimated_time} minutes | Questions: {count_val} | Time/question: {timer_val}s"
+        
+        # Update the text on the background canvas
+        if hasattr(self, 'stats_canvas') and hasattr(self, 'stats_text_id'):
+            self.stats_canvas.itemconfig(self.stats_text_id, text=stats_text)
+
+
     def admin_security_screen(self):
         from ui.screens import admin_security_screen
         admin_security_screen(self) 
@@ -251,15 +629,21 @@ class QuizApp:
     def home_screen(self):
         home_screen(self)
 
-    def play_quiz(self, csv_path):
+    def play_quiz(self, csv_path, timer=25, num_qs=50):
+        # timer: initial seconds per question
+        # num_qs: how many questions to draw
         self.data = pd.read_csv(csv_path)
         full_data = self.data.sample(frac=1).reset_index(drop=True)
-        self.questions = full_data.head(50)
+        # take only num_qs questions
+        self.questions = full_data.head(num_qs)
         self.current_question = 0
         self.answers_outcome = [None] * len(self.questions)
         self.correct_streak = 0
         self.incorrect_indices = []
+        # set the timer
+        self.remaining_time = timer
         self.display_question()
+
 
     def play_incorrect_quiz(self):
         self.questions = self.questions.iloc[self.incorrect_indices].reset_index(drop=True)

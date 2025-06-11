@@ -286,7 +286,7 @@ def unit_screen(app, semester):
     x1, x2 = cx-card_w//2, cx+card_w//2
     for i, (label, path) in enumerate(units):
         y1 = cy + i*(card_h+gap)
-        cb = lambda p=path: app.play_quiz(p)
+        cb = lambda p=path: app.config_quiz_screen(p)
         add_menu_card(canvas, app, x1, y1, x2, y1+card_h, label, cb)
 
     # ─── back to semester ───
@@ -486,7 +486,7 @@ def display_mcq_question(app, q_data, override_choices=None):
     )
 
     # Initialize your countdown variable and kick off the timer loop:
-    app.remaining_time = 25
+    app.timer_canvas = timer_canvas
     app.timer_canvas = timer_canvas     # so update_timer() can find it
     app.update_timer()
 
