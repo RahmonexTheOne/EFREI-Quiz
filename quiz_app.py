@@ -640,8 +640,9 @@ class QuizApp:
         self.answers_outcome = [None] * len(self.questions)
         self.correct_streak = 0
         self.incorrect_indices = []
-        # set the timer
-        self.remaining_time = timer
+        # Store the timer duration for each question
+        self.timer_duration = timer  # Store the original timer value
+        self.remaining_time = timer  # Set initial time
         self.display_question()
 
 
@@ -654,6 +655,9 @@ class QuizApp:
 
     def display_question(self):
         from ui.screens import display_question
+        # Reset timer for each new question
+        if hasattr(self, 'timer_duration'):
+            self.remaining_time = self.timer_duration
         q_data = self.questions.iloc[self.current_question]
         q_type = q_data['Type']
         display_question(self, q_type, q_data)

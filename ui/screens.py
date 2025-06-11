@@ -307,6 +307,8 @@ def play_quiz(app):
 # MCQ Question
 #--------------------------------------------------------
 def display_question(app, q_type, q_data):
+    if hasattr(app, 'timer_duration'):
+        app.remaining_time = app.timer_duration
     q_type = q_type.strip().upper()
     if q_type == "MCQ":
         display_mcq_question(app, q_data)
@@ -480,7 +482,7 @@ def display_mcq_question(app, q_data, override_choices=None):
     # Overlay the countdown text in dark blue (#1E90FF) at the center of the 60×60 box:
     app.timer_text_id = timer_canvas.create_text(
         30, 35,                      # center of a 60×60 square
-        text="25s",
+        text=f"{app.remaining_time}s",
         font=("Montserrat", 12, "bold"),
         fill="#1E90FF"               # dark‐blue instead of green
     )
