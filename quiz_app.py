@@ -3,6 +3,7 @@ import pandas as pd
 import tkinter as tk
 from PIL import Image, ImageTk
 import tkinter.messagebox
+from tkinter import ttk
 import sys, os
 
 from ui.screens import home_screen, specialty_screen, semester_screen, unit_screen, play_quiz
@@ -455,55 +456,37 @@ class QuizApp:
         w = self.master.winfo_screenwidth()
         h = self.master.winfo_screenheight()
 
-        # 1) Create a full-screen Canvas overlay
-        self.overlay_frame = tk.Canvas(
-            self.master,
-            width=w,
-            height=h,
-            highlightthickness=0
-        )
+        self.overlay_frame = tk.Canvas(self.master, width=w, height=h, highlightthickness=0)
         self.overlay_frame.place(relx=0, rely=0, relwidth=1, relheight=1)
 
-        # 2) Draw the background_menu.png stretched to fill the window
         bg_image = Image.open(resource_path("assets/background_menu.png")).resize((w, h))
         self.menu_bg_tk = ImageTk.PhotoImage(bg_image)
         self.overlay_frame.create_image(0, 0, image=self.menu_bg_tk, anchor="nw")
 
-        # 3) Semi-transparent “dimming” layer on top (stipple ≈ 50% opacity)
-        self.overlay_frame.create_rectangle(
-            0, 0, w, h,
-            fill="black",
-            stipple="gray25",  # makes the black semi-transparent
-            outline=""
-        )
+        self.overlay_frame.create_rectangle(0, 0, w, h, fill="black", stipple="gray25", outline="")
 
-        # 4) Draw a centered “menu card” with drop-shadow
-        card_w, card_h = 350, 420
+        # Taller card
+        card_w, card_h = 350, 560
         card_x = (w - card_w) // 2
         card_y = (h - card_h) // 2
         radius = 25
 
-        # 4a) Drop-shadow behind the card (offset by 6 px)
         self.draw_rounded_rectangle(
             self.overlay_frame,
             card_x + 6, card_y + 6,
             card_x + card_w + 6, card_y + card_h + 6,
-            radius=radius,
-            fill="#111111",  # dark shadow
-            outline=""
+            radius=radius, fill="#111111", outline=""
         )
 
-        # 4b) The actual “menu card” on top
         self.draw_rounded_rectangle(
             self.overlay_frame,
             card_x, card_y,
             card_x + card_w, card_y + card_h,
             radius=radius,
-            fill=self.colors[self.theme]["card"],     # your dark card color
-            outline=self.colors[self.theme]["shadow"]  # subtle outline
+            fill=self.colors[self.theme]["card"],
+            outline=self.colors[self.theme]["shadow"]
         )
 
-        # 5) Draw the “Menu” title at the top of the card
         cx = card_x + card_w // 2
         self.overlay_frame.create_text(
             cx, card_y + 40,
@@ -512,12 +495,11 @@ class QuizApp:
             fill=self.colors[self.theme]["fg"]
         )
 
-        # 6) Create the four menu “buttons” (rounded rectangles + text)
-        btn_w = card_w - 60   # leave 30 px padding on each side
+        btn_w = card_w - 60
         btn_h = 55
         btn_radius = 20
-        spacing = 25          # vertical gap between buttons
-        start_y = card_y + 90 # first button’s top edge
+        spacing = 18
+        start_y = card_y + 90
 
         def make_button(label, y_offset, base_color, callback):
             x1 = cx - btn_w // 2
@@ -525,7 +507,6 @@ class QuizApp:
             x2 = cx + btn_w // 2
             y2 = y_offset + btn_h
 
-            # 6a) Draw the rounded-corner rectangle
             rect_id = self.draw_rounded_rectangle(
                 self.overlay_frame,
                 x1, y1, x2, y2,
@@ -534,7 +515,6 @@ class QuizApp:
                 outline=""
             )
 
-            # 6b) Draw the label, centered
             text_id = self.overlay_frame.create_text(
                 cx, y1 + btn_h // 2,
                 text=label,
@@ -542,68 +522,116 @@ class QuizApp:
                 fill="white"
             )
 
-            # 6c) Bind click + hover behavior on both rect and text
             for tag in (rect_id, text_id):
-                # Click → run the callback
                 self.overlay_frame.tag_bind(tag, "<Button-1>", lambda e: callback())
-
-                # Hover enter → lighten the fill and show hand cursor
-                self.overlay_frame.tag_bind(tag, "<Enter>", 
+                self.overlay_frame.tag_bind(tag, "<Enter>",
                     lambda e, rid=rect_id: (
                         self.overlay_frame.itemconfig(rid, fill=self.colors[self.theme]["card_hover"]),
                         self.overlay_frame.config(cursor="hand2")
                     )
                 )
-                # Hover leave → revert fill and cursor
-                self.overlay_frame.tag_bind(tag, "<Leave>", 
+                self.overlay_frame.tag_bind(tag, "<Leave>",
                     lambda e, rid=rect_id, col=base_color: (
                         self.overlay_frame.itemconfig(rid, fill=col),
                         self.overlay_frame.config(cursor="")
                     )
                 )
 
-            return rect_id, text_id
+        # Original buttons
+        make_button("Reset Quiz", start_y, self.colors[self.theme]["accent"],
+                    lambda: [self.close_menu(), specialty_screen(self)])
+        make_button("Back to Main Menu", start_y + (btn_h + spacing), self.colors[self.theme]["accent"],
+                    lambda: [self.close_menu(), self.home_screen()])
+        make_button("Exit App", start_y + 2*(btn_h + spacing), self.colors[self.theme]["error"], self.confirm_exit)
+        make_button("❌ Close Menu", start_y + 3*(btn_h + spacing), self.colors[self.theme]["card_hover"], self.close_menu)
 
-        # 7) “Reset Quiz” (accent color)
-        make_button(
-            "Reset Quiz",
-            start_y,
-            self.colors[self.theme]["accent"],
-            lambda: [self.close_menu(), specialty_screen(self)]
-        )
+        # Music controls
+        if hasattr(self, "music"):
+            def toggle_music():
+                self.music.toggle()
+                self.close_menu()
+                self.show_menu()
 
-        # 8) “Back to Main Menu” (accent color)
-        make_button(
-            "Back to Main Menu",
-            start_y + btn_h + spacing,
-            self.colors[self.theme]["accent"],
-            lambda: [self.close_menu(), self.home_screen()]
-        )
+            music_label = f"Music: {'ON' if self.music.enabled else 'OFF'}"
+            make_button(music_label, start_y + 4*(btn_h + spacing), self.colors[self.theme]["button"], toggle_music)
 
-        # 9) “Exit App” (error/red color)
-        make_button(
-            "Exit App",
-            start_y + 2*(btn_h + spacing),
-            self.colors[self.theme]["error"],
-            self.confirm_exit
-        )
+            # Volume title
+            volume_title_y = start_y + 5*(btn_h + spacing) + 10
+            self.overlay_frame.create_text(
+                cx, volume_title_y,
+                text="Volume",
+                font=("Montserrat", 12, "bold"),
+                fill=self.colors[self.theme]["fg"]
+            )
 
-        # 10) “❌ Close Menu” (card_hover color)
-        make_button(
-            "❌ Close Menu",
-            start_y + 3*(btn_h + spacing),
-            self.colors[self.theme]["card_hover"],
-            self.close_menu
-        )
+            # Slider y (below the title)
+            slider_y = volume_title_y + 40
+
+            style = ttk.Style()
+            try:
+                style.theme_use("clam")
+            except Exception:
+                pass
+
+            card_bg = self.colors[self.theme]["card"]
+            hover = self.colors[self.theme]["card_hover"]
+            fg = self.colors[self.theme]["fg"]
+
+            style.configure("Menu.Horizontal.TScale", background=card_bg, troughcolor=hover)
+
+            # % value
+            vol_var = tk.DoubleVar(value=self.music.volume * 100)
+
+            vol_text_id = self.overlay_frame.create_text(
+                cx, volume_title_y + 18,
+                text=f"{int(vol_var.get())}%",
+                font=("Montserrat", 12, "bold"),
+                fill=fg
+            )
+
+            def on_volume_change(v):
+                v = float(v)
+                self.music.set_volume(v / 100.0)
+                self.overlay_frame.itemconfig(vol_text_id, text=f"{int(v)}%")
+
+            # ✅ IMPORTANT: frame parent should be master, NOT the canvas
+            self.menu_slider_frame = tk.Frame(self.master, bg=card_bg)
+
+            # Embed the frame inside the canvas
+            self.overlay_frame.create_window(
+                cx, slider_y,
+                window=self.menu_slider_frame,
+                width=btn_w,
+                height=30
+            )
+
+            self.menu_volume_slider = ttk.Scale(
+                self.menu_slider_frame,
+                from_=0, to=100,
+                orient="horizontal",
+                variable=vol_var,
+                command=on_volume_change,
+                style="Menu.Horizontal.TScale"
+            )
+            self.menu_volume_slider.pack(fill="x", expand=True)
 
 
 
 
     def close_menu(self):
+        if hasattr(self, "menu_slider_frame") and self.menu_slider_frame:
+            try:
+                self.menu_slider_frame.destroy()
+            except Exception:
+                pass
+            self.menu_slider_frame = None
+
         if self.overlay_frame:
             self.overlay_frame.destroy()
             self.overlay_frame = None
-            self.bg_image_tk = None
+
+        self.menu_bg_tk = None
+        self.bg_image_tk = None
 
     def get_current_screen_id(self):
         if hasattr(self, 'questions') and self.current_question < len(self.questions):

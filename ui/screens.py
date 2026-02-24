@@ -22,9 +22,11 @@ COURSE_MAP = {
             ("Orchestration et Containers",
              resource_path("assets/docker_orchestration.csv"))
         ],
-        "M2 (S9)": [
+        "M2 First Semester (S9)": [
             ("Sciences politiques",
              resource_path("assets/sciences-po.csv")),
+            ("Audit et gestion des risques (SSI)",
+            resource_path("assets/audit-gestion-ssi.csv")),
         ]
     },
 }
