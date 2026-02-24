@@ -21,6 +21,10 @@ COURSE_MAP = {
              resource_path("assets/devops.csv")),
             ("Orchestration et Containers",
              resource_path("assets/docker_orchestration.csv"))
+        ],
+        "M2 (S9)": [
+            ("Sciences politiques",
+             resource_path("assets/sciences-po.csv")),
         ]
     },
 }
