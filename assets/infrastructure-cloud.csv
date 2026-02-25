@@ -1,0 +1,151 @@
+Type,Title,Choice1,Choice2,Choice3,Choice4,Correct
+MCQ,"Quel format disque et conteneur pour importer CirrOS via CLI Glance ?","--disk-format iso --container-format docker","--disk-format raw --container-format ovf","--disk-format qcow2 --container-format bare","--disk-format vmdk --container-format ova",3
+MCQ,"Port Heat API dans heat.conf ?","8004","9696","8776","8000",1
+MCQ,"Dans nova.conf compute, virt_type par défaut ?","hyperv","qemu","vmware","kvm",4
+MCQ,"Quelle commande lie le router à external-gateway ?","openstack router add network Router-1 provider-net","openstack router set Router-1 --external-gateway tenant-net","openstack router set Router-1 --external-gateway provider-net","openstack router create --gateway provider-net",3
+MCQ,"Statut instance après build ?","SHUTOFF","ACTIVE","BUILD","ERROR",2
+MCQ,"Commande delete volume ?","nova volume-delete","openstack volume delete id","glance delete volume-id","cinder volume delete id",2
+MCQ,"Quel paramètre définit le mapping physique pour provider-net ?","--external-network flat","--provider-physical-network provider","--tenant-network-type flat","--provider-network-type vxlan",2
+MCQ,"Endpoint Heat API ?","controller:8774","8004","heat:8000","controller:8004/v1/%(tenant_id)s",4
+MCQ,"Volume group pour LVM ?","volumes-group","vg-cinder","cinder-volumes","lvm-cinder",3
+MCQ,"Quelle commande active le forwarding IP sur le contrôleur ?","ip forward enable","sudo sh -c 'echo 1 > /proc/sys/net/ipv4/ip_forward'","sudo sysctl net.ipv4.ip_forward=0","echo 0 > /proc/sys/net/ipv4/ip_forward",2
+MCQ,"Discover hosts ?","placement discover","openstack host discover","nova host-list","nova-manage cellv2 discover_hosts",4
+MCQ,"Paquets installés pour Cinder ?","cinder-block-storage","nova-volume cinder-client","openstack-cinder all","cinder-api cinder-scheduler cinder-volume",4
+MCQ,"Endpoints pour volumev2 ?","controller:8774/v2","cinder:8776/v3","controller:8776/v2/%(tenant_id)s","controller:8776/v1",3
+MCQ,"Quel flavor a --ram 2048 --disk 20 ?","m1.medium","m1.nano","m1.small","m1.tiny",3
+MCQ,"Commande liste services volume ?","openstack service list --volume","nova volume-service","cinder service-list","openstack volume service list",4
+MCQ,"Quelle commande vérifie les agents Neutron ?","openstack agent list","neutron agent-list","openstack service agent list","openstack network agent list",4
+MCQ,"Quelle règle iptables est ajoutée pour le NAT sur ens37 ?","sudo iptables -t nat -A POSTROUTING -o ens37 -j MASQUERADE","iptables -A INPUT -i ens37 -j ACCEPT","iptables -t nat -A POSTROUTING -o ens37 -j SNAT","iptables -t filter -A FORWARD -o ens37 -j DROP",1
+MCQ,"Quel bridge OVS est mappé à provider ?","br-tun","br-provider","br-ex","br-int",2
+MCQ,"Dans nova.conf, quel firewall_driver avec Neutron ?","IptablesFirewallDriver","OVSFWDriver","nova.virt.firewall.NoopFirewallDriver","FirewalldDriver",3
+MCQ,"Rôles Heat ?","admin user stack","orchestrator owner","heat_stack_owner heat_stack_user","heat_admin heat_user",3
+MCQ,"Lancement instance basique ?","nova boot --image ubuntu --flavor tiny","openstack server create --image CirrOS --flavor m1.small --network private","openstack launch vm","glance server-create",2
+MCQ,"Quelle gateway pour tenant-subnet 192.168.100.0/24 ?","203.0.113.1","192.168.100.1","10.0.0.1","192.168.100.255",2
+MCQ,"Commande sync DB Cinder ?","sudo cinder-manage db sync","mysql sync cinder","openstack db sync cinder","cinder-manage db sync",1
+MCQ,"Quelle commande redémarre Apache pour Horizon ?","sudo service apache restart","sudo systemctl reload apache2","sudo systemctl restart apache2","apache2 reload",3
+MCQ,"Base de données Cinder ?","CREATE DATABASE volume","CREATE DATABASE cinder_api","CREATE DATABASE cinder","CREATE DATABASE block",3
+MCQ,"Dans Horizon, où modifier les quotas d'un projet ?","Network > Quotas","Compute > Quotas","Admin > System > Projects > Modify Quotas","Identity > Projects > Quotas",4
+MCQ,"Utilisateur par défaut de CirrOS ?","admin/admin","cirros/cubswin:)","ubuntu/cube","root/password",2
+MCQ,"Base Heat ?","CREATE DATABASE heat","CREATE DATABASE orchestration","CREATE DATABASE stack","CREATE DATABASE heat_api",1
+MCQ,"Keypair create ?","keystone key-create","nova keypair-add mykey","openstack keypair create mykey > mykey.pem","ssh-keygen -f mykey",3
+MCQ,"Dans ml2_conf.ini, quels mechanism_drivers sont configurés ?","linuxbridge","vlan,flat","ovs,linuxbridge","openvswitch,l2population",4
+MCQ,"Service Heat ?","openstack service create --name heat orchestration","heat service-create","openstack orchestration create","keystone service-add heat",1
+MCQ,"Quel argument désactive DHCP dans subnet provider ?","--dhcp-disabled","--gateway none","--allocation-pool none","--no-dhcp ou --disable-dhcp selon version CLI",4
+MCQ,"Vérif agents OVS compute ?","openstack network agent list","Toutes","neutron agent-list-detail","ovs-vsctl show network agents",1
+MCQ,"Commande pour valider un template Heat localement ?","openstack heat validate template.yaml","heat validate template.yaml","heat template-validate --template-file mon_template.yaml","heat template-validate template.yaml",3
+MCQ,"Quelle commande liste les images avec tag ?","glance image-list --tag","openstack tag list --image","openstack image list --tag production-ready","openstack image show --tags",3
+MCQ,"Section [lvm] dans cinder.conf pour backend ?","volume_driver = LVMDriver","iscsi_helper = tgtadm","volume_group = cinder-volumes","Toutes les réponses",4
+MCQ,"Paquets Nova compute ?","nova-compute sysfsutils","nova-api nova-scheduler","openstack-nova all","libvirt qemu-kvm seulement",1
+MCQ,"Quelle commande importe CirrOS en Glance ?","openstack image create CirrOS --file cirros.img --disk-format raw","openstack image create CirrOS --file cirros-0.5.2-x86_64-disk.img --disk-format qcow2 --container-format bare --public","glance image-create --file cirros.img --disk qcow2","openstack image upload CirrOS cirros.img",2
+MCQ,"Domaine Heat ?","openstack project create heat-domain","keystone domain-create heat","heat domain-setup","openstack domain create heat",4
+MCQ,"Commande check KVM support ?","egrep -c '(vmx|svm)' /proc/cpuinfo","lsmodel | grep kvm","Aucune","virt-what",1
+MCQ,"Cell v2 create ?","openstack cell create cell1","nova cell-setup","cinder cell create","nova-manage cellv2 create_cell --name cell1",4
+MCQ,"Dans Horizon, comment créer un projet ?","Admin > Flavors > Add Project","Compute > Instances > Create Project","Identity > Projects > Create Project","Network > Projects > New",3
+MCQ,"Valeur correcte pour my_ip sur compute ?","Aucune","10.0.0.21","192.168.30.111","203.0.113.21",2
+MCQ,"Quel paramètre Glance référence une image distante HTTP ?","--disk-format qcow2 --container-format bare --file remote.img","--external-url img","--location example.com/images/external-image.qcow2","--import remote.qcow2",3
+MCQ,"Hypervisor list ?","nova hypervisor-list","openstack compute hypervisor","openstack hypervisor list","virsh list",3
+MCQ,"Quelle commande redémarre les services Neutron serveur et agents ?","sudo systemctl restart neutron-*","openstack service restart neutron","sudo systemctl restart neutron-server neutron-linuxbridge-agent neutron-dhcp-agent neutron-metadata-agent","systemctl reload neutron",3
+MCQ,"Dans glance-api.conf, quelle flavor pour Keystone auth ?","auth flavor keystone","deploy flavor mysql","keystone flavor default","deploy flavor keystone",4
+MCQ,"Debug KVM non supporté ?","modprobe kvm_intel","libvirtd restart","Vérifier virtualisation nestée VMware et egrep vmx /proc/cpuinfo","sysctl kvm=1",3
+MCQ,"Quelle commande CLI crée un utilisateur dans Keystone ?","keystone user-create --password monpass","keystone domain-user-create","openstack project user-add utilisateur","openstack user create --domain default --password monpass utilisateur",4
+MCQ,"Commande d'assignation de rôles ?","openstack role add --project service --user heat admin","keystone domain-user-create","openstack role add --project demo --user admin admin","openstack user role-add admin service admin",1
+MCQ,"Sur quel port le service novncproxy permet-il d'accéder graphiquement aux VMs ?","9292","6080","5000","8774",2
+MCQ,"Pourquoi faut-il modifier le script /usr/bin/nova-manage avec un patch eventlet ?","Pour changer le logo de Nova","Pour augmenter la vitesse du réseau","Pour corriger un bug d'interblocage (deadlock) lors de la synchronisation SQL","Pour permettre le support de Windows",3
+MCQ,"Pourquoi active-t-on ip_forward dans le noyau Linux du contrôleur ?","Pour accélérer MySQL","Pour permettre au contrôleur de fonctionner comme un routeur","Pour permettre l'affichage d'Horizon","Pour synchroniser l'heure du système",2
+MCQ,"Quel protocole permet de présenter le volume disque à l'instance Nova à travers le réseau ?","SSH","iSCSI","HTTP","FTP",2
+MCQ,"Dans local_settings.py de Horizon, que définit OPENSTACK_HOST ?","Le nom de la base de données","Le nom d'hôte ou l'IP du contrôleur où se trouvent les APIs","L'adresse IP de l'utilisateur","L'adresse du serveur de messagerie",2
+MCQ,"Dans glance-api.conf, que configure la section [keystone_authtoken] ?","Les paramètres permettant à Glance de communiquer avec Keystone","Le mot de passe de l'administrateur Horizon","La durée de vie des images","Les clés SSH des utilisateurs",1
+MCQ,"Quel est le format de fichier utilisé pour les templates Heat (HOT) ?","XML","YAML","CSV","INI",2
+MCQ,"Quelle commande permet de vérifier que le service Identity est correctement enregistré ?","systemctl status mysql","openstack user show","openstack service list","keystone-manage db_sync",3
+MCQ,"Pourquoi l'utilisateur glance doit-il avoir le rôle admin dans le projet service ?","Pour modifier la configuration réseau","Pour s'authentifier et valider les tokens auprès de Keystone","Pour accéder au terminal du contrôleur","Pour pouvoir supprimer les utilisateurs",2
+MCQ,"Quel format de disque est couramment utilisé avec KVM/QEMU dans OpenStack ?","QCOW2","VMDK","ISO","VHD",1
+MCQ,"Quelle règle iptables est utilisée pour permettre aux VMs privées d'accéder à Internet via l'IP du contrôleur ?","REJECT","MASQUERADE (NAT)","DROP","ACCEPT",2
+MCQ,"Si une image est créée avec l'option --public, qui peut l'utiliser ?","Uniquement les utilisateurs du projet service","Uniquement l'administrateur","Tous les utilisateurs de tous les projets","Personne sans une clé spécifique",3
+MCQ,"Quel est le but du service Cinder ?","Fournir des volumes de stockage persistant (mode bloc) pour les instances","Gérer les bases de données SQL","Orchestrer les images Glance","Fournir du stockage objet (S3)",1
+MCQ,"À quoi sert l'agent neutron-dhcp-agent ?","À router les paquets vers Internet","À chiffrer les communications","À surveiller la bande passante","À attribuer automatiquement des adresses IP aux instances",4
+MCQ,"Quel service OpenStack est responsable de la gestion du réseau virtuel ?","Neutron","Cinder","Glance","Nova",1
+MCQ,"À quoi sert la commande glance-manage db_sync ?","À redémarrer le service Glance","À créer les tables nécessaires dans la base de données Glance","À sauvegarder les images sur un disque externe","À synchroniser les images entre deux serveurs",2
+MCQ,"Sur quel port l'API Neutron écoute-t-elle ?","8000","8776","5000","9696",4
+MCQ,"Dans la configuration ML2, que définit vni_ranges ?","La plage d'adresses IP","La vitesse des ports réseaux","La plage d'identifiants de réseaux VXLAN utilisables","Le nombre de processeurs par VM",3
+MCQ,"Pourquoi installe-t-on le paquet haveged lors de l'initialisation de Keystone ?","Pour gérer les logs du serveur Apache","Pour générer de l'entropie nécessaire aux clés de chiffrement","Pour accélérer l'interface web","Pour surveiller la température du processeur",2
+MCQ,"Quelle commande permet de lister les hyperviseurs connectés au cloud ?","ip addr show","openstack hypervisor list","nova-manage db sync","openstack service list",2
+MCQ,"Quel est l'utilité du Provider Network (Réseau Flat) ?","Relier les instances au réseau physique réel ou à Internet","Créer des tunnels chiffrés","Stocker les fichiers ISO","Isoler les projets entre eux",1
+MCQ,"Quelle commande permet d'ajouter une propriété personnalisée à une image existante ?","openstack image add property","glance-manage db_sync","openstack image create","openstack image set --property ...",4
+MCQ,"Quel est le rôle du nova-scheduler ?","Choisir le meilleur nœud de calcul pour héberger une instance","Créer des réseaux virtuels","Afficher la console VNC","Gérer la base de données",1
+MCQ,"Dans quel état doit être une image pour être utilisable par Nova ?","killed","active","queued","saving",2
+MCQ,"À quoi sert le service placement-api ?","À gérer les adresses IP","À créer des sauvegardes","À suivre l'inventaire et la consommation des ressources (CPU, RAM)","À placer les serveurs dans les racks",3
+MCQ,"Lors du bootstrap de Keystone, à quoi sert l'option --bootstrap-region-id ?","À nommer l'entité logique du centre de données (ex: RegionOne)","À définir le fuseau horaire du serveur","À limiter l'accès à une zone géographique","À configurer le fournisseur d'accès internet",1
+MCQ,"Quelle technologie Linux est utilisée dans le TP pour gérer l'espace disque de Cinder ?","NFS","EXT4","BTRFS","LVM (Logical Volume Management)",4
+MCQ,"Quel composant de Nova est installé sur le nœud de calcul (Compute Node) ?","nova-api","nova-scheduler","nova-compute","nova-conductor",3
+MCQ,"Pourquoi le nœud Compute ne doit-il pas accéder directement à la base de données Nova ?","Pour des raisons de sécurité et pour passer par nova-conductor","Parce que les données sont stockées dans Glance","Parce que MySQL ne supporte pas les connexions distantes","Pour économiser de la mémoire vive",1
+MCQ,"Qu'est-ce qu'un Security Group dans Neutron ?","Un pare-feu virtuel appliqué aux ports des instances","Un groupe d'administrateurs réseau","Un protocole de chiffrement","Un coffre-fort pour les mots de passe",1
+MCQ,"Quelle commande est indispensable pour que le terminal actuel reconnaisse les variables OpenStack ?","run admin-openrc","bash admin-openrc","source admin-openrc","set admin-openrc",3
+MCQ,"Comment s'appelle le groupe de volumes que Cinder utilise par défaut ?","cinder-volumes","nova-disks","data-group","storage-pool",1
+MCQ,"Quel agent Neutron doit être configuré pour lier une interface physique à un pont virtuel ?","L'agent L3","L'agent DHCP","L'agent Metadata","L'agent Linuxbridge (ou Open vSwitch)",4
+MCQ,"Qu'est-ce qu'une Flavor dans Nova ?","Une définition de ressources (VCPU, RAM, Disque) pour une instance","Un type de chiffrement","Une couleur d'interface","Le nom du système d'exploitation",1
+MCQ,"Dans keystone.conf, que signifie mysql+pymysql ?","Le mot de passe est stocké en clair","On utilise une base NoSQL","Le service stocke ses données dans un fichier texte","On utilise le pilote Python pour communiquer avec MariaDB/MySQL",4
+MCQ,"Quel protocole est utilisé pour créer des réseaux virtuels isolés L2 sur L3 ?","HTTP","VXLAN","FTP","SMTP",2
+MCQ,"Que signifie --container-format bare ?","L'image ne possède pas de système de fichiers","L'image est vide","L'image n'est pas encapsulée dans un format de conteneur spécifique","L'image est réservée à Docker",3
+MCQ,"Comment appelle-t-on un ensemble de ressources déployées par Heat ?","Un PoD","Une pile","Un hyperviseur","Un cluster",2
+MCQ,"Quel est le port par défaut de l'API Keystone v3 ?","5000","9696","9292","8774",1
+MCQ,"Quel est le rôle principal du service Keystone ?","Gestion de l'identité et catalogue de services","Fourniture d'adresses IP","Gestion du stockage bloc","Orchestration des containers",1
+MCQ,"Horizon est basé sur quel framework Web ?","React","Angular","Flask","Django",4
+MCQ,"Qu'est-ce qu'un Project (Tenant) dans Keystone ?","Un serveur physique dédié","Un script automatique","Une unité d'isolation regroupant des ressources et utilisateurs","Un dossier de code source",3
+MCQ,"Que fait nova-manage cell_v2 discover_hosts ?","Enregistre les nouveaux nœuds de calcul dans la base du contrôleur","Crée des VMs test","Télécharge des mises à jour","Scanne le réseau",1
+MCQ,"Dans admin-openrc, que définit OS_AUTH_URL ?","Le point d'entrée de l'API Keystone","L'URL Horizon","L'adresse MySQL","L'URL API stockage",1
+MCQ,"Sur quel port l'API Glance écoute-t-elle ?","8774","6080","5000","9292",4
+MCQ,"Dans nova.conf, que signifie virt_type = kvm ?","Émulation logicielle pure","VMware ESXi","Virtualisation matérielle Linux","VirtualBox",3
+MCQ,"Quelle commande permet de lancer un déploiement via template Heat ?","openstack stack create -t","openstack stack validate","openstack server create","heat-manage db_sync",1
+MCQ,"Quel est l'utilité des clés Fernet dans Keystone ?","Sécuriser SSH","Chiffrer les disques","Authentifier MariaDB","Chiffrer et générer les tokens d'authentification",4
+MCQ,"À quoi sert l'agent Metadata ?","Permettre aux instances de récupérer des informations via HTTP","Sauvegarder la config réseau","Stocker le nom des VMs","Générer des statistiques",1
+MCQ,"Quel service OpenStack gère les images disques ?","Neutron","Swift","Nova","Glance",4
+MCQ,"Quelle commande permet de lancer le déploiement d'une infrastructure via un fichier template ?","openstack stack create -t template.yaml","openstack stack deploy template.yaml","heat deploy template.yaml","openstack server create --template template.yaml",1
+MCQ,"À quoi sert l'agent neutron-dhcp-agent ?","À router le trafic externe","À attribuer automatiquement des adresses IP aux instances","À gérer les Security Groups","À surveiller les flux réseau",2
+MCQ,"Quel protocole est utilisé pour créer des réseaux virtuels L2 par-dessus un réseau L3 ?","GRE","VXLAN","IPsec","802.1Q",2
+MCQ,"Quel est l'utilité des clés Fernet dans Keystone ?","Signer les images Glance","Chiffrer les communications MySQL","Chiffrer et générer les jetons d'authentification","Gérer les mots de passe utilisateurs",3
+MCQ,"Dans ML2, que définit vni_ranges ?","La plage d'ID VLAN","La plage d'IP publiques","La plage d'identifiants VXLAN utilisables","Le nombre maximal de réseaux",3
+MCQ,"Quel service OpenStack gère le réseau virtuel ?","Nova","Neutron","Cinder","Glance",2
+MCQ,"Sur quel port l'API Glance écoute-t-elle par défaut ?","8774","9292","9696","5000",2
+MCQ,"Qu'est-ce qu'un Security Group dans Neutron ?","Un VLAN virtuel","Un pare-feu virtuel appliqué aux ports des instances","Un groupe d'utilisateurs","Un protocole réseau sécurisé",2
+MCQ,"Si une image est créée avec --public, qui peut l'utiliser ?","Seulement le projet service","Tous les projets","Uniquement admin","Seulement le créateur",2
+MCQ,"Que signifie --container-format bare ?","Image sans OS","Image non encapsulée dans un conteneur spécifique","Image vide","Image réservée aux containers",2
+MCQ,"Quelle commande vérifie que le service Identity est enregistré ?","openstack endpoint list","openstack service list","keystone-manage db_sync","systemctl status keystone",2
+MCQ,"Pourquoi le nœud Compute ne doit-il pas accéder directement à la DB Nova ?","Pour économiser CPU","Pour des raisons de sécurité et passer par nova-conductor","Pour éviter les conflits IP","Car MySQL ne supporte pas plusieurs connexions",2
+MCQ,"Quel est le rôle principal de Keystone ?","Stockage objet","Gestion de l'identité et catalogue de services","Gestion réseau","Planification des VMs",2
+MCQ,"Dans local_settings.py, que définit OPENSTACK_HOST ?","IP utilisateur","Adresse Horizon","Nom d'hôte ou IP du contrôleur","Nom de la DB",3
+MCQ,"Quelle commande charge les variables OpenStack dans le shell ?","bash admin-openrc","source admin-openrc","run admin-openrc","load openrc",2
+MCQ,"Quelle technologie est utilisée pour gérer les volumes Cinder dans le TP ?","NFS","BTRFS","LVM","ZFS",3
+MCQ,"Pourquoi glance a le rôle admin dans le projet service ?","Créer des VMs","Valider les tokens auprès de Keystone","Modifier Neutron","Supprimer des utilisateurs",2
+MCQ,"Dans quel état doit être une image pour être utilisée ?","queued","saving","active","killed",3
+MCQ,"Pourquoi installe-t-on haveged ?","Gérer Apache","Générer de l'entropie pour le chiffrement","Optimiser CPU","Gérer logs",2
+MCQ,"Que signifie mysql+pymysql dans keystone.conf ?","Connexion SSH DB","Utilisation pilote Python pour MariaDB/MySQL","Base NoSQL","Stockage fichier local",2
+MCQ,"Quel agent lie une interface physique à un bridge virtuel ?","L3 agent","DHCP agent","Metadata agent","Linuxbridge ou Open vSwitch agent",4
+MCQ,"À quoi sert l'agent Metadata ?","Attribuer IP","Sauvegarder config","Permettre aux instances de récupérer clés SSH et hostname via HTTP","Créer snapshots",3
+MCQ,"Que définit OS_AUTH_URL ?","URL Horizon","URL API stockage","Point d'entrée Keystone","Adresse DB",3
+MCQ,"Commande pour lister hyperviseurs ?","nova hypervisor-list","openstack hypervisor list","virsh list","openstack compute host list",2
+MCQ,"But du service Cinder ?","Stockage objet","Stockage bloc persistant","Réseau virtuel","Orchestration",2
+MCQ,"Port API Neutron ?","8776","9696","5000","9292",2
+MCQ,"Quel protocole présente le volume à Nova ?","NFS","iSCSI","SMB","HTTP",2
+MCQ,"Rôle du nova-scheduler ?","Créer réseaux","Choisir le meilleur nœud Compute","Gérer DB","Afficher console VNC",2
+MCQ,"Règle iptables pour NAT ?","DROP","MASQUERADE","REJECT","ACCEPT",2
+MCQ,"Pourquoi patch eventlet sur nova-manage ?","Support Windows","Optimiser CPU","Corriger deadlock SQL","Modifier logo",3
+MCQ,"Framework Web Horizon ?","Flask","Angular","Django","React",3
+MCQ,"virt_type = kvm signifie ?","VirtualBox","Émulation logicielle","Virtualisation matérielle Linux","VMware ESXi",3
+MCQ,"Service gestion images ?","Nova","Glance","Neutron","Swift",2
+MCQ,"Project (Tenant) est ?","Serveur physique","Unité d'isolation ressources/utilisateurs","Script déploiement","Image disque",2
+MCQ,"nova-manage cell_v2 discover_hosts fait quoi ?","Créer VMs","Enregistrer nouveaux compute nodes","Scanner réseau","Redémarrer Nova",2
+MCQ,"Pourquoi activer ip_forward ?","Synchroniser heure","Permettre routage","Accélérer DB","Activer VXLAN",2
+MCQ,"Port novncproxy ?","8774","6080","9292","9696",2
+MCQ,"glance-manage db_sync sert à ?","Redémarrer service","Créer tables DB Glance","Exporter images","Nettoyer cache",2
+MCQ,"Composant Nova sur Compute Node ?","nova-api","nova-scheduler","nova-compute","nova-conductor",3
+MCQ,"Rôle placement-api ?","Gérer IP","Suivre inventaire ressources CPU/RAM","Créer snapshots","Stockage objet",2
+MCQ,"--bootstrap-region-id sert à ?","Nommer région logique (RegionOne)","Configurer DNS","Limiter accès","Définir fuseau horaire",1
+MCQ,"Section [keystone_authtoken] configure ?","Connexion DB","Paramètres auth vers Keystone","Logs Apache","Paramètres réseau",2
+MCQ,"Utilité Provider Network ?","Isoler projets","Relier instances au réseau physique","Créer tunnels VXLAN","Stockage images",2
+MCQ,"Commande ajouter propriété image ?","openstack image add","glance set property","openstack image set --property","openstack image update",3
+MCQ,"Format disque courant KVM ?","VMDK","QCOW2","ISO","VHD",2
+MCQ,"Ressources déployées par Heat ?","Cluster","Hypervisor","Pile (Stack)","PoD",3
+MCQ,"Port Keystone v3 ?","5000","9696","9292","8774",1
+MCQ,"Qu'est-ce qu'une Flavor ?","Image disque","Définition ressources VM (VCPU, RAM, Disque)","Groupe réseau","Clé SSH",2
+MCQ,"Groupe volumes par défaut Cinder ?","nova-disks","cinder-volumes","volume-group","lvm-default",2
+MCQ,"Format template Heat (HOT) ?","XML","INI","JSON","YAML",4

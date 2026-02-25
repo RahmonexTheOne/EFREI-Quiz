@@ -27,6 +27,8 @@ COURSE_MAP = {
              resource_path("assets/sciences-po.csv")),
             ("Audit et gestion des risques (SSI)",
             resource_path("assets/audit-gestion-ssi.csv")),
+            ("Infrastructure Cloud",
+            resource_path("assets/infrastructure-cloud.csv")),
         ]
     },
 }
