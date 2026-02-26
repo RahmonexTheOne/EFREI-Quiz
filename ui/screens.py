@@ -29,6 +29,8 @@ COURSE_MAP = {
             resource_path("assets/audit-gestion-ssi.csv")),
             ("Infrastructure Cloud",
             resource_path("assets/infrastructure-cloud.csv")),
+            ("Cyber défense et attaques",
+            resource_path("assets/cyberdefense-attaque.csv")),
         ]
     },
 }
