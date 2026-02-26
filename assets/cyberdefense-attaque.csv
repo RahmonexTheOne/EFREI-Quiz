@@ -1,122 +1,122 @@
 Type,Title,Choice,Choice,Choice,Choice,Correct
-MCQ,Quel type de script a-t-on utilisé pour récupérer un shell sur le serveur DVWA ?,ReverseShellPHP,DecodePHP,ShellA,PHPDestroy,ReverseShellPHP
-MCQ,Quels outils permet de dumper la base de donnée en une commande ?,BddDumper,SQLMap,BDDMap,Patator,SQLMap
-MCQ,Quel outil permet de collecter des informations sur le site web ?,BruteSSH,NInfo,Hydra,Nikto,Nikto
-MCQ,Comment appelle-t-on une attaque qui permet d'incruster une page provenant d'une source externe dans une page web ?,RFI,ForceBrute,CSRF,JohnTheRipper,RFI
-MCQ,Comment se protéger des injections SQL ?,Faire confiance à l'utilisateur,Vérifier les données entrées par l'utilisateur avant de les utiliser,Utiliser des listes déroulantes,Utiliser un Antivirus,Vérifier les données entrées par l'utilisateur avant de les utiliser
-MCQ,Une faille XSS est une vulnérabilité dans le code exécuté :,côté client,côté serveur,côté google,côté obscur,côté client
-MCQ,Quelle est la bonne injection SQL pour cette commande php : SELECT * FROM users WHERE id= '" . $get_id . "' ?,all,1 or 1=1#,1' or 1='1,1%00 -- -,1' or 1='1
-MCQ,Laquelle de ces propositions ressemble le plus à une LFI,page=../../../../../../../../../../etc/passwd,page=JeanLucMelenchon,page=https://google.com,page=<script>alert("LFI")</script>,page=../../../../../../../../../../etc/passwd
-MCQ,Quel outil permet d'intercepter les requêtes et les modifier avant qu'elles soient envoyées au serveur ?,JohnTheRipper,Hydra,SSH,BurpSuite,BurpSuite
-MCQ,Comment s’appelle la machine virtuelle utilisée pendant les TPs DVWA ?,VirtualBox,Dojo,Windown,Scanweb,Dojo
-MCQ,Laquelle de ces propositions ressemble le plus à une attaque command injection ?,Cédric && cat /etc/passwd,Cédric ' or 1='1,Cédric%00File:///etc/passwd,Cédric<script>alert('/etc/passwd')</script>,Cédric && cat /etc/passwd
-MCQ,Quelle faille permet de récupérer le cookie de session d'un utilisateur ?,XSS,Injection SQL,XML,CookieHack,XSS
-MCQ,Quelle commande permet de récupérer un tty interactif d'un simple reverse Shell ?,$ upgrade tty,$ sudo /bin/sh,$ sudo su,$ python -c "import pty; pty.spawn('/bin/sh')",$ python -c "import pty; pty.spawn('/bin/sh')"
-MCQ,Quel outil permet de parser un site web ?,nmap,Dirbuster,dvwa,String,Dirbuster
-MCQ,Quel est le paramètre permettant d'identifier le type de fichier uploadé sur le serveur ?,Type-Objet,Php_Type,Content-Type,Type_Upload,Content-Type
-MCQ,Quel outil permet de réaliser un bruteforce WEB ?,Nmap,SQLMap,BurpSuite,BruteHTTP,BurpSuite
-MCQ,Quelle est la bonne injection SQL pour cette commande php : SELECT * FROM users WHERE id= . $get_id ?,inc//File:/etc/passwd,111111 or 1=1,1' or 1='1',1' or '1'=1,111111 or 1=1
-MCQ,Quelle faille permet de déposer un ver sur le serveur ?,File Upload,Brute force,XSS,San Andreas,File Upload
-MCQ,Quelle faille permet de lancer des commandes sur le serveur via un formulaire ?,SQL injection,Command Injection,File inclusion,File Upload,Command Injection
-MCQ,Quel outil permet de découvrir le réseau ?,googleMap,AndMap,Nmap,Hydra,Nmap
-MCQ,Quelle phase est correcte concernant un reverse Shell ?,Le serveur devient client et le client devient serveur,Le prompt est inversé,Il est obligatoirement en PHP,Il ne fonctionne que sous Linux,Le serveur devient client et le client devient serveur
-MCQ,Laquelle de ces propositions ressemble le plus à une RFI ?,page=../../../../etc/passwd,page='1' or 1='1,page=https://google.com,page=https://google.com,page=https://google.com
-MCQ,Quelle fonction permet de récupérer le cookie ?,GetCookie,Document.cookie,Starbuck,gCookie(),Document.cookie
-MCQ,Que signifie DICT ?,Disponibilité Intégrité Confidentialité Traçabilité,Détection Intrusion Contrôle Test,Data Internet Cloud Tech,Distribution Interne Contrôle Technique,Disponibilité Intégrité Confidentialité Traçabilité
-MCQ,Quel critère DICT garantit que les données sont accessibles au bon moment ?,Disponibilité,Intégrité,Confidentialité,Traçabilité,Disponibilité
-MCQ,Quel critère DICT garantit que les données ne sont pas modifiées ?,Disponibilité,Intégrité,Confidentialité,Traçabilité,Intégrité
-MCQ,Quel critère DICT garantit que seules les personnes autorisées accèdent aux données ?,Disponibilité,Intégrité,Confidentialité,Traçabilité,Confidentialité
-MCQ,Quel critère DICT permet de savoir qui a fait quoi ?,Disponibilité,Intégrité,Confidentialité,Traçabilité,Traçabilité
-MCQ,Quel type d’audit correspond à aucune information sur la cible ?,White Box,Grey Box,Black Box,Red Team,Black Box
-MCQ,Quel type d’audit fournit le code source ?,White Box,Grey Box,Black Box,Blue Team,White Box
-MCQ,Que signifie CVE ?,Common Vulnerabilities and Exposures,Critical Virus Entry,Common Virus Exploit,Certified Vulnerability Entry,Common Vulnerabilities and Exposures
-MCQ,Quel format correspond à une CVE ?,CVE-AAAA-NNNN,CVE-NNNN-AAAA,VULN-AAAA,EXPLOIT-2020,CVE-AAAA-NNNN
-MCQ,Quel outil est un scanner de vulnérabilité payant ?,Nikto,Nessus,Hydra,Dirbuster,Nessus
-MCQ,Quel outil est un scanner web open source ?,Nikto,Excel,Nessus,Wireshark,Nikto
-MCQ,Quel outil permet d’intercepter les requêtes HTTP ?,BurpSuite,Nmap,Hydra,John,BurpSuite
-MCQ,Quel outil permet de scanner les ports ?,Nmap,Shodan,Whois,Google,Nmap
-MCQ,Quel outil permet de bruteforce des formulaires web ?,BurpSuite,Nmap,Traceroute,DNS,BurpSuite
-MCQ,Quel outil permet de dumper une base de données SQL ?,SQLMap,Nikto,Hydra,John,SQLMap
-MCQ,Quel outil permet de rechercher des sous-domaines ?,DNSDumpster,Wireshark,Nmap,Hydra,DNSDumpster
-MCQ,Quel outil permet de rechercher des équipements connectés ?,Shodan,Google,Nmap,John,Shodan
-MCQ,Quel outil permet de voir les anciennes versions d’un site ?,WayBackMachine,Nmap,Hydra,Nikto,WayBackMachine
-MCQ,Quel outil permet de récupérer les informations administratives d’un domaine ?,Whois,Hydra,Nmap,BurpSuite,Whois
-MCQ,Que signifie LFI ?,Local File Inclusion,Login File Injection,Local Form Injection,Link File Inclusion,Local File Inclusion
-MCQ,Que signifie RFI ?,Remote File Inclusion,Root File Injection,Remote Form Injection,Random File Inclusion,Remote File Inclusion
-MCQ,Une faille XSS s’exécute côté :,Client,Serveur,Firewall,Routeur,Client
-MCQ,Quelle attaque permet d’exécuter une commande système ?,Command Injection,SQL Injection,XSS,RFI,Command Injection
-MCQ,Quelle attaque permet de voler un cookie ?,XSS,SQL Injection,LFI,CSRF,XSS
-MCQ,Quel port utilise SSH ?,22,80,21,445,22
-MCQ,Quel port utilise HTTP ?,80,22,21,445,80
-MCQ,Quel port utilise SMB ?,445,22,80,53,445
-MCQ,Quel port utilise FTP ?,21,22,80,25,21
-MCQ,Quel est l’objectif du pivoting ?,Accéder à des segments isolés,Scanner plus vite,Changer IP,Supprimer logs,Accéder à des segments isolés
-MCQ,Le pivoting est aussi appelé :,Déplacement latéral,Bruteforce,Sniffing,Hashing,Déplacement latéral
-MCQ,Quelle commande permet un SSH local port forwarding ?,ssh -L,ssh -D,ssh -X,ssh -P,ssh -L
-MCQ,Quelle commande permet un SSH dynamic port forwarding ?,ssh -D,ssh -L,ssh -R,ssh -X,ssh -D
-MCQ,Le dynamic forwarding utilise quel type de proxy ?,SOCKS,HTTP,FTP,DNS,SOCKS
-MCQ,Quel est l’avantage du dynamic forwarding ?,Proxy dynamique,Nécessite root,Ouvre firewall,Supprime logs,Proxy dynamique
-MCQ,Dans un reverse shell qui initie la connexion ?,La victime,L’attaquant,Firewall,Routeur,La victime
-MCQ,Quel ransomware exploitait EternalBlue ?,Wannacry,Zeus,Petya,Stuxnet,Wannacry
-MCQ,Quel correctif corrige EternalBlue ?,MS17-010,KB445,PatchZero,SMBfix,MS17-010
-MCQ,Que fait un ransomware ?,Chiffre les données,Supprime antivirus,Scanne réseau,Bruteforce,Chiffre les données
-MCQ,Quel est un impact financier d’une cyberattaque ?,Perte d’argent,Changement logo,Ajout user,Upgrade PC,Perte d’argent
-MCQ,Le darkweb est utilisé pour :,Vente de données,Mises à jour Windows,Emails légaux,Formation,Vente de données
-MCQ,Quel est le prix moyen d’une carte bancaire sur le darkweb ?,2 à 10$,100$,500$,1000$,2 à 10$
-MCQ,Quel outil est inclus dans Kali Linux ?,BurpSuite,Excel,Word,Paint,BurpSuite
-MCQ,Kali Linux est :,Une VM de pentest,Un antivirus,Un firewall,Un SIEM,Une VM de pentest
-MCQ,La phase de footprinting est :,Collecte d’informations,Exploitation,Reporting,Chiffrement,Collecte d’informations
-MCQ,La phase d’exploitation consiste à :,Exploiter vulnérabilités,Scanner ports,Créer CVE,Configurer firewall,Exploiter vulnérabilités
-MCQ,Un scan de ports permet de :,Identifier services ouverts,Supprimer données,Créer users,Chiffrer disque,Identifier services ouverts
-MCQ,Quel outil permet un bruteforce SSH ?,Hydra,Nmap,BurpSuite,Whois,Hydra
-MCQ,Une injection SQL permet de :,Manipuler requêtes SQL,Modifier CSS,Changer DNS,Scanner réseau,Manipuler requêtes SQL
-MCQ,La bonne protection contre SQLi est :,Valider entrées utilisateur,Faire confiance utilisateur,Désactiver PHP,Installer antivirus,Valider entrées utilisateur
-MCQ,Content-Type sert à :,Identifier type fichier uploadé,Scanner ports,Créer hash,Modifier cookie,Identifier type fichier uploadé
-MCQ,Dirbuster permet de :,Découvrir répertoires,Supprimer logs,Créer tunnel,Bruteforce SSH,Découvrir répertoires
-MCQ,Traceroute permet de :,Voir chemin réseau,Supprimer IP,Créer user,Scanner SMB,Voir chemin réseau
-MCQ,Nmap est utilisé pour :,Scanner ports,Créer CVE,Chiffrer données,Modifier DNS,Scanner ports
-MCQ,Un audit Grey Box signifie :,Informations partielles,Aucune info,Code complet,Accès root,Informations partielles
-MCQ,Une faille File Upload permet :,Uploader fichier malveillant,Changer mot de passe,Scanner réseau,Supprimer cookie,Uploader fichier malveillant
-MCQ,Quelle commande améliore un shell ?,python -c "import pty; pty.spawn('/bin/sh')",sudo su,upgrade tty,whoami,python -c "import pty; pty.spawn('/bin/sh')"
-MCQ,OWASP Top 10 concerne :,Failles web,Failles réseau,Failles hardware,Failles WiFi,Failles web
-MCQ,Quel est un critère DICT niveau 5 disponibilité ?,99.999%,90%,95%,97%,99.999%
-MCQ,DMIA signifie :,Durée Maximale Interruption Admissible,Data Monitoring Internet Access,Dynamic Malware Injection Attack,Digital Monitoring Intrusion Alert,Durée Maximale Interruption Admissible
-MCQ,Quel mécanisme assure la confidentialité ?,Cryptographie,Firewall,Antivirus,Sniffer,Cryptographie
-MCQ,Un firewall permet de :,Filtrer flux réseau,Scanner ports,Créer hash,Bruteforce,Filtrer flux réseau
-MCQ,Un antivirus protège contre :,Malware connu,Bruteforce,SQLi,XSS,Malware connu
-MCQ,Un reverse shell permet :,Accès distant,Chiffrement disque,Scan réseau,Créer CVE,Accès distant
-MCQ,Une attaque CSRF vise :,Forcer action utilisateur,Scanner port,Voler hash,Modifier DNS,Forcer action utilisateur
-MCQ,Une attaque brute force vise :,Tester mots de passe,Scanner ports,Créer CVE,Injecter SQL,Tester mots de passe
-MCQ,Une attaque LFI vise :,Lire fichier local,Uploader fichier,Bruteforce SSH,Créer cookie,Lire fichier local
-MCQ,Une attaque RFI vise :,Inclure fichier distant,Lire passwd,Scanner port,Créer user,Inclure fichier distant
-MCQ,Un hash est utilisé pour :,Intégrité,Disponibilité,Traçabilité,IP routing,Intégrité
-MCQ,La confidentialité protège :,Données sensibles,Ports ouverts,Logs publics,Firewall,Données sensibles
-MCQ,La traçabilité permet :,Audit des actions,Chiffrement,Scan ports,Upload fichier,Audit des actions
-MCQ,La disponibilité protège :,Continuité service,Secret,Authentification,Injection,Continuité service
-MCQ,Un exploit 0day est :,Faille inconnue,Faille patchée,Faille CVE ancienne,Faille firewall,Faille inconnue
-MCQ,MITRE maintient :,Base CVE,Base DNS,Base HTTP,Base SQL,Base CVE
-MCQ,Shodan peut rechercher :,Caméras IP,Fichiers locaux,Users Linux,Hashes,Caméras IP
-MCQ,Google Dork permet :,Trouver infos sensibles,Scanner ports,Créer tunnel,Modifier DNS,Trouver infos sensibles
-MCQ,Un botnet est :,Réseau machines zombies,Firewall,Système patché,SIEM,Réseau machines zombies
-MCQ,Une attaque SMB cible souvent le port :,445,80,22,25,445
-MCQ,Une signature électronique assure :,Intégrité et non répudiation,Disponibilité,Scan port,Upload fichier,Intégrité et non répudiation
-MCQ,Un tunnel SSH sert à :,Rediriger trafic,Supprimer logs,Créer CVE,Bruteforce,Rediriger trafic
-MCQ,Un proxy SOCKS permet :,Redirection dynamique,Filtrer CVE,Scanner SMB,Créer user,Redirection dynamique
-MCQ,Un scan actif laisse :,Des traces,Aucune trace,Hash,Proxy,SDes traces
-MCQ,Un scan passif utilise :,Sources externes,Exploit SMB,Reverse shell,Injection SQL,Sources externes
-MCQ,Un rapport de pentest contient :,Vulnérabilités et recommandations,Hash admin,Cookies,Logs firewall,Vulnérabilités et recommandations
-MCQ,Une CVE identifie :,Une vulnérabilité,Un utilisateur,Un firewall,Un port,Une vulnérabilité
-MCQ,Un payload est :,Code malveillant,Firewall,Certificat,Hash,Code malveillant
-MCQ,Une élévation de privilège permet :,Obtenir droits admin,Scanner port,Modifier DNS,Créer CVE,Obtenir droits admin
-MCQ,Une attaque DoS vise :,Rendre service indisponible,Voler cookie,Modifier DB,Créer hash,Rendre service indisponible
-MCQ,Un SOC sert à :,Surveiller sécurité,Supprimer logs,Créer CVE,Installer Linux,Surveiller sécurité
-MCQ,Une faille Broken Authentication concerne :,Authentification faible,Firewall ouvert,Port fermé,Scan actif,Authentification faible
-MCQ,Une faille Broken Access Control concerne :,Mauvais contrôle accès,Upload image,Scan DNS,Proxy SOCKS,Mauvais contrôle accès
-MCQ,Une injection OS est aussi appelée :,Command Injection,SQL Injection,XSS,LFI,Command Injection
-MCQ,Une attaque par phishing utilise :,Email frauduleux,SSH tunnel,Nmap,Whois,Email frauduleux
-MCQ,Un IDS permet :,Détecter intrusion,Scanner port,Créer hash,Uploader shell,Détecter intrusion
-MCQ,Un SIEM sert à :,Centraliser logs,Scanner port,Créer CVE,Bruteforce,Centraliser logs
-MCQ,Un patch sert à :,Corriger vulnérabilité,Ouvrir port,Supprimer log,Créer tunnel,Corriger vulnérabilité
-MCQ,Une authentification forte utilise :,Plusieurs facteurs,Un mot de passe simple,Login guest,Port 80,Plusieurs facteurs
-MCQ,Un hash MD5 est utilisé pour :,Vérification intégrité,Confidentialité totale,Scan port,Proxy SOCKS,Vérification intégrité
-MCQ,Un mot de passe faible facilite :,Bruteforce,Chiffrement,Traçabilité,Patch,Bruteforce
+MCQ,Quel type de script a-t-on utilisé pour récupérer un shell sur le serveur DVWA ?,ReverseShellPHP,DecodePHP,ShellA,PHPDestroy,1
+MCQ,Quels outils permet de dumper la base de donnée en une commande ?,BddDumper,SQLMap,BDDMap,Patator,2
+MCQ,Quel outil permet de collecter des informations sur le site web ?,BruteSSH,NInfo,Hydra,Nikto,4
+MCQ,Comment appelle-t-on une attaque qui permet d'incruster une page provenant d'une source externe dans une page web ?,RFI,ForceBrute,CSRF,JohnTheRipper,1
+MCQ,Comment se protéger des injections SQL ?,Faire confiance à l'utilisateur,Vérifier les données entrées par l'utilisateur avant de les utiliser,Utiliser des listes déroulantes,Utiliser un Antivirus,2
+MCQ,Une faille XSS est une vulnérabilité dans le code exécuté :,côté client,côté serveur,côté google,côté obscur,1
+MCQ,Quelle est la bonne injection SQL pour cette commande php : SELECT * FROM users WHERE id= '" . $get_id . "' ?,all,1 or 1=1#,1' or 1='1,1%00 -- -,3
+MCQ,Laquelle de ces propositions ressemble le plus à une LFI,page=../../../../../../../../../../etc/passwd,page=JeanLucMelenchon,page=https://google.com,page=<script>alert("LFI")</script>,1
+MCQ,Quel outil permet d'intercepter les requêtes et les modifier avant qu'elles soient envoyées au serveur ?,JohnTheRipper,Hydra,SSH,BurpSuite,4
+MCQ,Comment s’appelle la machine virtuelle utilisée pendant les TPs DVWA ?,VirtualBox,Dojo,Windown,Scanweb,2
+MCQ,Laquelle de ces propositions ressemble le plus à une attaque command injection ?,Cédric && cat /etc/passwd,Cédric ' or 1='1,Cédric%00File:///etc/passwd,Cédric<script>alert('/etc/passwd')</script>,1
+MCQ,Quelle faille permet de récupérer le cookie de session d'un utilisateur ?,XSS,Injection SQL,XML,CookieHack,1
+MCQ,Quelle commande permet de récupérer un tty interactif d'un simple reverse Shell ?,$ upgrade tty,$ sudo /bin/sh,$ sudo su,$ python -c "import pty; pty.spawn('/bin/sh')",4
+MCQ,Quel outil permet de parser un site web ?,nmap,Dirbuster,dvwa,String,2
+MCQ,Quel est le paramètre permettant d'identifier le type de fichier uploadé sur le serveur ?,Type-Objet,Php_Type,Content-Type,Type_Upload,3
+MCQ,Quel outil permet de réaliser un bruteforce WEB ?,Nmap,SQLMap,BurpSuite,BruteHTTP,3
+MCQ,Quelle est la bonne injection SQL pour cette commande php : SELECT * FROM users WHERE id= . $get_id ?,inc//File:/etc/passwd,111111 or 1=1,1' or 1='1',1' or '1'=1,2
+MCQ,Quelle faille permet de déposer un ver sur le serveur ?,File Upload,Brute force,XSS,San Andreas,1
+MCQ,Quelle faille permet de lancer des commandes sur le serveur via un formulaire ?,SQL injection,Command Injection,File inclusion,File Upload,2
+MCQ,Quel outil permet de découvrir le réseau ?,googleMap,AndMap,Nmap,Hydra,3
+MCQ,Quelle phase est correcte concernant un reverse Shell ?,Le serveur devient client et le client devient serveur,Le prompt est inversé,Il est obligatoirement en PHP,Il ne fonctionne que sous Linux,1
+MCQ,Laquelle de ces propositions ressemble le plus à une RFI ?,page=../../../../etc/passwd,page='1' or 1='1,page=https://google.com,page=<script>alert("RFI")</script>,3
+MCQ,Quelle fonction permet de récupérer le cookie ?,GetCookie,Document.cookie,Starbuck,gCookie(),2
+MCQ,Que signifie DICT ?,Disponibilité Intégrité Confidentialité Traçabilité,Détection Intrusion Contrôle Test,Data Internet Cloud Tech,Distribution Interne Contrôle Technique,1
+MCQ,Quel critère DICT garantit que les données sont accessibles au bon moment ?,Disponibilité,Intégrité,Confidentialité,Traçabilité,1
+MCQ,Quel critère DICT garantit que les données ne sont pas modifiées ?,Disponibilité,Intégrité,Confidentialité,Traçabilité,2
+MCQ,Quel critère DICT garantit que seules les personnes autorisées accèdent aux données ?,Disponibilité,Intégrité,Confidentialité,Traçabilité,3
+MCQ,Quel critère DICT permet de savoir qui a fait quoi ?,Disponibilité,Intégrité,Confidentialité,Traçabilité,4
+MCQ,Quel type d’audit correspond à aucune information sur la cible ?,White Box,Grey Box,Black Box,Red Team,3
+MCQ,Quel type d’audit fournit le code source ?,White Box,Grey Box,Black Box,Blue Team,1
+MCQ,Que signifie CVE ?,Common Vulnerabilities and Exposures,Critical Virus Entry,Common Virus Exploit,Certified Vulnerability Entry,1
+MCQ,Quel format correspond à une CVE ?,CVE-AAAA-NNNN,CVE-NNNN-AAAA,VULN-AAAA,EXPLOIT-2020,1
+MCQ,Quel outil est un scanner de vulnérabilité payant ?,Nikto,Nessus,Hydra,Dirbuster,2
+MCQ,Quel outil est un scanner web open source ?,Nikto,Excel,Nessus,Wireshark,1
+MCQ,Quel outil permet d’intercepter les requêtes HTTP ?,BurpSuite,Nmap,Hydra,John,1
+MCQ,Quel outil permet de scanner les ports ?,Nmap,Shodan,Whois,Google,1
+MCQ,Quel outil permet de bruteforce des formulaires web ?,BurpSuite,Nmap,Traceroute,DNS,1
+MCQ,Quel outil permet de dumper une base de données SQL ?,SQLMap,Nikto,Hydra,John,1
+MCQ,Quel outil permet de rechercher des sous-domaines ?,DNSDumpster,Wireshark,Nmap,Hydra,1
+MCQ,Quel outil permet de rechercher des équipements connectés ?,Shodan,Google,Nmap,John,1
+MCQ,Quel outil permet de voir les anciennes versions d’un site ?,WayBackMachine,Nmap,Hydra,Nikto,1
+MCQ,Quel outil permet de récupérer les informations administratives d’un domaine ?,Whois,Hydra,Nmap,BurpSuite,1
+MCQ,Que signifie LFI ?,Local File Inclusion,Login File Injection,Local Form Injection,Link File Inclusion,1
+MCQ,Que signifie RFI ?,Remote File Inclusion,Root File Injection,Remote Form Injection,Random File Inclusion,1
+MCQ,Une faille XSS s’exécute côté :,Client,Serveur,Firewall,Routeur,1
+MCQ,Quelle attaque permet d’exécuter une commande système ?,Command Injection,SQL Injection,XSS,RFI,1
+MCQ,Quelle attaque permet de voler un cookie ?,XSS,SQL Injection,LFI,CSRF,1
+MCQ,Quel port utilise SSH ?,22,80,21,445,1
+MCQ,Quel port utilise HTTP ?,80,22,21,445,1
+MCQ,Quel port utilise SMB ?,445,22,80,53,1
+MCQ,Quel port utilise FTP ?,21,22,80,25,1
+MCQ,Quel est l’objectif du pivoting ?,Accéder à des segments isolés,Scanner plus vite,Changer IP,Supprimer logs,1
+MCQ,Le pivoting est aussi appelé :,Déplacement latéral,Bruteforce,Sniffing,Hashing,1
+MCQ,Quelle commande permet un SSH local port forwarding ?,ssh -L,ssh -D,ssh -X,ssh -P,1
+MCQ,Quelle commande permet un SSH dynamic port forwarding ?,ssh -D,ssh -L,ssh -R,ssh -X,1
+MCQ,Le dynamic forwarding utilise quel type de proxy ?,SOCKS,HTTP,FTP,DNS,1
+MCQ,Quel est l’avantage du dynamic forwarding ?,Proxy dynamique,Nécessite root,Ouvre firewall,Supprime logs,1
+MCQ,Dans un reverse shell qui initie la connexion ?,La victime,L’attaquant,Firewall,Routeur,1
+MCQ,Quel ransomware exploitait EternalBlue ?,Wannacry,Zeus,Petya,Stuxnet,1
+MCQ,Quel correctif corrige EternalBlue ?,MS17-010,KB445,PatchZero,SMBfix,1
+MCQ,Que fait un ransomware ?,Chiffre les données,Supprime antivirus,Scanne réseau,Bruteforce,1
+MCQ,Quel est un impact financier d’une cyberattaque ?,Perte d’argent,Changement logo,Ajout user,Upgrade PC,1
+MCQ,Le darkweb est utilisé pour :,Vente de données,Mises à jour Windows,Emails légaux,Formation,1
+MCQ,Quel est le prix moyen d’une carte bancaire sur le darkweb ?,2 à 10$,100$,500$,1000$,1
+MCQ,Quel outil est inclus dans Kali Linux ?,BurpSuite,Excel,Word,Paint,1
+MCQ,Kali Linux est :,Une VM de pentest,Un antivirus,Un firewall,Un SIEM,1
+MCQ,La phase de footprinting est :,Collecte d’informations,Exploitation,Reporting,Chiffrement,1
+MCQ,La phase d’exploitation consiste à :,Exploiter vulnérabilités,Scanner ports,Créer CVE,Configurer firewall,1
+MCQ,Un scan de ports permet de :,Identifier services ouverts,Supprimer données,Créer users,Chiffrer disque,1
+MCQ,Quel outil permet un bruteforce SSH ?,Hydra,Nmap,BurpSuite,Whois,1
+MCQ,Une injection SQL permet de :,Manipuler requêtes SQL,Modifier CSS,Changer DNS,Scanner réseau,1
+MCQ,La bonne protection contre SQLi est :,Valider entrées utilisateur,Faire confiance utilisateur,Désactiver PHP,Installer antivirus,1
+MCQ,Content-Type sert à :,Identifier type fichier uploadé,Scanner ports,Créer hash,Modifier cookie,1
+MCQ,Dirbuster permet de :,Découvrir répertoires,Supprimer logs,Créer tunnel,Bruteforce SSH,1
+MCQ,Traceroute permet de :,Voir chemin réseau,Supprimer IP,Créer user,Scanner SMB,1
+MCQ,Nmap est utilisé pour :,Scanner ports,Créer CVE,Chiffrer données,Modifier DNS,1
+MCQ,Un audit Grey Box signifie :,Informations partielles,Aucune info,Code complet,Accès root,1
+MCQ,Une faille File Upload permet :,Uploader fichier malveillant,Changer mot de passe,Scanner réseau,Supprimer cookie,1
+MCQ,Quelle commande améliore un shell ?,python -c "import pty; pty.spawn('/bin/sh')",sudo su,upgrade tty,whoami,1
+MCQ,OWASP Top 10 concerne :,Failles web,Failles réseau,Failles hardware,Failles WiFi,1
+MCQ,Quel est un critère DICT niveau 5 disponibilité ?,99.999%,90%,95%,97%,1
+MCQ,DMIA signifie :,Durée Maximale Interruption Admissible,Data Monitoring Internet Access,Dynamic Malware Injection Attack,Digital Monitoring Intrusion Alert,1
+MCQ,Quel mécanisme assure la confidentialité ?,Cryptographie,Firewall,Antivirus,Sniffer,1
+MCQ,Un firewall permet de :,Filtrer flux réseau,Scanner ports,Créer hash,Bruteforce,1
+MCQ,Un antivirus protège contre :,Malware connu,Bruteforce,SQLi,XSS,1
+MCQ,Un reverse shell permet :,Accès distant,Chiffrement disque,Scan réseau,Créer CVE,1
+MCQ,Une attaque CSRF vise :,Forcer action utilisateur,Scanner port,Voler hash,Modifier DNS,1
+MCQ,Une attaque brute force vise :,Tester mots de passe,Scanner ports,Créer CVE,Injecter SQL,1
+MCQ,Une attaque LFI vise :,Lire fichier local,Uploader fichier,Bruteforce SSH,Créer cookie,1
+MCQ,Une attaque RFI vise :,Inclure fichier distant,Lire passwd,Scanner port,Créer user,1
+MCQ,Un hash est utilisé pour :,Intégrité,Disponibilité,Traçabilité,IP routing,1
+MCQ,La confidentialité protège :,Données sensibles,Ports ouverts,Logs publics,Firewall,1
+MCQ,La traçabilité permet :,Audit des actions,Chiffrement,Scan ports,Upload fichier,1
+MCQ,La disponibilité protège :,Continuité service,Secret,Authentification,Injection,1
+MCQ,Un exploit 0day est :,Faille inconnue,Faille patchée,Faille CVE ancienne,Faille firewall,1
+MCQ,MITRE maintient :,Base CVE,Base DNS,Base HTTP,Base SQL,1
+MCQ,Shodan peut rechercher :,Caméras IP,Fichiers locaux,Users Linux,Hashes,1
+MCQ,Google Dork permet :,Trouver infos sensibles,Scanner ports,Créer tunnel,Modifier DNS,1
+MCQ,Un botnet est :,Réseau machines zombies,Firewall,Système patché,SIEM,1
+MCQ,Une attaque SMB cible souvent le port :,445,80,22,25,1
+MCQ,Une signature électronique assure :,Intégrité et non répudiation,Disponibilité,Scan port,Upload fichier,1
+MCQ,Un tunnel SSH sert à :,Rediriger trafic,Supprimer logs,Créer CVE,Bruteforce,1
+MCQ,Un proxy SOCKS permet :,Redirection dynamique,Filtrer CVE,Scanner SMB,Créer user,1
+MCQ,Un scan actif laisse :,Des traces,Aucune trace,Hash,Proxy,1
+MCQ,Un scan passif utilise :,Sources externes,Exploit SMB,Reverse shell,Injection SQL,1
+MCQ,Un rapport de pentest contient :,Vulnérabilités et recommandations,Hash admin,Cookies,Logs firewall,1
+MCQ,Une CVE identifie :,Une vulnérabilité,Un utilisateur,Un firewall,Un port,1
+MCQ,Un payload est :,Code malveillant,Firewall,Certificat,Hash,1
+MCQ,Une élévation de privilège permet :,Obtenir droits admin,Scanner port,Modifier DNS,Créer CVE,1
+MCQ,Une attaque DoS vise :,Rendre service indisponible,Voler cookie,Modifier DB,Créer hash,1
+MCQ,Un SOC sert à :,Surveiller sécurité,Supprimer logs,Créer CVE,Installer Linux,1
+MCQ,Une faille Broken Authentication concerne :,Authentification faible,Firewall ouvert,Port fermé,Scan actif,1
+MCQ,Une faille Broken Access Control concerne :,Mauvais contrôle accès,Upload image,Scan DNS,Proxy SOCKS,1
+MCQ,Une injection OS est aussi appelée :,Command Injection,SQL Injection,XSS,LFI,1
+MCQ,Une attaque par phishing utilise :,Email frauduleux,SSH tunnel,Nmap,Whois,1
+MCQ,Un IDS permet :,Détecter intrusion,Scanner port,Créer hash,Uploader shell,1
+MCQ,Un SIEM sert à :,Centraliser logs,Scanner port,Créer CVE,Bruteforce,1
+MCQ,Un patch sert à :,Corriger vulnérabilité,Ouvrir port,Supprimer log,Créer tunnel,1
+MCQ,Une authentification forte utilise :,Plusieurs facteurs,Un mot de passe simple,Login guest,Port 80,1
+MCQ,Un hash MD5 est utilisé pour :,Vérification intégrité,Confidentialité totale,Scan port,Proxy SOCKS,1
+MCQ,Un mot de passe faible facilite :,Bruteforce,Chiffrement,Traçabilité,Patch,1
