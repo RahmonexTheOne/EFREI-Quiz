@@ -1,4 +1,4 @@
-Type,Question,Choice1,Choice2,Choice3,Choice4,CorrectAnswer
+Type,Title,Choice,Choice,Choice,Choice,Correct
 MCQ,Quel type de script a-t-on utilisé pour récupérer un shell sur le serveur DVWA ?,ReverseShellPHP,DecodePHP,ShellA,PHPDestroy,ReverseShellPHP
 MCQ,Quels outils permet de dumper la base de donnée en une commande ?,BddDumper,SQLMap,BDDMap,Patator,SQLMap
 MCQ,Quel outil permet de collecter des informations sur le site web ?,BruteSSH,NInfo,Hydra,Nikto,Nikto
