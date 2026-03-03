@@ -23,16 +23,12 @@ COURSE_MAP = {
              resource_path("assets/docker_orchestration.csv"))
         ],
         "M2 First Semester (S9)": [
-            ("Sciences politiques",
-             resource_path("assets/sciences-po.csv")),
-            ("Audit et gestion des risques (SSI)",
-            resource_path("assets/audit-gestion-ssi.csv")),
+            ("Orchestration et containers",
+             resource_path("assets/orchestration-containers.csv")),
+            ("Sécurité Cloud",
+             resource_path("assets/seccloud.csv")),
             ("Infrastructure Cloud",
-            resource_path("assets/infrastructure-cloud.csv")),
-            ("Cyber défense et attaques Quizz",
-            resource_path("assets/cyberdefense-attaque.csv")),
-            ("Cyber défense et attaques Cours",
-            resource_path("assets/cyber-defense-attaque-cours.csv")),
+             resource_path("assets/infrastructure-cloud.csv")),
         ]
     },
 }

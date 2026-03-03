@@ -1,0 +1,21 @@
+Type,Title,Choice,Choice,Choice,Choice,Correct
+MCQ,Quelle commande liste tous les conteneurs y compris ceux arrêtés ?,docker ps,docker ps -a,docker containers list,docker show,2
+MCQ,Quel fichier est utilisé pour définir les services Docker Compose ?,dockerfile.yml,docker-compose.yml,compose.json,Dockerfile,2
+MCQ,Que signifie l’option -p 80:80 dans docker run ?,Elle installe le port 80 dans le conteneur,Elle mappe un volume,Elle fait correspondre le port local 80 au port 80 du conteneur,Elle ouvre tous les ports,3
+MCQ,Quelle commande permet de construire une image Docker ?,docker make,docker image run,docker build,docker compile,3
+MCQ,Quelle commande affiche toutes les images Docker locales ?,docker image ls,docker image show,docker list images,docker ps --images,1
+MCQ,Que fait l’option -d dans docker run -d ?,Exécution en mode débogage,Exécution du conteneur en arrière-plan,Désactivation des logs,Redirection des ports par défaut,2
+MCQ,"Dans un docker-compose, quel mot-clé force un service à attendre un autre ?",priority:,depends_on:,startup_after:,require:,2
+MCQ,Quel type de volume correspond à un montage direct d’un dossier du host ?,Named volume,Cloud volume,Bind mount,Proxy mount,3
+MCQ,Que permet de faire la commande suivante ? docker exec -it CONTAINER bash,Modifier le Dockerfile du conteneur,Entrer dans le conteneur via un shell interactif,Éteindre le conteneur puis l’allumer,Supprimer les logs du conteneur,2
+MCQ,Quelle commande affiche les couches d’une image Docker ?,docker image inspect --layers,docker details,docker history,docker image stack,3
+MCQ,Que fait docker-compose down ?,Arrête les conteneurs sans les supprimer,Supprime uniquement le réseau,Supprime conteneurs + réseau + volumes anonymes,Efface les images Docker,3
+MCQ,À quoi sert l’instruction WORKDIR /app dans un Dockerfile ?,Changer l’utilisateur actif,Définir le dossier de travail pour les commandes suivantes,Créer un volume automatiquement,Lancer le serveur web interne,2
+MCQ,Quel est l’objectif principal d’un multi-stage build ?,Installer automatiquement Git,Réduire la taille finale de l’image,Ajouter plusieurs applications dans une seule image,Chiffrer les couches intermédiaires,2
+MCQ,Où définit-on un réseau personnalisé dans Docker Compose ?,Dans un fichier à part nommé network.yml,Dans la section services:,Dans la section networks:,Dans une variable d’environnement,3
+MCQ,Quel avantage offre un Named Volume comparé à un Bind Mount ?,Il est toujours chiffré,Il est géré par Docker et donc plus performant/stable,Il ne peut contenir que des fichiers statiques,Il se supprime automatiquement après arrêt du conteneur,2
+MCQ,Pourquoi les images Alpine sont-elles populaires pour créer des images optimisées ?,Elles incluent toutes les librairies Python,Elles sont obligatoires pour les multi-stages,Elles n’utilisent pas de kernel Linux,Elles sont très légères (environ 5 Mo),4
+MCQ,Pourquoi utiliser USER appuser dans un Dockerfile ?,Pour exécuter l’application avec un utilisateur non-root,Pour changer automatiquement le port d’écoute,Pour supprimer les droits root du host,Pour monter un volume utilisateur,1
+MCQ,Quelle commande permet de vérifier la configuration complète d’un conteneur ?,docker logs,docker inspect,docker check,docker container config,2
+MCQ,Que permet l’option --no-cache dans docker build --no-cache -t image . ?,Réduire la taille finale de l’image,Forcer Docker à reconstruire toutes les couches,Supprimer les images précédentes automatiquement,Installer les mises à jour automatiquement,2
+MCQ,Quel outil est utilisé dans le cours pour scanner les vulnérabilités des images ?,OpenVAS,Clair,Trivy,Nessus,3
